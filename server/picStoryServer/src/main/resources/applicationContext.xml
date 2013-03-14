@@ -18,8 +18,7 @@
 	<import resource="spring-struts2-servlet.xml"/>
 	<!--  
 	<import resource="spring-mvc-dwr.xml"/>
-	-->
-	
+	-->	
 	<import resource="spring-hibernate.xml"/>
 	<import resource="spring-ibatis.xml"/>
 	<import resource="spring-mybatis.xml"/>
