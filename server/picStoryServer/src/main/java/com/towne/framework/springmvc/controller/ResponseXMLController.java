@@ -36,7 +36,7 @@ public class ResponseXMLController {
 	@RequestMapping(value="/contact/{id}",produces=MediaType.APPLICATION_XML_VALUE)
 	public @ResponseBody Moment getContactInXML(@PathVariable(value="id")int id){
 		Trader trader = new Trader();
-		Moment moment = ifacadeService.findMomentById(trader,id);
+		Moment moment = ifacadeService.findById(trader, id);
 		return moment;
 	}
 	
@@ -48,7 +48,7 @@ public class ResponseXMLController {
 	@RequestMapping(value="/contacts",produces=MediaType.APPLICATION_XML_VALUE)
 	public @ResponseBody Moments getContactsInXML(){
 		Trader trader = new Trader();
-		List<Moment> moment = ifacadeService.queryMoments(trader, "select * from Moment");
+		List<Moment> moment = ifacadeService.query(trader, "select t from Moment t");
 		Moments moments=new Moments();
 		moments.setMoments(moment);
 		return moments;
