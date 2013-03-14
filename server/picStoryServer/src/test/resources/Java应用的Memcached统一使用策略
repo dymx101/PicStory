@@ -1,0 +1,139 @@
+使用simple-spring-memcached统一缓存的使用
+如何在一个中型的Java应用中使用Memcached缓存数据不是个简单的问题。当某个缓存数据需要在多个系统间共享和失效时，必须要有统一的规划才能保证不出错。经过各种实践，目前系统在使用Memcached缓存数据全部采用Simple-Spring-Memcached框架来完成，并统一规划各系统Spring和Cache key的配置。
+下面对在使用过程中需要注意的点做一个详细说明：
+
+Cache整体规划
+
+目前我们系统中有两个不同的Memcached服务器：
+
+session memcached服务器：主要存储用户的session
+app memcached服务器: 主要用于缓存应用数据
+由于应用所有的缓存数据都放在app缓存上，为避免各应用的缓存数据出现冲突，必须规划好它们的命名空间。所幸Simple-Spring-Memcached支持namespace的概念，因此对各应用的namespace前缀规定如下：
+
+应用	NAMESPACE前缀	
+goodscenter	goodscenter	
+trade	trade	
+uic	uic	
+这个namespace在生成key时，将放在最前面，稍后会有例子详述。
+同一个应用中存在许多需要缓存的对象，因此约定namespace前缀之后再加上缓存对象的类名。
+例子如下：
+
+应用	缓存对象	完整的NAMESPACE	最终生成的KEY
+trade	TcRate (id为42)	trade:TcRate	trade:TcRate:12
+goodscenter	GoodsDo(id为42)	goodscenter:GoodsDo	goodscenter:GoodsDo:12
+key的生成规则
+
+Simple-Spring-Memcached提供的针对单个对象的注解接口提供了两种key生成方式，详情见此文
+
+AssignCache类注解通过assignKey指定cache的key
+SingleCache类注解通过ParameterValueKeyProvider注解指定生成key的方法
+对于第一种只要求必须保证key不与其它的冲突，且namesapce符合规则。
+第二种时，约定缓存的数据对象必须实现有带CacheKeyMethod的cacheKey方法，参考实现如下：
+
+    @CacheKeyMethod
+    public String cacheKey() {
+        return this.getId();
+    }
+	目前@CacheKeyMethod只支持返回String的方法，需要改造成可接受Long，Integer型的。当前必须有单独的方法来作为缓存Key的生成器
+	真实存放到Memcached的key的生成规则是：namespace:key。
+如goodscenter的id为42的domain对象GoodsDo,按上述方式生成的key为：goodscenter:GoodsDo:42
+spring配置说明
+
+关于Simple-Spring-Memcached具体XML配置如下：
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <import resource="classpath:simplesm-context.xml"/>
+
+    <aop:aspectj -autoproxy/>
+    <context:annotation -config/>
+
+    <bean name="appCache" class="com.google.code.ssm.CacheFactory">
+        <property name="cacheClientFactory">
+            <bean class="com.google.code.ssm.providers.xmemcached.MemcacheClientFactoryImpl"/>
+        </property>
+        <property name="addressProvider">
+            <bean class="com.google.code.ssm.config.DefaultAddressProvider">
+                <!--memcached服务器ip:port 可以是多个，格式为: 127.0.0.1:11211,192.168.100.11:11211-->
+                <property name="address" value="{memcached.server}"/>
+            </bean>
+        </property>
+        <property name="configuration">
+            <!-- memcached连接器的配置，具体的配置项参考这个类 -->
+            <bean class="com.google.code.ssm.providers.XMemcachedConfiguration">
+                <!--是否使用一致性哈希-->
+                <property name="consistentHashing" value="true"/>
+                <!--连接池-->
+                <property name="connectionPoolSize" value="10"/>
+                <property name="optimizeGet" value="true"/>
+             </bean>
+        </property>
+        <property name="cacheName">
+            <!-- 该Memcached配置的Cache名称 一个应用中存在多个Memcached时，各个配置的cacheName必须不同。如果该值未设，系统默认为default -->
+            <value>appCache</value>
+        </property>
+    </bean>
+</beans>
+Java代码中使用说明
+
+a. 注解方式使用
+
+直接使用注解来处理缓存及失效非常简单，下面是相应的例子：
+读取缓存：
+
+EventGoodsServiceClientImpl.java
+    @Override
+    @ReadThroughSingleCache(namespace = "goodscenter:EventGoodsDo", expiration = 60)
+    @CacheName("appCache")
+    public EventGoodsDo queryEventGoodsDo(@ParameterValueKeyProvider(order = 0) long goodsId, @ParameterValueKeyProvider(order = 1) long eventId) {
+        return getRemoteServiceBean().queryEventGoodsDo(goodsId, eventId);
+    }
+更新缓存：
+
+EventGoodsDaoImpl.java
+@BridgeMethodMappings(value = {@BridgeMethodMapping(erasedParamTypes ={Object.class},targetParamTypes = {com.hqb360.promotion.dao.entity.EventGoods.class},methodName = "update")})
+public class EventGoodsDaoImpl&lt;EventGoods&gt; extends BaseDaoImpl&lt;EventGoods&gt; implements EventGoodsDao&lt;EventGoods&gt; {
+
+    @Override
+    public DaoStatementName getDaoStatementName() {
+        return new DefaultDaoStatementName() {
+            public String getDomainName() {
+                return "EventGoods";
+            }
+        };
+    }
+
+    @Override
+    @InvalidateSingleCache(namespace = "goodscenter:EventGoodsDo")
+    @CacheName("appCache")
+    public void update(@ParameterValueKeyProvider EventGoods obj) throws DataAccessException {
+        super.update(obj);
+    }
+}
+EventGoods.java
+    @CacheKeyMethod
+    public String getCacheKey() {
+        return goodsId + CACHE_ID_SEPARATOR + eventId;
+    }
+
+    public static final String CACHE_ID_SEPARATOR = "/";
+上述代码需要注意的点
+
+多个方法参数都作为cacheKey时，ParameterValueKeyProvider必须指明其order值
+多个方法参数作为cacheKey时，参数之间在 / 号分隔
+EventGoodsDaoImpl类中的update方法参数接收的是一个泛型对象，因此必须在该类上配置BridgeMethodMappings。具体配置见示例
+b. 以bean的方式使用Cache对象
+
+某些场景我们希望更便捷地自己手动来管理缓存数据，此时需要使用Simple-Spring-Memcached配置中定义的bean。以上面的配置文件为例，使用方法如下
+bean的注入：
+
+@Autowired
+private Cache appCache;
+bean的使用:
+
+appCache.set(Constants.CACHE_KEY + members.getMemberId(), 3600,cacheValue);

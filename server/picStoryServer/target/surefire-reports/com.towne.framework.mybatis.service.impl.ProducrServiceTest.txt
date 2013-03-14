@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.towne.framework.mybatis.service.impl.ProducrServiceTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.743 sec

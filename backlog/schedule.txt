@@ -1,0 +1,9 @@
+3.3#  初期 brain storm  
+
+3.13# 产品文档  [PRD]  (mao)
+
+3.17# 开发功能点及估时 [ERD]  
+      
+      server(tang)
+      iOS(dong)
+      web(mao)  

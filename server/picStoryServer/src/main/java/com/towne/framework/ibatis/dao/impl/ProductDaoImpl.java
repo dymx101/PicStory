@@ -1,0 +1,55 @@
+package com.towne.framework.ibatis.dao.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import org.springframework.stereotype.Repository;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+import com.towne.framework.ibatis.dao.ProductDao;
+import com.towne.framework.ibatis.model.Product;
+
+@Repository(value="productDaoImpl")
+public class ProductDaoImpl extends SqlMapClientDaoSupport implements ProductDao {
+	
+	@SuppressWarnings("unused")
+	private SqlMapClient sqlMapClients;
+	
+	@SuppressWarnings("unchecked")
+	public List<Product> listAll() {
+		return getSqlMapClientTemplate().queryForList("com.towne.framework.ibatis.model.Product.selectAll");
+	}
+
+	
+	public boolean save(Product product) {
+		Object object = getSqlMapClientTemplate().insert("com.towne.framework.ibatis.model.Product.save", product);
+		return object==null?false:true;
+	}
+
+
+	public boolean update(Product product) {
+		int n=getSqlMapClientTemplate().update("com.towne.framework.ibatis.model.Product.update", product);
+		return n==1?true:false;
+	}
+	
+	//注入 sqlMapClient
+	@Resource(name="sqlMapClient")
+	public void setSqlMapClients(SqlMapClient sqlMapClients) {
+		super.setSqlMapClient(sqlMapClients);
+	}
+
+
+	public Product getModel(int id) {
+		return (Product) getSqlMapClientTemplate().queryForObject("com.towne.framework.ibatis.model.Product.selectById", id);
+	}
+
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Product> selectLikeName(String name) {
+		return getSqlMapClientTemplate().queryForList("com.fengjing.framework.ibatis.model.Product.selectProductLikeName",name);
+	}
+	
+}

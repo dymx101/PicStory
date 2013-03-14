@@ -1,0 +1,47 @@
+2013.2.7.
+ZERO:  16:37:19
+就是某个用户开启一个故事，然后由多个人完成
+ZERO:  16:37:31
+这个用户有权管理这个故事
+ZERO:  16:37:42
+其他任何人都可以参与
+
+
+密码在你的google code设置里面
+ZERO:  15:52:31
+https://code.google.com/hosting/settings
+
+https://picstory.googlecode.com/svn/trunk/
+
+LBS图片分享
+
+
+2013.2.16
+用户LBS位置分享 ，对附近的用户 —— 有个轻量级的 提示信息（是否对小部分人群广播最基本的信息，位置、性别、头像、个性签名）
+其他信息更新需要用户自己刷新，类似微薄
+
+最近发现了一个 ‘啪啪’的应用 有分享语音的功能，这个其实也可以后期借鉴一下？
+http://papa.me/
+
+启动memcache命令（适用mac,win下面要自己配）
+memcached -d -m 1024 -u root -l 127.0.0.1 -p 11211
+
+
+2013.2.17
+http://hanqunfeng.iteye.com/blog/605123  mark 缓存实现
+towne  14:49:54
+http://www.csdn.net/article/2010-09-01/278921 mark数据设计上面的
+towne  16:28:02
+http://snowolf.iteye.com/blog/1612207  mark发送时的队列处理
+towne  16:29:40
+http://yunzhu.iteye.com/blog/1758713 mark 数据库 水平切分
+towne  16:37:43
+http://haohaoxuexi.iteye.com/blog/1337009 mark MyBatis之ResultMap简介，关联对象
+
+
+2013.2.21
+增加json参数的解析类
+
+
+2013.3.1
+修正数据库脚本 添加域对象 （需要删除原数据库重建）
