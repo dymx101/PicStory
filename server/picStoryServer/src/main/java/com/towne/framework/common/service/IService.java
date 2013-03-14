@@ -2,18 +2,20 @@ package com.towne.framework.common.service;
 
 import java.util.List;
 
+import com.towne.framework.common.model.Trader;
+
 public interface IService<T> {
 	
-	T findById(long id);
+	T findById(Trader trader ,long id);
 	
-	void modify(T t);
+	void update(Trader trader,T t);
 	
-	void save(T t);
+	void add(Trader trader,T t);
 	
-	void deleteById(long id);
+	void deleteById(Trader trader,long id);
 	
-	void delete(T t);
+	void delete(Trader trader,T t);
 	
-	List<T> listAll();
+	List<T> query(Trader trader,String queryString);
 	
 }

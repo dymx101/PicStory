@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.towne.framework.common.service.IFacadeService;
-import com.towne.framework.springmvc.model.Contact;
-import com.towne.framework.springmvc.model.Contacts;
 import com.towne.framework.common.model.Trader;
+import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.springmvc.model.Moments;
 
 /**
  * return xml format data
@@ -34,10 +34,10 @@ public class ResponseXMLController {
 	 * @return
 	 */
 	@RequestMapping(value="/contact/{id}",produces=MediaType.APPLICATION_XML_VALUE)
-	public @ResponseBody Contact getContactInXML(@PathVariable(value="id")int id){
+	public @ResponseBody Moment getContactInXML(@PathVariable(value="id")int id){
 		Trader trader = new Trader();
-		Contact contact = ifacadeService.findById(trader,id);
-		return contact;
+		Moment moment = ifacadeService.findMomentById(trader,id);
+		return moment;
 	}
 	
 	
@@ -46,11 +46,11 @@ public class ResponseXMLController {
 	 * @return
 	 */
 	@RequestMapping(value="/contacts",produces=MediaType.APPLICATION_XML_VALUE)
-	public @ResponseBody Contacts getContactsInXML(){
+	public @ResponseBody Moments getContactsInXML(){
 		Trader trader = new Trader();
-		List<Contact> contact = ifacadeService.listAll(trader);
-		Contacts contacts=new Contacts();
-		contacts.setContacts(contact);
-		return contacts;
+		List<Moment> moment = ifacadeService.queryMoments(trader, "select * from Moment");
+		Moments moments=new Moments();
+		moments.setMoments(moment);
+		return moments;
 	}
 }

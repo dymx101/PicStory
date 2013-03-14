@@ -27,7 +27,7 @@ public class MomentDao implements IDao<Moment> {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(long id) {
 		// TODO Auto-generated method stub
 		this.sessionFactory.getCurrentSession().delete(findById(id));
 	}
@@ -46,7 +46,7 @@ public class MomentDao implements IDao<Moment> {
 	}
 
 	@Override
-	public Moment findById(int id) {
+	public Moment findById(long id) {
 		// TODO Auto-generated method stub
 		return (Moment) this.sessionFactory.getCurrentSession().get(Moment.class, id);
 	}

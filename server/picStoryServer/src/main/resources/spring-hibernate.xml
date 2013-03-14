@@ -20,14 +20,14 @@
 	<context:component-scan base-package="com.towne.framework.hibernate"></context:component-scan>
 	<tx:annotation-driven transaction-manager="hibernate4TransactionManager"/>
 	<aop:aspectj-autoproxy expose-proxy="true"></aop:aspectj-autoproxy>
-
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
 	<bean id="hibernateDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value=""></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/ipicStory?useUnicode=true&amp;characterEncoding=utf8"></property>
+		<property name="driverClassName" value="${driverClassName}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="url" value="${url}"></property>
 	</bean>
-
 
 	<bean id="hibernate4sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -54,15 +54,6 @@
 				 <value>com.towne.framework.hibernate.model.UserRelation</value>
 			</list>
 		</property>
-		
-		<!-- 
-			<property name="mappingResources">
-				<list>
-					<value>com/towne/framework/hibernate/model/Department.hbm.xml</value>
-					<value>com/towne/framework/hibernate/model/Employee.hbm.xml</value>
-				</list>
-			</property>
-		-->
 		
 	</bean>
 

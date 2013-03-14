@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "STORY")

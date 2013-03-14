@@ -43,7 +43,7 @@ public class Storyfollower implements Serializable {
 	public Timestamp getFollowTime() {
 		return FollowTime;
 	}
-
+ 
 	public void setFollowTime(Timestamp followTime) {
 		FollowTime = followTime;
 	}

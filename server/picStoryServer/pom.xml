@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.towne.framework</groupId>
-	<artifactId>picStoryServer</artifactId>
+	<artifactId>picStoryServer_0.0.1</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>picStoryServer</name>
+	<name>picStoryServer_0.0.1</name>
 	<url>http://maven.apache.org</url>
 
 	

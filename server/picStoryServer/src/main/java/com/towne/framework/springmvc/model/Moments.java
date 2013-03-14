@@ -5,20 +5,22 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="contacts")
-public class Contacts {
+import com.towne.framework.hibernate.model.Moment;
+
+@XmlRootElement(name="moments")
+public class Moments {
 	
 	private String tname = "towne_test";
 	
-	private List<Contact> contacts;
+	private List<Moment> moments;
 
-	@XmlElement(name="contact")
-	public List<Contact> getContacts() {
-		return contacts;
+	@XmlElement(name="moment")
+	public List<Moment> getMoments() {
+		return moments;
 	}
 
-	public void setContacts(List<Contact> contacts) {
-		this.contacts = contacts;
+	public void setMoments(List<Moment> moments) {
+		this.moments = moments;
 	}
 
 	/**

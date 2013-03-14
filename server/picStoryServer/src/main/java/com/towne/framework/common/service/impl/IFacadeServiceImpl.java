@@ -5,70 +5,54 @@ import java.util.List;
 import javax.annotation.Resource;
 
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.towne.framework.common.service.IFacadeService;
-import com.towne.framework.spring.data.jpa.service.ContactService;
-import com.towne.framework.springmvc.model.Contact;
 import com.towne.framework.common.model.Trader;
+import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.hibernate.service.MomentService;
 
 @Service(value="ifacadeServiceImpl")
 @Transactional
 public class IFacadeServiceImpl implements IFacadeService  {
 
-	@Resource(name="contactServiceImpl")
-    ContactService contactService;
-	
+	@Resource(name="momentServiceImplHibernate4")
+    MomentService momentService;
+
 	@Override
-	public Contact findById(Trader trade,int id) {
+	public Moment findById(Trader trader, long id) {
 		// TODO Auto-generated method stub
-		return contactService.findById(id);
+		return momentService.findById(id);
 	}
 
 	@Override
-	public Contact save(Trader trade,Contact contact) {
+	public void update(Trader trader, Moment t) {
 		// TODO Auto-generated method stub
-		return contactService.save(contact);
+		momentService.update(t);
 	}
 
 	@Override
-	public Contact modifyContact(Trader trade,Contact contact) {
+	public void add(Trader trader, Moment t) {
 		// TODO Auto-generated method stub
-		return contactService.modifyContact(contact);
+		momentService.add(t);
 	}
 
 	@Override
-	public void delete(Trader trade,Contact contact) {
+	public void deleteById(Trader trader, long id) {
 		// TODO Auto-generated method stub
-		contactService.delete(contact);
+		momentService.delete(id);
 	}
 
 	@Override
-	public void delete(Trader trade,int id) {
+	public void delete(Trader trader, Moment t) {
 		// TODO Auto-generated method stub
-		contactService.delete(id);
+		momentService.delete(t.getIdMOMENT());
 	}
 
 	@Override
-	public Page<Contact> findAll(Trader trade,Pageable pageable) {
+	public List<Moment> query(Trader trader, String queryString) {
 		// TODO Auto-generated method stub
-		return contactService.findAll(pageable);
+		return momentService.query(queryString);
 	}
-
-	@Override
-	public List<Contact> listAll(Trader trade) {
-		// TODO Auto-generated method stub
-		return contactService.listAll();
-	}
-
-	@Override
-	public Page<Contact> findByAgeLessThanEqualOrderByIdDesc(Trader trade,int age,
-			Pageable pageable) {
-		// TODO Auto-generated method stub
-		return contactService.findByAgeLessThanEqualOrderByIdDesc(age, pageable);
-	}
-
 }

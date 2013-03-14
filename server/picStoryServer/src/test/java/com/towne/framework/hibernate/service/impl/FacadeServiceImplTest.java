@@ -32,7 +32,7 @@ public class FacadeServiceImplTest {
 		Trader trader = new Trader();
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123");
-		System.out.println(">>>>>> "+ifacadeService.findById(trader,1));	
+		System.out.println(">>>>>> "+ifacadeService.findMomentById(trader, 1l));	
 		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
 	}
