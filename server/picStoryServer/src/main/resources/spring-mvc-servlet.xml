@@ -22,15 +22,8 @@
 	<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller" id="jaxbMarshaller">
 		<property name="classesToBeBound">
 			<list>
-				<value>com.towne.framework.hibernate.model.Commend</value>
-				<value>com.towne.framework.hibernate.model.Feed</value>
-				<value>com.towne.framework.hibernate.model.FeedRelation</value>
-				<value>com.towne.framework.hibernate.model.Moment</value>
-				<value>com.towne.framework.hibernate.model.Page</value>
-				<value>com.towne.framework.hibernate.model.Story</value>
-				<value>com.towne.framework.hibernate.model.Storyfollower</value>
-				<value>com.towne.framework.hibernate.model.User</value>
-				<value>com.towne.framework.hibernate.model.UserRelation</value>
+			    <value>com.towne.framework.springmvc.model.MomentV</value>
+			    <value>com.towne.framework.springmvc.model.PageV</value>
 				<value>com.towne.framework.springmvc.model.Moments</value>
 			</list>
 		</property>

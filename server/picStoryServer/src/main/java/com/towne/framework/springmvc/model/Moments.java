@@ -1,25 +1,29 @@
 package com.towne.framework.springmvc.model;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.towne.framework.hibernate.model.Moment;
+@XmlRootElement(name = "moments")
+public class Moments implements Serializable {
 
-@XmlRootElement(name="moments")
-public class Moments {
-	
-	private String tname = "towne_test";
-	
-	private List<Moment> moments;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1233898340811709177L;
 
-	@XmlElement(name="moment")
-	public List<Moment> getMoments() {
+	private String tname = "towne_TAG";
+
+	private Set<MomentV> moments;
+
+	public Set<MomentV> getMoments() {
 		return moments;
 	}
 
-	public void setMoments(List<Moment> moments) {
+	@XmlElement
+	public void setMoments(Set<MomentV> moments) {
 		this.moments = moments;
 	}
 
@@ -31,7 +35,8 @@ public class Moments {
 	}
 
 	/**
-	 * @param tname the tname to set
+	 * @param tname
+	 *            the tname to set
 	 */
 	@XmlElement
 	public void setTname(String tname) {

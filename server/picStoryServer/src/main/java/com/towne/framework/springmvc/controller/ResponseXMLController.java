@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.towne.framework.common.service.IFacadeService;
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.springmvc.model.MomentV;
 import com.towne.framework.springmvc.model.Moments;
 
 /**
@@ -46,11 +47,13 @@ public class ResponseXMLController {
 	 * @return
 	 */
 	@RequestMapping(value="/contacts",produces=MediaType.APPLICATION_XML_VALUE)
-	public @ResponseBody Moments getContactsInXML(){
-		Trader trader = new Trader();
-		List<Moment> moment = ifacadeService.query(trader, "select t from Moment t");
-		Moments moments=new Moments();
-		moments.setMoments(moment);
-		return moments;
+	public @ResponseBody MomentV getContactsInXML(){
+//		Trader trader = new Trader();
+//		List<Moment> moment = ifacadeService.query(trader, "select t from Moment t");
+//		Set<MomentV> mv = 
+//		Moments moments=new Moments();
+//		moments.setMoments(moment);
+//		return moments;
+		return new MomentV();
 	}
 }

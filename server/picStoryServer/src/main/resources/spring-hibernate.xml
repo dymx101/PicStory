@@ -18,26 +18,54 @@
 	
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.towne.framework.hibernate"></context:component-scan>
-	<tx:annotation-driven transaction-manager="hibernate4TransactionManager"/>
 	<aop:aspectj-autoproxy expose-proxy="true"></aop:aspectj-autoproxy>
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
+	<!-- 
 	<bean id="hibernateDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${driverClassName}"></property>
 		<property name="username" value="${username}"></property>
 		<property name="password" value="${password}"></property>
 		<property name="url" value="${url}"></property>
 	</bean>
+	 -->
+	<!-- 数据源配置,使用应用内的DBCP数据库连接池 -->
+	<bean id="hibernateDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<!-- Connection Info -->
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 
+		<!-- Connection Pooling Info -->
+		<property name="maxIdle" value="${dbcp.maxIdle}" />
+		<property name="maxActive" value="${dbcp.maxActive}" />
+		<property name="defaultAutoCommit" value="false" />
+		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+		<property name="minEvictableIdleTimeMillis" value="3600000" />
+		
+		<!-- 优化配置 可根据需要开启或 关闭-->
+		<!-- 
+		<property name="removeAbandoned">${dbcp.removeAbandoned}</property> 
+		<property name="maxWait">${dbcp.maxWait}</property> 
+		<property name="removeAbandonedTimeout">${dbcp.removeAbandonedTimeout}</property> 
+		<property name="validationQuery">${dbcp.validationQuery}</property> 
+		<property name="testOnBorrow">${dbcp.testOnBorrow}</property>
+        <property name="testOnReturn">${dbcp.testOnReturn}</property>
+        <property name="testWhileIdle">${dbcp.testWhileIdle}</property>
+		 -->
+	</bean>
+	 
 	<bean id="hibernate4sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="hibernateDataSource"></property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.jdbc.batch_size">20</prop>
+				<prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+				<prop key="hibernate.default_batch_fetch_size">${hibernate.default_batch_fetch_size}</prop>
 			</props>
 		</property>
 		
@@ -57,9 +85,13 @@
 		
 	</bean>
 
-	<bean id="hibernate4TransactionManager"
+	<!-- 事务管理器配置,单数据源事务 -->
+	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="hibernate4sessionFactory"></property>
 	</bean>	
+
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" /> 
 		
 </beans>

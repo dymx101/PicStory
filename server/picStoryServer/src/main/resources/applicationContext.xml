@@ -13,8 +13,8 @@
 	http://www.directwebremoting.org/schema/spring-dwr
     http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 	
+    <import resource="spring-hibernate.xml"/>
 	<import resource="spring-mvc-servlet.xml"/>
-	<import resource="spring-hibernate.xml"/>
 	<import resource="spring-memcached.xml"/>
 	<import resource="spring-system-aop.xml"/>
 	

@@ -2,8 +2,6 @@ package com.towne.framework.hibernate.service.impl;
 
 import java.util.List;
 
-import com.google.code.ssm.api.ParameterValueKeyProvider;
-import com.google.code.ssm.api.ReadThroughSingleCache;
 import com.towne.framework.hibernate.dao.IDao;
 import com.towne.framework.hibernate.model.Moment;
 import com.towne.framework.hibernate.service.MomentService;
@@ -46,15 +44,15 @@ public class MomentServiceImpl implements MomentService {
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	public List<Moment> query(String queryString) {
 		// TODO Auto-generated method stub
 		return dao.query(queryString);
 	}
 
-	@ReadThroughSingleCache(namespace = "Echo", expiration = 1000)
 	@Override
-	public Moment findById(@ParameterValueKeyProvider long id) {
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
+	public Moment findById(long id) {
 		// TODO Auto-generated method stub
 		return dao.findById(id);
 	}

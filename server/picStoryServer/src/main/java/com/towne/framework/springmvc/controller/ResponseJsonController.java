@@ -1,8 +1,10 @@
 package com.towne.framework.springmvc.controller;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
+import java.util.Set;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +20,12 @@ import com.google.code.ssm.api.format.SerializationType;
 import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.common.service.IFacadeService;
 import com.towne.framework.system.util.GsonUtil;
+import com.towne.framework.springmvc.model.MomentV;
 import com.towne.framework.springmvc.model.Moments;
+import com.towne.framework.springmvc.model.PageV;
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.hibernate.model.Page;
 
 /**
  * return json format data
@@ -38,16 +43,15 @@ public class ResponseJsonController {
 	private Cache cache;
 	
 	@RequestMapping(value="/moment/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Moment getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
+	public @ResponseBody MomentV getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
 		Trader trader = new Trader();
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123");
-		Moment moment = ifacadeService.findById(trader, 1l);
+		MomentV mv = ifacadeService.findPages(trader, id);
 		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
-		return moment;
+		return mv;
 	}
-	
 	
 	
 	@RequestMapping(value="/moments",produces=MediaType.APPLICATION_JSON_VALUE)
