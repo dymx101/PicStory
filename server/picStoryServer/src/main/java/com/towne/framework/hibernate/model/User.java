@@ -20,6 +20,7 @@ import org.hibernate.annotations.CascadeType;
 public class User implements Serializable {
 	private long idUSER;
 	private String UserName;
+	private String UdId;
 	private String UserPass;
 	private int FeedsCount;
 	private int FansCount;
@@ -71,6 +72,14 @@ public class User implements Serializable {
 
 	public int getFansCount() {
 		return FansCount;
+	}
+
+	public String getUdId() {
+		return UdId;
+	}
+
+	public void setUdId(String udId) {
+		UdId = udId;
 	}
 
 	public void setFansCount(int fansCount) {

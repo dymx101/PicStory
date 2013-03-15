@@ -7,20 +7,19 @@ import javax.annotation.Resource;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-
 import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.hibernate.model.UserRelation;
 
-@Repository(value="momentDaoHibernate4")
-public class MomentDao implements IDao<Moment> {
+@Repository(value = "userRelationDaoHibernate4")
+public class UserRelationDao implements IDao<UserRelation> {
 
 	private SessionFactory sessionFactory;
-	
-	@Resource(name="hibernate4sessionFactory")
+
+	@Resource(name = "hibernate4sessionFactory")
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Override
 	public void add(Object object) {
 		// TODO Auto-generated method stub
@@ -39,17 +38,19 @@ public class MomentDao implements IDao<Moment> {
 		this.sessionFactory.getCurrentSession().update(object);
 	}
 
-	@Override
 	@SuppressWarnings("unchecked")
-	public List<Moment> query(String queryString) {
+	@Override
+	public List<UserRelation> query(String queryString) {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.getCurrentSession().createQuery(queryString).list();
+		return this.sessionFactory.getCurrentSession().createQuery(queryString)
+				.list();
 	}
 
 	@Override
-	public Moment findById(long id) {
+	public UserRelation findById(long id) {
 		// TODO Auto-generated method stub
-		return (Moment) this.sessionFactory.getCurrentSession().get(Moment.class, id);
+		return (UserRelation) this.sessionFactory.getCurrentSession().get(
+				UserRelation.class, id);
 	}
 
 }

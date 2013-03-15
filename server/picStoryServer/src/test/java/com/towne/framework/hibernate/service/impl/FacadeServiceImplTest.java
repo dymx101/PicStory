@@ -29,12 +29,11 @@ public class FacadeServiceImplTest {
 	private Cache cache;
 	
 	@Test
-	@Transactional
 	public void tete() throws TimeoutException, CacheException{
 		Trader trader = new Trader();
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123");
-		System.out.println(">>>>>> "+ifacadeService.findPages(trader, 2l));	
+		System.out.println(">>>>>> "+ifacadeService.findPages(trader, 3l));	
 		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
 	}

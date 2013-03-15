@@ -2,43 +2,44 @@ package com.towne.framework.hibernate.service.impl;
 
 import java.util.List;
 
-import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.Moment;
-import com.towne.framework.hibernate.service.MomentService;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service(value = "momentServiceImplHibernate4")
+import com.towne.framework.common.dao.IDao;
+import com.towne.framework.hibernate.model.Story;
+import com.towne.framework.hibernate.service.StoryService;
+
+@Service(value = "storyServiceImplHibernate4")
 @Transactional
-public class MomentServiceImpl implements MomentService {
+public class StoryServiceImpl implements StoryService {
 
-	private IDao<Moment> dao;
+	private IDao<Story> dao;
 
-	@Resource(name = "momentDaoHibernate4")
-	public void setDao(IDao<Moment> dao) {
+	@Resource(name = "storyDaoHibernate4")
+	public void setDao(IDao<Story> dao) {
 		this.dao = dao;
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public Moment findById(long id) {
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Story findById(long id) {
 		// TODO Auto-generated method stub
 		return dao.findById(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Moment t) {
+	public void update(Story t) {
 		// TODO Auto-generated method stub
 		dao.update(t);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Moment t) {
+	public void add(Story t) {
 		// TODO Auto-generated method stub
 		dao.add(t);
 	}
@@ -52,14 +53,14 @@ public class MomentServiceImpl implements MomentService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void delete(Moment t) {
+	public void delete(Story t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdMOMENT());
+		dao.delete(t.getIdSTORY());
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Moment> query(String queryString) {
+	public List<Story> query(String queryString) {
 		// TODO Auto-generated method stub
 		return dao.query(queryString);
 	}

@@ -2,43 +2,44 @@ package com.towne.framework.hibernate.service.impl;
 
 import java.util.List;
 
-import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.Moment;
-import com.towne.framework.hibernate.service.MomentService;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service(value = "momentServiceImplHibernate4")
+import com.towne.framework.common.dao.IDao;
+import com.towne.framework.hibernate.model.Storyfollower;
+import com.towne.framework.hibernate.service.StoryfollowerService;
+
+@Service(value = "storyfollowerServiceImplHibernate4")
 @Transactional
-public class MomentServiceImpl implements MomentService {
+public class StoryfollowerServiceImpl implements StoryfollowerService {
 
-	private IDao<Moment> dao;
+	private IDao<Storyfollower> dao;
 
-	@Resource(name = "momentDaoHibernate4")
-	public void setDao(IDao<Moment> dao) {
+	@Resource(name = "storyfollowerDaoHibernate4")
+	public void setDao(IDao<Storyfollower> dao) {
 		this.dao = dao;
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public Moment findById(long id) {
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Storyfollower findById(long id) {
 		// TODO Auto-generated method stub
 		return dao.findById(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Moment t) {
+	public void update(Storyfollower t) {
 		// TODO Auto-generated method stub
 		dao.update(t);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Moment t) {
+	public void add(Storyfollower t) {
 		// TODO Auto-generated method stub
 		dao.add(t);
 	}
@@ -52,14 +53,14 @@ public class MomentServiceImpl implements MomentService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void delete(Moment t) {
+	public void delete(Storyfollower t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdMOMENT());
+		dao.delete(t.getIdSTORYFOLLOWER());
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Moment> query(String queryString) {
+	public List<Storyfollower> query(String queryString) {
 		// TODO Auto-generated method stub
 		return dao.query(queryString);
 	}

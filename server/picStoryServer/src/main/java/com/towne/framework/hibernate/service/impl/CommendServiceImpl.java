@@ -2,64 +2,65 @@ package com.towne.framework.hibernate.service.impl;
 
 import java.util.List;
 
-import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.Moment;
-import com.towne.framework.hibernate.service.MomentService;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service(value = "momentServiceImplHibernate4")
+import com.towne.framework.common.dao.IDao;
+import com.towne.framework.hibernate.model.Commend;
+import com.towne.framework.hibernate.service.CommendService;
+
+@Service(value = "commendServiceImplHibernate4")
 @Transactional
-public class MomentServiceImpl implements MomentService {
+public class CommendServiceImpl implements CommendService {
 
-	private IDao<Moment> dao;
+	private IDao<Commend> dao;
 
-	@Resource(name = "momentDaoHibernate4")
-	public void setDao(IDao<Moment> dao) {
+	@Resource(name = "commendDaoHibernate4")
+	public void setDao(IDao<Commend> dao) {
 		this.dao = dao;
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-	public Moment findById(long id) {
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Commend findById(long id) {
 		// TODO Auto-generated method stub
 		return dao.findById(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Moment t) {
+	public void update(Commend t) {
 		// TODO Auto-generated method stub
-		dao.update(t);
+          dao.update(t);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Moment t) {
+	public void add(Commend t) {
 		// TODO Auto-generated method stub
-		dao.add(t);
+          dao.add(t);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void deleteById(long id) {
 		// TODO Auto-generated method stub
-		dao.delete(id);
+          dao.delete(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void delete(Moment t) {
+	public void delete(Commend t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdMOMENT());
+         dao.delete(t.getIdCOMMEND());
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Moment> query(String queryString) {
+	public List<Commend> query(String queryString) {
 		// TODO Auto-generated method stub
 		return dao.query(queryString);
 	}

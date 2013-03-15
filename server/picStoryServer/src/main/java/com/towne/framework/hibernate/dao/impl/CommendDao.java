@@ -7,12 +7,11 @@ import javax.annotation.Resource;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-
 import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.hibernate.model.Commend;
 
-@Repository(value="momentDaoHibernate4")
-public class MomentDao implements IDao<Moment> {
+@Repository(value="commendDaoHibernate4")
+public class CommendDao implements IDao<Commend> {
 
 	private SessionFactory sessionFactory;
 	
@@ -20,6 +19,7 @@ public class MomentDao implements IDao<Moment> {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+	
 	
 	@Override
 	public void add(Object object) {
@@ -41,15 +41,15 @@ public class MomentDao implements IDao<Moment> {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Moment> query(String queryString) {
+	public List<Commend> query(String queryString) {
 		// TODO Auto-generated method stub
 		return this.sessionFactory.getCurrentSession().createQuery(queryString).list();
 	}
 
 	@Override
-	public Moment findById(long id) {
+	public Commend findById(long id) {
 		// TODO Auto-generated method stub
-		return (Moment) this.sessionFactory.getCurrentSession().get(Moment.class, id);
+		return (Commend) this.sessionFactory.getCurrentSession().get(Commend.class, id);
 	}
 
 }
