@@ -1,6 +1,6 @@
 package com.towne.framework.core.ex;
 
-public class RuntimeExceptionThreadVO {
+public class RuntimeExceptionThreadVo {
     private static final ThreadLocal<String> ex = new ThreadLocal<String>();
 
     public static String getMessage() {

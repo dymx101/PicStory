@@ -2,9 +2,9 @@ package com.towne.framework.hibernate.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.towne.framework.common.dao.SimpleHibernateDao;
-import com.towne.framework.hibernate.model.UserRelation;
+import com.towne.framework.common.dao.HibernateDao;
+import com.towne.framework.hibernate.bo.UserRelation;
 
 @Repository(value = "userRelationDaoHibernate4")
-public class UserRelationDao extends SimpleHibernateDao<UserRelation, Long> {
+public class UserRelationDao extends HibernateDao<UserRelation, Long> {
 }

@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.towne.framework.hibernate.model.Moment;
-import com.towne.framework.hibernate.model.Page;
+import com.towne.framework.hibernate.bo.Moment;
+import com.towne.framework.hibernate.bo.Page;
 import com.towne.framework.hibernate.service.MomentService;
 
 @ContextConfiguration(locations = "classpath:spring-hibernate.xml")

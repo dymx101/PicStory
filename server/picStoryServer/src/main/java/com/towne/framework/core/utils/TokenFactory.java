@@ -1,4 +1,4 @@
-package com.towne.framework.system.util;
+package com.towne.framework.core.utils;
 
 public class TokenFactory {
     public static String getUserToken() {

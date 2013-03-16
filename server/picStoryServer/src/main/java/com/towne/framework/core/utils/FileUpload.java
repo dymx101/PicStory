@@ -1,4 +1,4 @@
-package com.towne.framework.springmvc.model;
+package com.towne.framework.core.utils;
 
 import java.io.Serializable;
 

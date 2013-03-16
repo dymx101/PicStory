@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.UserRelation;
+import com.towne.framework.hibernate.bo.UserRelation;
 import com.towne.framework.hibernate.service.UserRelationService;
 
 @Service(value = "userRelationServiceImplHibernate4")

@@ -71,15 +71,15 @@
 		
 		<property name="annotatedClasses">
 			<list>
-				 <value>com.towne.framework.hibernate.model.Commend</value>
-				 <value>com.towne.framework.hibernate.model.Feed</value>
-				 <value>com.towne.framework.hibernate.model.FeedRelation</value>
-				 <value>com.towne.framework.hibernate.model.Moment</value>
-				 <value>com.towne.framework.hibernate.model.Page</value>
-				 <value>com.towne.framework.hibernate.model.Story</value>
-				 <value>com.towne.framework.hibernate.model.Storyfollower</value>
-				 <value>com.towne.framework.hibernate.model.User</value>
-				 <value>com.towne.framework.hibernate.model.UserRelation</value>
+				 <value>com.towne.framework.hibernate.bo.Commend</value>
+				 <value>com.towne.framework.hibernate.bo.Feed</value>
+				 <value>com.towne.framework.hibernate.bo.FeedRelation</value>
+				 <value>com.towne.framework.hibernate.bo.Moment</value>
+				 <value>com.towne.framework.hibernate.bo.Page</value>
+				 <value>com.towne.framework.hibernate.bo.Story</value>
+				 <value>com.towne.framework.hibernate.bo.Storyfollower</value>
+				 <value>com.towne.framework.hibernate.bo.User</value>
+				 <value>com.towne.framework.hibernate.bo.UserRelation</value>
 			</list>
 		</property>
 		

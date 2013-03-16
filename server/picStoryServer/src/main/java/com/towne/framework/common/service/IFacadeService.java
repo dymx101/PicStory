@@ -3,7 +3,7 @@ package com.towne.framework.common.service;
 import java.util.List;
 
 import com.towne.framework.common.model.Trader;
-import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.hibernate.bo.Moment;
 import com.towne.framework.springmvc.model.MomentV;
 import com.towne.framework.springmvc.model.PageV;
 

@@ -10,12 +10,12 @@ import com.google.code.ssm.api.format.SerializationType;
 import com.towne.framework.core.constant.CommonKey;
 import com.towne.framework.core.ex.SystemMobileRuntimeException;
 import com.towne.framework.core.utils.MobileCommonUtil;
+import com.towne.framework.core.utils.SessionUtil;
+import com.towne.framework.core.utils.TokenFactory;
 import com.towne.framework.common.model.Trader;
-import com.towne.framework.system.filter.vo.MobileLoggerVO;
+import com.towne.framework.system.filter.vo.MobileLoggerVo;
 import com.towne.framework.system.filter.vo.ThreadLocalLog;
-import com.towne.framework.system.util.SessionUtil;
-import com.towne.framework.system.util.TokenFactory;
-import com.towne.framework.system.filter.vo.CookieVO;
+import com.towne.framework.system.filter.vo.CookieVo;
 
 
 public class TraderAndTokenAop {
@@ -33,7 +33,7 @@ public class TraderAndTokenAop {
             if (arg1 != null) {
                 if (arg1.getClass().equals(Trader.class)) {
                     Trader trader = (Trader) arg1;
-                    MobileLoggerVO logVO = ThreadLocalLog.getSystemLoggerVO();
+                    MobileLoggerVo logVO = ThreadLocalLog.getSystemLoggerVO();
                     logVO.setId(123l);
                     logVO.setTraderName(trader.getTraderName());
                     logVO.setTraderPassword(trader.getTraderPassword());
@@ -44,7 +44,6 @@ public class TraderAndTokenAop {
 //                    logVO.setLongitude(trader.getLongitude());
 //                    logVO.setLatitude(trader.getLatitude());
 //                    logVO.setDeviceCode(trader.getDeviceCode());
-                    
                     String userToken = TokenFactory.getUserToken();
                
                     Object tmpTrader = me.get(CommonKey.TRADER + userToken, SerializationType.PROVIDER);
@@ -80,7 +79,7 @@ public class TraderAndTokenAop {
                     String token = (String) arg1;
                     //一个用户的cookies对象,中间可以保存多个cookieVO
                     @SuppressWarnings("unchecked")
-					Map<String, CookieVO> oneUsercookieMap = (Map<String, CookieVO>) me
+					Map<String, CookieVo> oneUsercookieMap = (Map<String, CookieVo>) me
                         .get(CommonKey.USER_TOKEN_KEY + token, SerializationType.PROVIDER);
                     if (oneUsercookieMap == null) {
                         throw new SystemMobileRuntimeException("用户Token过期,请重新登录");
@@ -89,7 +88,7 @@ public class TraderAndTokenAop {
                     if (trader == null) {
                         throw new SystemMobileRuntimeException("用户Token过期,请重新登录");
                     }
-                    MobileLoggerVO logVO = ThreadLocalLog.getSystemLoggerVO();
+                    MobileLoggerVo logVO = ThreadLocalLog.getSystemLoggerVO();
                     logVO.setTraderName(trader.getTraderName());
                     logVO.setTraderPassword(trader.getTraderPassword());
 //                    logVO.setClientSystem(trader.getClientSystem());

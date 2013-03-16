@@ -1,4 +1,4 @@
-package com.towne.framework.hibernate.model;
+package com.towne.framework.hibernate.bo;
 
 import java.io.Serializable;
 import java.util.Set;

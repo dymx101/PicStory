@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.Story;
+import com.towne.framework.hibernate.bo.Story;
 import com.towne.framework.hibernate.service.StoryService;
 
 @Service(value = "storyServiceImplHibernate4")

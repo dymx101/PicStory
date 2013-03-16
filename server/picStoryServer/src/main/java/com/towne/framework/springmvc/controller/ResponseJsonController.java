@@ -17,12 +17,12 @@ import com.google.code.ssm.Cache;
 import com.google.code.ssm.api.format.SerializationType;
 import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.common.service.IFacadeService;
-import com.towne.framework.system.util.GsonUtil;
 import com.towne.framework.springmvc.model.MomentV;
 import com.towne.framework.springmvc.model.Moments;
 import com.towne.framework.springmvc.model.PageV;
 import com.towne.framework.common.model.Trader;
-import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.core.utils.GsonUtil;
+import com.towne.framework.hibernate.bo.Moment;
 
 /**
  * return json format data

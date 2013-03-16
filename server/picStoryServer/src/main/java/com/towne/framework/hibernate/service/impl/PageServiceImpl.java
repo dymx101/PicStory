@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.Page;
+import com.towne.framework.hibernate.bo.Page;
 import com.towne.framework.hibernate.service.PageService;
 
 @Service(value = "pageServiceImplHibernate4")

@@ -18,7 +18,7 @@ import com.google.code.ssm.api.format.SerializationType;
 import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.common.service.IFacadeService;
 import com.towne.framework.common.model.Trader;
-import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.hibernate.bo.Moment;
 import com.towne.framework.springmvc.model.MomentV;
 import com.towne.framework.springmvc.model.Moments;
 

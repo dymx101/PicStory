@@ -3,7 +3,7 @@ package com.towne.framework.hibernate.service.impl;
 import java.util.List;
 
 import com.towne.framework.common.dao.IDao;
-import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.hibernate.bo.Moment;
 import com.towne.framework.hibernate.service.MomentService;
 import javax.annotation.Resource;
 
