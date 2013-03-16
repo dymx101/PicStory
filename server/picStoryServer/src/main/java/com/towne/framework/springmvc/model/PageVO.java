@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "page")
-public class PageV implements Serializable  {
+public class PageVO implements Serializable  {
 	
 	/**
 	 * 

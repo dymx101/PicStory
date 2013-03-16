@@ -22,8 +22,8 @@
 	<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller" id="jaxbMarshaller">
 		<property name="classesToBeBound">
 			<list>
-			    <value>com.towne.framework.springmvc.model.MomentV</value>
-			    <value>com.towne.framework.springmvc.model.PageV</value>
+			    <value>com.towne.framework.springmvc.model.MomentVO</value>
+			    <value>com.towne.framework.springmvc.model.PageVO</value>
 				<value>com.towne.framework.springmvc.model.Moments</value>
 			</list>
 		</property>

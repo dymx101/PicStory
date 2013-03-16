@@ -7,14 +7,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "moment")
-public class MomentV  implements Serializable {
+public class MomentVO  implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7506470262811170546L;
 	private int pMonIndex;
 	private String pMonDesc;
-	private List<PageV> pages;
+	private List<PageVO> pages;
 
 	public int getpMonIndex() {
 		return pMonIndex;
@@ -34,12 +34,12 @@ public class MomentV  implements Serializable {
 		this.pMonDesc = pMonDesc;
 	}
 
-	public List<PageV> getPages() {
+	public List<PageVO> getPages() {
 		return pages;
 	}
 
 	@XmlElement
-	public void setPages(List<PageV> pages) {
+	public void setPages(List<PageVO> pages) {
 		this.pages = pages;
 	}
 }

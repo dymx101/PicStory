@@ -16,8 +16,8 @@ import com.towne.framework.hibernate.bo.Moment;
 import com.towne.framework.hibernate.bo.Page;
 import com.towne.framework.hibernate.service.MomentService;
 import com.towne.framework.hibernate.service.PageService;
-import com.towne.framework.springmvc.model.MomentV;
-import com.towne.framework.springmvc.model.PageV;
+import com.towne.framework.springmvc.model.MomentVO;
+import com.towne.framework.springmvc.model.PageVO;
 
 @Service(value = "ifacadeServiceImpl")
 @Transactional
@@ -54,17 +54,17 @@ public class IFacadeServiceImpl implements IFacadeService {
 	}
 
 	@Override
-	public List<MomentV> query(Trader trader, String queryString,
+	public List<MomentVO> query(Trader trader, String queryString,
 			Object... values) {
 		// TODO Auto-generated method stub
 		List<Moment> moments = momentService.query(queryString, values);
-		List<MomentV> momentvs = new ArrayList<MomentV>();
+		List<MomentVO> momentvs = new ArrayList<MomentVO>();
 		int i = 0;
 		for (Moment m : moments) {
-			MomentV mv = new MomentV();
-			List<PageV> pagevs = new ArrayList<PageV>();
+			MomentVO mv = new MomentVO();
+			List<PageVO> pagevs = new ArrayList<PageVO>();
 			for (Page page : m.getPages()) {
-				PageV pv = new PageV();
+				PageVO pv = new PageVO();
 				pv.setContent(page.getContent());
 				pv.setMediaType(page.getMediaType());
 				pv.setMediaUrl(page.getMediaUrl());
@@ -80,16 +80,16 @@ public class IFacadeServiceImpl implements IFacadeService {
 
 	@ReadThroughSingleCache(namespace = "Echo", expiration = 1000)
 	@Override
-	public List<PageV> findPagesByMomentId(Trader trader,
+	public List<PageVO> findPagesByMomentId(Trader trader,
 			@ParameterValueKeyProvider long id) {
 		// TODO Auto-generated method stub
 		// select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT
 		List<Page> pages = pageService
 				.query("select b from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT and a.idMOMENT=?",
 						id);
-		List<PageV> pagevs = new ArrayList<PageV>();
+		List<PageVO> pagevs = new ArrayList<PageVO>();
 		for (Page page : pages) {
-			PageV pv = new PageV();
+			PageVO pv = new PageVO();
 			pv.setContent(page.getContent());
 			pv.setMediaType(page.getMediaType());
 			pv.setMediaUrl(page.getMediaUrl());

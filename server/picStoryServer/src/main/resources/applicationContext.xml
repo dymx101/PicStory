@@ -20,6 +20,7 @@
 	<import resource="spring-email.xml"/>
 	<import resource="spring-passport.xml"/>
 	<import resource="spring-quartz.xml"/>
+    <import resource="spring-threadpool.xml"/>
 	
 	
 </beans>

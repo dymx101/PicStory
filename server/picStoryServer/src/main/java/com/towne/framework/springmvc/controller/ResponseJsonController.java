@@ -17,9 +17,9 @@ import com.google.code.ssm.Cache;
 import com.google.code.ssm.api.format.SerializationType;
 import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.common.service.IFacadeService;
-import com.towne.framework.springmvc.model.MomentV;
+import com.towne.framework.springmvc.model.MomentVO;
 import com.towne.framework.springmvc.model.Moments;
-import com.towne.framework.springmvc.model.PageV;
+import com.towne.framework.springmvc.model.PageVO;
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.core.utils.GsonUtil;
 import com.towne.framework.hibernate.bo.Moment;
@@ -40,11 +40,11 @@ public class ResponseJsonController {
 	private Cache cache;
 	
 	@RequestMapping(value="/moment/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<PageV> getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
+	public @ResponseBody List<PageVO> getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
 		Trader trader = new Trader();
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123");
-		List<PageV> pvs = ifacadeService.findPagesByMomentId(trader, id);
+		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
 		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
 		return pvs;
@@ -54,7 +54,7 @@ public class ResponseJsonController {
 	@RequestMapping(value="/moments",produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Moments getContactsInJSON(){
 		Trader trader = new Trader();
-		List<MomentV> mo = ifacadeService.query(trader, "select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT");
+		List<MomentVO> mo = ifacadeService.query(trader, "select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT");
 		Moments moments=new Moments();
 		moments.setTname("towne");
 		moments.setMoments(mo);

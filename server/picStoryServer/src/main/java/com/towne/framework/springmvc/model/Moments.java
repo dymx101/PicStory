@@ -16,14 +16,14 @@ public class Moments implements Serializable {
 
 	private String tname = "towne_TAG";
 
-	private List<MomentV> moments;
+	private List<MomentVO> moments;
 
-	public List<MomentV> getMoments() {
+	public List<MomentVO> getMoments() {
 		return moments;
 	}
 
 	@XmlElement
-	public void setMoments(List<MomentV> moments) {
+	public void setMoments(List<MomentVO> moments) {
 		this.moments = moments;
 	}
 

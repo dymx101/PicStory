@@ -19,7 +19,7 @@ import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.common.service.IFacadeService;
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.hibernate.bo.Moment;
-import com.towne.framework.springmvc.model.MomentV;
+import com.towne.framework.springmvc.model.MomentVO;
 import com.towne.framework.springmvc.model.Moments;
 
 /**
@@ -56,7 +56,7 @@ public class ResponseXMLController {
 	@RequestMapping(value="/moments",produces=MediaType.APPLICATION_XML_VALUE)
 	public @ResponseBody Moments getContactsInXML(){
 		Trader trader = new Trader();
-		List<MomentV> mo = ifacadeService.query(trader, "select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT");
+		List<MomentVO> mo = ifacadeService.query(trader, "select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT");
 		Moments moments=new Moments();
 		moments.setTname("towne");
 		moments.setMoments(mo);

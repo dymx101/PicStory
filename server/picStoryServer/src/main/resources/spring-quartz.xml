@@ -60,7 +60,7 @@
 
         <property
             name="cronExpression"
-            value="0 * 20 * * ?" />
+            value="0 * 1 * * ?" />
     </bean>
 
     <!-- Cron JobDetajil, 基于MethodInvokingJobDetailFactoryBean调用普通Spring Bean -->
