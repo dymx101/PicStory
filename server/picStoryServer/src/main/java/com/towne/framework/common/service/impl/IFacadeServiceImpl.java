@@ -16,6 +16,7 @@ import com.towne.framework.hibernate.model.Moment;
 import com.towne.framework.hibernate.model.Page;
 import com.towne.framework.hibernate.service.MomentService;
 import com.towne.framework.hibernate.service.PageService;
+import com.towne.framework.springmvc.model.MomentV;
 import com.towne.framework.springmvc.model.PageV;
 
 @Service(value = "ifacadeServiceImpl")
@@ -24,7 +25,7 @@ public class IFacadeServiceImpl implements IFacadeService {
 
 	@Resource(name = "momentServiceImplHibernate4")
 	MomentService momentService;
-	
+
 	@Resource(name = "pageServiceImplHibernate4")
 	PageService pageService;
 
@@ -53,18 +54,40 @@ public class IFacadeServiceImpl implements IFacadeService {
 	}
 
 	@Override
-	public List<Moment> query(Trader trader, String queryString,Object... values) {
+	public List<MomentV> query(Trader trader, String queryString,
+			Object... values) {
 		// TODO Auto-generated method stub
-		return momentService.query(queryString, values);
+		List<Moment> moments = momentService.query(queryString, values);
+		List<MomentV> momentvs = new ArrayList<MomentV>();
+		int i = 0;
+		for (Moment m : moments) {
+			MomentV mv = new MomentV();
+			List<PageV> pagevs = new ArrayList<PageV>();
+			for (Page page : m.getPages()) {
+				PageV pv = new PageV();
+				pv.setContent(page.getContent());
+				pv.setMediaType(page.getMediaType());
+				pv.setMediaUrl(page.getMediaUrl());
+				pagevs.add(pv);
+			}
+			mv.setPages(pagevs);
+			mv.setpMonIndex(i++);
+			mv.setpMonDesc("test");
+			momentvs.add(mv);
+		}
+		return momentvs;
 	}
 
 	@ReadThroughSingleCache(namespace = "Echo", expiration = 1000)
 	@Override
-	public List<PageV> findPagesByMomentId(Trader trader, @ParameterValueKeyProvider long id) {
+	public List<PageV> findPagesByMomentId(Trader trader,
+			@ParameterValueKeyProvider long id) {
 		// TODO Auto-generated method stub
-//		select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT
-		List<Page> pages = pageService.query("select b from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT and a.idMOMENT=?",id);
-        List<PageV> pagevs = new ArrayList<PageV>();
+		// select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT
+		List<Page> pages = pageService
+				.query("select b from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT and a.idMOMENT=?",
+						id);
+		List<PageV> pagevs = new ArrayList<PageV>();
 		for (Page page : pages) {
 			PageV pv = new PageV();
 			pv.setContent(page.getContent());

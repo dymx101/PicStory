@@ -1,7 +1,7 @@
 package com.towne.framework.springmvc.model;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -14,7 +14,7 @@ public class MomentV  implements Serializable {
 	private static final long serialVersionUID = -7506470262811170546L;
 	private int pMonIndex;
 	private String pMonDesc;
-	private Set<PageV> pages;
+	private List<PageV> pages;
 
 	public int getpMonIndex() {
 		return pMonIndex;
@@ -34,12 +34,12 @@ public class MomentV  implements Serializable {
 		this.pMonDesc = pMonDesc;
 	}
 
-	public Set<PageV> getPages() {
+	public List<PageV> getPages() {
 		return pages;
 	}
 
 	@XmlElement
-	public void setPages(Set<PageV> pages) {
+	public void setPages(List<PageV> pages) {
 		this.pages = pages;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.springmvc.model.MomentV;
 import com.towne.framework.springmvc.model.PageV;
 
 public interface IFacadeService {
@@ -16,7 +17,7 @@ public interface IFacadeService {
 
 	public void delete(Trader trader, Moment t);
 
-	public List<Moment> query(Trader trader, String queryString,
+	public List<MomentV> query(Trader trader, String queryString,
 			Object... values);
 
 	public List<PageV> findPagesByMomentId(Trader trader, long id);

@@ -1,6 +1,7 @@
 package com.towne.framework.springmvc.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -16,14 +17,14 @@ public class Moments implements Serializable {
 
 	private String tname = "towne_TAG";
 
-	private Set<MomentV> moments;
+	private List<MomentV> moments;
 
-	public Set<MomentV> getMoments() {
+	public List<MomentV> getMoments() {
 		return moments;
 	}
 
 	@XmlElement
-	public void setMoments(Set<MomentV> moments) {
+	public void setMoments(List<MomentV> moments) {
 		this.moments = moments;
 	}
 

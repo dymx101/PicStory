@@ -1,10 +1,8 @@
 package com.towne.framework.springmvc.controller;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
-import java.util.Set;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +23,6 @@ import com.towne.framework.springmvc.model.Moments;
 import com.towne.framework.springmvc.model.PageV;
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.hibernate.model.Moment;
-import com.towne.framework.hibernate.model.Page;
 
 /**
  * return json format data
@@ -57,9 +54,10 @@ public class ResponseJsonController {
 	@RequestMapping(value="/moments",produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Moments getContactsInJSON(){
 		Trader trader = new Trader();
-		List<Moment> mo = ifacadeService.query(trader, "select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT");
+		List<MomentV> mo = ifacadeService.query(trader, "select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT");
 		Moments moments=new Moments();
 		moments.setTname("towne");
+		moments.setMoments(mo);
 		return moments;
 	}
 	
