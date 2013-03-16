@@ -15,10 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class MomentServiceImpl implements MomentService {
 
-	private IDao<Moment> dao;
+	private IDao<Moment, Long> dao;
 
 	@Resource(name = "momentDaoHibernate4")
-	public void setDao(IDao<Moment> dao) {
+	public void setDao(IDao<Moment, Long> dao) {
 		this.dao = dao;
 	}
 
@@ -26,21 +26,14 @@ public class MomentServiceImpl implements MomentService {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 	public Moment findById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return dao.get(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Moment t) {
+	public void save(Moment t) {
 		// TODO Auto-generated method stub
-		dao.update(t);
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Moment t) {
-		// TODO Auto-generated method stub
-		dao.add(t);
+		dao.save(t);
 	}
 
 	@Override
@@ -54,14 +47,15 @@ public class MomentServiceImpl implements MomentService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Moment t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdMOMENT());
+		dao.delete(t);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Moment> query(String queryString) {
+	public List<Moment> query(String queryString, Object... values) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		return dao.createQuery(queryString, values).list();
 	}
 
 }

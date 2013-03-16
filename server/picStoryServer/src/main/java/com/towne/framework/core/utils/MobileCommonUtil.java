@@ -1,4 +1,4 @@
-package com.towne.framework.core.util;
+package com.towne.framework.core.utils;
 
 import java.util.Map;
 import java.util.concurrent.TimeoutException;

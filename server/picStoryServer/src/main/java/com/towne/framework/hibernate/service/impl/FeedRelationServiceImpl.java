@@ -16,10 +16,10 @@ import com.towne.framework.hibernate.service.FeedRelationService;
 @Transactional
 public class FeedRelationServiceImpl implements FeedRelationService {
 
-	private IDao<FeedRelation> dao;
+	private IDao<FeedRelation, Long> dao;
 
 	@Resource(name = "feedRelationDaoHibernate4")
-	public void setDao(IDao<FeedRelation> dao) {
+	public void setDao(IDao<FeedRelation, Long> dao) {
 		this.dao = dao;
 	}
 
@@ -27,21 +27,7 @@ public class FeedRelationServiceImpl implements FeedRelationService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public FeedRelation findById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(FeedRelation t) {
-		// TODO Auto-generated method stub
-		dao.update(t);
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(FeedRelation t) {
-		// TODO Auto-generated method stub
-		dao.add(t);
+		return dao.get(id);
 	}
 
 	@Override
@@ -55,14 +41,22 @@ public class FeedRelationServiceImpl implements FeedRelationService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(FeedRelation t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdFEEDRELATION());
+		dao.delete(t);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<FeedRelation> query(String queryString) {
+	public void save(FeedRelation t) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		dao.save(t);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<FeedRelation> query(String queryString, Object... values) {
+		// TODO Auto-generated method stub
+		return dao.createQuery(queryString, values).list();
 	}
 
 }

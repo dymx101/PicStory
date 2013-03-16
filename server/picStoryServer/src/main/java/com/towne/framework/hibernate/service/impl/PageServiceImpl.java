@@ -16,10 +16,10 @@ import com.towne.framework.hibernate.service.PageService;
 @Transactional
 public class PageServiceImpl implements PageService {
 
-	private IDao<Page> dao;
+	private IDao<Page,Long> dao;
 
 	@Resource(name = "pageDaoHibernate4")
-	public void setDao(IDao<Page> dao) {
+	public void setDao(IDao<Page,Long> dao) {
 		this.dao = dao;
 	}
 
@@ -27,21 +27,14 @@ public class PageServiceImpl implements PageService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Page findById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return dao.get(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Page t) {
+	public void save(Page t) {
 		// TODO Auto-generated method stub
-		dao.update(t);
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Page t) {
-		// TODO Auto-generated method stub
-		dao.add(t);
+		dao.save(t);
 	}
 
 	@Override
@@ -55,14 +48,15 @@ public class PageServiceImpl implements PageService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Page t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdPAGE());
+		dao.delete(t);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Page> query(String queryString) {
+	public List<Page> query(String queryString,Object... values) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		return dao.createQuery(queryString, values).list();
 	}
 
 }

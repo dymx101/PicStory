@@ -16,10 +16,10 @@ import com.towne.framework.hibernate.service.StoryService;
 @Transactional
 public class StoryServiceImpl implements StoryService {
 
-	private IDao<Story> dao;
+	private IDao<Story,Long> dao;
 
 	@Resource(name = "storyDaoHibernate4")
-	public void setDao(IDao<Story> dao) {
+	public void setDao(IDao<Story,Long> dao) {
 		this.dao = dao;
 	}
 
@@ -27,21 +27,14 @@ public class StoryServiceImpl implements StoryService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Story findById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return dao.get(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Story t) {
+	public void save(Story t) {
 		// TODO Auto-generated method stub
-		dao.update(t);
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Story t) {
-		// TODO Auto-generated method stub
-		dao.add(t);
+		dao.save(t);
 	}
 
 	@Override
@@ -55,14 +48,15 @@ public class StoryServiceImpl implements StoryService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Story t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdSTORY());
+		dao.delete(t);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Story> query(String queryString) {
+	public List<Story> query(String queryString,Object... values) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		return dao.createQuery(queryString, values).list();
 	}
 
 }

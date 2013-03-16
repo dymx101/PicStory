@@ -3,7 +3,7 @@
  * author: guoqiang
  */
 
-package com.towne.framework.core.util;
+package com.towne.framework.core.utils;
 
 public final class Base64 {
 	

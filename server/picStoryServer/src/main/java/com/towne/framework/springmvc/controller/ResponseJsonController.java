@@ -43,23 +43,22 @@ public class ResponseJsonController {
 	private Cache cache;
 	
 	@RequestMapping(value="/moment/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody MomentV getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
+	public @ResponseBody List<PageV> getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
 		Trader trader = new Trader();
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123");
-		MomentV mv = ifacadeService.findPages(trader, id);
+		List<PageV> pvs = ifacadeService.findPagesByMomentId(trader, id);
 		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
-		return mv;
+		return pvs;
 	}
 	
 	
 	@RequestMapping(value="/moments",produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Moments getContactsInJSON(){
 		Trader trader = new Trader();
-		List<Moment> moment = ifacadeService.query(trader, "from Moment");
+		List<Moment> mo = ifacadeService.query(trader, "select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT");
 		Moments moments=new Moments();
-//		moments.setMoments(moment);
 		moments.setTname("towne");
 		return moments;
 	}

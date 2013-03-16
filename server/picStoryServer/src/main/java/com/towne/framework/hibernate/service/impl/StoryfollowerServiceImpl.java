@@ -16,10 +16,10 @@ import com.towne.framework.hibernate.service.StoryfollowerService;
 @Transactional
 public class StoryfollowerServiceImpl implements StoryfollowerService {
 
-	private IDao<Storyfollower> dao;
+	private IDao<Storyfollower,Long> dao;
 
 	@Resource(name = "storyfollowerDaoHibernate4")
-	public void setDao(IDao<Storyfollower> dao) {
+	public void setDao(IDao<Storyfollower,Long> dao) {
 		this.dao = dao;
 	}
 
@@ -27,21 +27,14 @@ public class StoryfollowerServiceImpl implements StoryfollowerService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Storyfollower findById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return dao.get(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Storyfollower t) {
+	public void save(Storyfollower t) {
 		// TODO Auto-generated method stub
-		dao.update(t);
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Storyfollower t) {
-		// TODO Auto-generated method stub
-		dao.add(t);
+		dao.save(t);
 	}
 
 	@Override
@@ -55,14 +48,15 @@ public class StoryfollowerServiceImpl implements StoryfollowerService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Storyfollower t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdSTORYFOLLOWER());
+		dao.delete(t);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Storyfollower> query(String queryString) {
+	public List<Storyfollower> query(String queryString,Object... values) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		return dao.createQuery(queryString, values).list();
 	}
 
 }

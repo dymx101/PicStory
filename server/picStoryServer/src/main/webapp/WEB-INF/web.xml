@@ -73,7 +73,7 @@
 	</filter-mapping>
 
 
-	<!-- Struts2配置 -->
+	<!-- Struts2配置 
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -83,6 +83,7 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
+	-->
 
 
 	<!-- SpringMVC SpringMVC DWR -->

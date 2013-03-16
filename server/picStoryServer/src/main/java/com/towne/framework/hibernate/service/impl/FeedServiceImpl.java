@@ -16,10 +16,10 @@ import com.towne.framework.hibernate.service.FeedService;
 @Transactional
 public class FeedServiceImpl implements FeedService {
 
-	private IDao<Feed> dao;
+	private IDao<Feed,Long> dao;
 
 	@Resource(name = "feedDaoHibernate4")
-	public void setDao(IDao<Feed> dao) {
+	public void setDao(IDao<Feed,Long> dao) {
 		this.dao = dao;
 	}
 
@@ -27,21 +27,14 @@ public class FeedServiceImpl implements FeedService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Feed findById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return dao.get(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Feed t) {
+	public void save(Feed t) {
 		// TODO Auto-generated method stub
-		dao.update(t);
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Feed t) {
-		// TODO Auto-generated method stub
-		dao.add(t);
+		dao.save(t);
 	}
 
 	@Override
@@ -55,14 +48,15 @@ public class FeedServiceImpl implements FeedService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Feed t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdFEEDS());
+		dao.delete(t);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Feed> query(String queryString) {
+	public List<Feed> query(String queryString,Object... values) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		return dao.createQuery(queryString, values).list();
 	}
 
 }

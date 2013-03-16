@@ -9,7 +9,7 @@ import com.google.code.ssm.Cache;
 import com.google.code.ssm.api.format.SerializationType;
 import com.towne.framework.core.constant.CommonKey;
 import com.towne.framework.core.ex.SystemMobileRuntimeException;
-import com.towne.framework.core.util.MobileCommonUtil;
+import com.towne.framework.core.utils.MobileCommonUtil;
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.system.filter.vo.MobileLoggerVO;
 import com.towne.framework.system.filter.vo.ThreadLocalLog;

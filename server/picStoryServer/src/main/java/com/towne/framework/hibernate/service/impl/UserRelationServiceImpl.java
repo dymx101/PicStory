@@ -16,10 +16,10 @@ import com.towne.framework.hibernate.service.UserRelationService;
 @Transactional
 public class UserRelationServiceImpl implements UserRelationService {
 
-	private IDao<UserRelation> dao;
+	private IDao<UserRelation,Long> dao;
 
 	@Resource(name = "userRelationDaoHibernate4")
-	public void setDao(IDao<UserRelation> dao) {
+	public void setDao(IDao<UserRelation,Long> dao) {
 		this.dao = dao;
 	}
 
@@ -27,21 +27,14 @@ public class UserRelationServiceImpl implements UserRelationService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public UserRelation findById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return dao.get(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(UserRelation t) {
+	public void save(UserRelation t) {
 		// TODO Auto-generated method stub
-		dao.update(t);
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(UserRelation t) {
-		// TODO Auto-generated method stub
-		dao.add(t);
+		dao.save(t);
 	}
 
 	@Override
@@ -55,14 +48,15 @@ public class UserRelationServiceImpl implements UserRelationService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(UserRelation t) {
 		// TODO Auto-generated method stub
-		dao.delete(t.getIdUSERELATION());
+		dao.delete(t);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<UserRelation> query(String queryString) {
+	public List<UserRelation> query(String queryString,Object... values) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		return dao.createQuery(queryString, values).list();
 	}
 
 }

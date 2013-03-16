@@ -16,10 +16,10 @@ import com.towne.framework.hibernate.service.CommendService;
 @Transactional
 public class CommendServiceImpl implements CommendService {
 
-	private IDao<Commend> dao;
+	private IDao<Commend,Long> dao;
 
 	@Resource(name = "commendDaoHibernate4")
-	public void setDao(IDao<Commend> dao) {
+	public void setDao(IDao<Commend,Long> dao) {
 		this.dao = dao;
 	}
 
@@ -27,23 +27,15 @@ public class CommendServiceImpl implements CommendService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Commend findById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return dao.get(id);
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Commend t) {
+	public void save(Commend t) {
 		// TODO Auto-generated method stub
-          dao.update(t);
+		 dao.save(t);
 	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public void add(Commend t) {
-		// TODO Auto-generated method stub
-          dao.add(t);
-	}
-
+	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void deleteById(long id) {
@@ -55,14 +47,15 @@ public class CommendServiceImpl implements CommendService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Commend t) {
 		// TODO Auto-generated method stub
-         dao.delete(t.getIdCOMMEND());
+         dao.delete(t);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Commend> query(String queryString) {
+	public List<Commend> query(String queryString, Object... values) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		return dao.createQuery(queryString, values).list();
 	}
 
 }
