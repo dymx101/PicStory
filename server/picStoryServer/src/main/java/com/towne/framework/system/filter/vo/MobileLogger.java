@@ -2,7 +2,7 @@ package com.towne.framework.system.filter.vo;
 
 import java.io.Serializable;
 
-public class MobileLoggerVo implements Serializable {
+public class MobileLogger implements Serializable {
 	/**
 	 * <pre>
 	 * 

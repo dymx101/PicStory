@@ -30,7 +30,7 @@ public class EmailManagerTest{
 			Map contentMap = new HashMap();
 			contentMap.put("title", "iPhone 最火最流行的应用ipicStory!");
 			contentMap.put("content", content);
-			mimeMailService.sendNotificationMail("tangqii@qq.com", "459342775@qq.com",
+			mimeMailService.sendNotificationMail("tangqii@qq.com", "tangqii@qq.com",
 					contentMap);
 //			mimeMailService.sendNotificationMail("tangqii@qq.com", "2757273@qq.com",
 //					contentMap);

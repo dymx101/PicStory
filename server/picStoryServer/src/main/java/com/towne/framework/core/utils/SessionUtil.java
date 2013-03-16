@@ -6,12 +6,12 @@ import com.google.code.ssm.Cache;
 import com.google.code.ssm.api.format.SerializationType;
 import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.core.constant.CommonKey;
-import com.towne.framework.system.filter.vo.MobileLoggerVo;
+import com.towne.framework.system.filter.vo.MobileLogger;
 
 public class SessionUtil {
 	
 	
-	public static void setLogVO(Cache me,MobileLoggerVo logVO) throws TimeoutException, CacheException
+	public static void setLogVO(Cache me,MobileLogger logVO) throws TimeoutException, CacheException
 	{
 		String userIP =getClientIP();
 		System.out.println("USER_LOGVO_"+ userIP);
@@ -42,7 +42,7 @@ public class SessionUtil {
 	public static void setUserToken(Cache me,String token) throws TimeoutException, CacheException
 	{
 		String userIP = getClientIP();
-		MobileLoggerVo logVO = (MobileLoggerVo)me.get("USER_LOGVO_"+ userIP, SerializationType.PROVIDER);
+		MobileLogger logVO = (MobileLogger)me.get("USER_LOGVO_"+ userIP, SerializationType.PROVIDER);
 		if(logVO == null)
 			return;
 		logVO.setUserToken(token);

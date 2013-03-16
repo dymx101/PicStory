@@ -13,9 +13,9 @@ import com.towne.framework.core.utils.MobileCommonUtil;
 import com.towne.framework.core.utils.SessionUtil;
 import com.towne.framework.core.utils.TokenFactory;
 import com.towne.framework.common.model.Trader;
-import com.towne.framework.system.filter.vo.MobileLoggerVo;
+import com.towne.framework.system.filter.vo.MobileLogger;
 import com.towne.framework.system.filter.vo.ThreadLocalLog;
-import com.towne.framework.system.filter.vo.CookieVo;
+import com.towne.framework.system.filter.vo.Cookie;
 
 
 public class TraderAndTokenAop {
@@ -33,7 +33,7 @@ public class TraderAndTokenAop {
             if (arg1 != null) {
                 if (arg1.getClass().equals(Trader.class)) {
                     Trader trader = (Trader) arg1;
-                    MobileLoggerVo logVO = ThreadLocalLog.getSystemLoggerVO();
+                    MobileLogger logVO = ThreadLocalLog.getSystemLoggerVO();
                     logVO.setId(123l);
                     logVO.setTraderName(trader.getTraderName());
                     logVO.setTraderPassword(trader.getTraderPassword());
@@ -79,7 +79,7 @@ public class TraderAndTokenAop {
                     String token = (String) arg1;
                     //一个用户的cookies对象,中间可以保存多个cookieVO
                     @SuppressWarnings("unchecked")
-					Map<String, CookieVo> oneUsercookieMap = (Map<String, CookieVo>) me
+					Map<String, Cookie> oneUsercookieMap = (Map<String, Cookie>) me
                         .get(CommonKey.USER_TOKEN_KEY + token, SerializationType.PROVIDER);
                     if (oneUsercookieMap == null) {
                         throw new SystemMobileRuntimeException("用户Token过期,请重新登录");
@@ -88,7 +88,7 @@ public class TraderAndTokenAop {
                     if (trader == null) {
                         throw new SystemMobileRuntimeException("用户Token过期,请重新登录");
                     }
-                    MobileLoggerVo logVO = ThreadLocalLog.getSystemLoggerVO();
+                    MobileLogger logVO = ThreadLocalLog.getSystemLoggerVO();
                     logVO.setTraderName(trader.getTraderName());
                     logVO.setTraderPassword(trader.getTraderPassword());
 //                    logVO.setClientSystem(trader.getClientSystem());

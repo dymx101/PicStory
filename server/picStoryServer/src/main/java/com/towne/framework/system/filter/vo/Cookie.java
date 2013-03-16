@@ -2,7 +2,7 @@ package com.towne.framework.system.filter.vo;
 
 import java.io.Serializable;
 
-public class CookieVo implements Serializable {
+public class Cookie implements Serializable {
     private static final long serialVersionUID = -5380370278082922209L;
     private String            comment          = null;
     private String            domain           = null;
@@ -13,11 +13,11 @@ public class CookieVo implements Serializable {
     private String            value            = null;
     private Integer           version          = null;
 
-    public CookieVo() {
+    public Cookie() {
 
     }
 
-    public CookieVo(String name, String value, String domain, String path, Integer maxAge,
+    public Cookie(String name, String value, String domain, String path, Integer maxAge,
                     Boolean secure, String comment, Integer version) {
         this.name = name;
         this.value = value;

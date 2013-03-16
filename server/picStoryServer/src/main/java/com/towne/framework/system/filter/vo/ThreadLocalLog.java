@@ -1,16 +1,16 @@
 package com.towne.framework.system.filter.vo;
 
 public class ThreadLocalLog {
-	private static final ThreadLocal<MobileLoggerVo> logs = new ThreadLocal<MobileLoggerVo>();
+	private static final ThreadLocal<MobileLogger> logs = new ThreadLocal<MobileLogger>();
 
-	public static void setSystemLoggerVO(MobileLoggerVo LoggerVO) {
+	public static void setSystemLoggerVO(MobileLogger LoggerVO) {
 		logs.set(LoggerVO);
 	}
 
-	public static MobileLoggerVo getSystemLoggerVO() {
-		MobileLoggerVo vo = logs.get();
+	public static MobileLogger getSystemLoggerVO() {
+		MobileLogger vo = logs.get();
 		if (vo == null) {
-			vo = new MobileLoggerVo();
+			vo = new MobileLogger();
 			logs.set(vo);
 			return vo;
 		} else {

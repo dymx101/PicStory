@@ -8,7 +8,7 @@ import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.core.constant.CommonKey;
 import com.towne.framework.core.ex.SystemMobileSessionException;
-import com.towne.framework.system.filter.vo.CookieVo;
+import com.towne.framework.system.filter.vo.Cookie;
 
 public class MobileCommonUtil {
 	
@@ -36,8 +36,8 @@ public class MobileCommonUtil {
 				Object obj = me.get(CommonKey.USER_TOKEN_KEY + oldToken, SerializationType.PROVIDER);
 				if (obj != null) {
 					@SuppressWarnings("unchecked")
-					Map<String, CookieVo> oneUsercookieMap = (Map<String, CookieVo>) obj;
-					CookieVo cookieVO = oneUsercookieMap.get(CommonKey.MSESSIONID);
+					Map<String, Cookie> oneUsercookieMap = (Map<String, Cookie>) obj;
+					Cookie cookieVO = oneUsercookieMap.get(CommonKey.MSESSIONID);
 					if (cookieVO != null) {
 //						String msessionidValue = cookieVO.getValue();
 //						me.remove(ActionConstants.USER_SESSION_KEY + "_" + msessionidValue + "_107976");
