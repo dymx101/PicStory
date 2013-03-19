@@ -19,6 +19,31 @@
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 
+	  <!-- 验证码 -->
+    <servlet>
+		<servlet-name>jcaptcha</servlet-name>
+		<servlet-class>com.towne.framework.web.servlet.ImageCaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jcaptcha</servlet-name>
+		<url-pattern>/CheckCode.svl</url-pattern>
+	</servlet-mapping>
+	
+    <!--  -->
+    <servlet>
+		<servlet-name>initPage</servlet-name>
+		<servlet-class>com.towne.framework.web.servlet.InitPageProfileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>initPage</servlet-name>
+		<url-pattern>/initPage</url-pattern>
+	</servlet-mapping>
+	
+	<!-- UrlRewrite filter -->
+	<filter>
+		<filter-name>urlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+	</filter>
 
 	<!-- 字符过滤器 -->
 	<filter>
@@ -70,18 +95,6 @@
 	<filter-mapping>
 		<filter-name>openSessionInViewFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-
-	<!-- Struts2配置 -->
-	<filter>
-		<filter-name>struts2</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>struts2</filter-name>
-		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
 
 

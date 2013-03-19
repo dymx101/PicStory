@@ -1,32 +1,24 @@
 package com.towne.framework.common.service;
 
-
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-import com.towne.framework.springmvc.model.Contact;
 import com.towne.framework.common.model.Trader;
+import com.towne.framework.hibernate.bo.Moment;
+import com.towne.framework.springmvc.model.MomentVO;
+import com.towne.framework.springmvc.model.PageVO;
 
 public interface IFacadeService {
-	
-	Contact findById(Trader trade,int id);
-	
-	Contact save(Trader trade, Contact contact);
-	
-	Contact modifyContact(Trader trade, Contact contact);
 
-	void delete(Trader trade, Contact contact);
+	public Moment findById(Trader trader, long id);
 
-	void delete(Trader trade, int id);
+	public void save(Trader trader, Moment t);
 
-	Page<Contact> findAll(Trader trade, Pageable pageable);
+	public void deleteById(Trader trader, long id);
 
-	List<Contact> listAll(Trader trade);
+	public void delete(Trader trader, Moment t);
 
-	Page<Contact> findByAgeLessThanEqualOrderByIdDesc(Trader trade, int age,
-			Pageable pageable);
+	public List<MomentVO> query(Trader trader, String queryString,
+			Object... values);
 
-
+	public List<PageVO> findPagesByMomentId(Trader trader, long id);
 }

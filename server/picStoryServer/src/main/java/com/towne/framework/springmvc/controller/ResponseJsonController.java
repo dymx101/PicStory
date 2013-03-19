@@ -17,10 +17,12 @@ import com.google.code.ssm.Cache;
 import com.google.code.ssm.api.format.SerializationType;
 import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.common.service.IFacadeService;
-import com.towne.framework.system.util.GsonUtil;
-import com.towne.framework.springmvc.model.Contact;
-import com.towne.framework.springmvc.model.Contacts;
+import com.towne.framework.springmvc.model.MomentVO;
+import com.towne.framework.springmvc.model.Moments;
+import com.towne.framework.springmvc.model.PageVO;
 import com.towne.framework.common.model.Trader;
+import com.towne.framework.core.utils.GsonUtil;
+import com.towne.framework.hibernate.bo.Moment;
 
 /**
  * return json format data
@@ -29,7 +31,7 @@ import com.towne.framework.common.model.Trader;
  */
 @Controller
 @RequestMapping(value="/json",method={RequestMethod.GET})
-public class ResponseJsonController {
+public class ResponseJSONController {
 	
 	@Autowired
 	IFacadeService ifacadeService;
@@ -37,34 +39,33 @@ public class ResponseJsonController {
 	@Autowired
 	private Cache cache;
 	
-	@RequestMapping(value="/contact/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Contact getContactInJSON(@PathVariable(value="id")int id) throws TimeoutException, CacheException{
+	@RequestMapping(value="/moment/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<PageVO> getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
 		Trader trader = new Trader();
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123");
-		Contact contact = ifacadeService.findById(trader,id);
-		contact.setTrader(trader);
+		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
 		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
-		return contact;
+		return pvs;
 	}
 	
 	
-	
-	@RequestMapping(value="/contacts",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Contacts getContactsInJSON(){
+	@RequestMapping(value="/moments",produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Moments getContactsInJSON(){
 		Trader trader = new Trader();
-		List<Contact> contact = ifacadeService.listAll(trader);
-		Contacts contacts=new Contacts();
-		contacts.setContacts(contact);
-		return contacts;
+		List<MomentVO> mo = ifacadeService.query(trader, "select a from Moment a , Page b where a.idMOMENT=b.moment.idMOMENT");
+		Moments moments=new Moments();
+		moments.setTname("towne");
+		moments.setMoments(mo);
+		return moments;
 	}
 	
 	@RequestMapping(value="/list/{jparam}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Contact tetete(@PathVariable(value="jparam") String jp)
+	public @ResponseBody Moment tetete(@PathVariable(value="jparam") String jp)
 	{
 		System.out.println(jp); 
-		Contact ctt = (Contact) GsonUtil.jsonToModel(jp,Contact.class);
+		Moment ctt = (Moment) GsonUtil.jsonToModel(jp,Moment.class);
 //		List<Contact> ss =  (List<Contact>) GsonUtil.getJsonValue(jp, "contacts");
 		Map<?, ?> map = GsonUtil.jsonToMap(jp);
 		System.out.println(map.get("trader"));

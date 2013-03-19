@@ -2,8 +2,8 @@ package com.towne.framework.hibernate.service.impl;
 
 import java.util.List;
 
-import com.towne.framework.hibernate.dao.IDao;
-import com.towne.framework.hibernate.model.Moment;
+import com.towne.framework.common.dao.IDao;
+import com.towne.framework.hibernate.bo.Moment;
 import com.towne.framework.hibernate.service.MomentService;
 import javax.annotation.Resource;
 
@@ -11,43 +11,51 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service(value="momentServiceImplHibernate4")
+@Service(value = "momentServiceImplHibernate4")
 @Transactional
 public class MomentServiceImpl implements MomentService {
 
-	private IDao<Moment> dao;
-	
-	@Resource(name="momentDaoHibernate4")
-	public void setDao(IDao<Moment> dao) {
+	private IDao<Moment, Long> dao;
+
+	@Resource(name = "momentDaoHibernate4")
+	public void setDao(IDao<Moment, Long> dao) {
 		this.dao = dao;
 	}
-	
+
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
-	public void add(Object object) {
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public Moment findById(long id) {
 		// TODO Auto-generated method stub
-         dao.add(object);
+		return dao.get(id);
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
-	public void delete(int id) {
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void save(Moment t) {
 		// TODO Auto-generated method stub
-        dao.delete(id);
+		dao.save(t);
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
-	public void update(Object object) {
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void deleteById(long id) {
 		// TODO Auto-generated method stub
-		dao.update(object);
+		dao.delete(id);
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
-	public List<Moment> query(String queryString) {
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void delete(Moment t) {
 		// TODO Auto-generated method stub
-		return dao.query(queryString);
+		dao.delete(t);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<Moment> query(String queryString, Object... values) {
+		// TODO Auto-generated method stub
+		return dao.createQuery(queryString, values).list();
 	}
 
 }
