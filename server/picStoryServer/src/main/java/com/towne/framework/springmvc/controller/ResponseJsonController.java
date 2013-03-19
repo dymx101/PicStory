@@ -31,7 +31,7 @@ import com.towne.framework.hibernate.bo.Moment;
  */
 @Controller
 @RequestMapping(value="/json",method={RequestMethod.GET})
-public class ResponseJsonController {
+public class ResponseJSONController {
 	
 	@Autowired
 	IFacadeService ifacadeService;
