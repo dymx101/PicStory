@@ -1,0 +1,19 @@
+PicStory 服务器接口需求 (1期)
+
+1.用户注册
+2.用户登录
+2.5 用户登出
+
+3.发布story
+4.创建storyBoard
+5.获取story更新列表（popular / following）
+6.搜索story
+
+7.评论story
+8.评论storyBoard
+9.like story
+
+10. follow/unfollow user
+11.获取user的profile
+12.获取user的storyBoard列表
+13.获取某storyBoard中的story列表
