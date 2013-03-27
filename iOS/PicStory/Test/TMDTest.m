@@ -15,6 +15,8 @@
 {
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:aURL];
     
+    [ASIFormDataRequest requestWithURL:aURL];
+    
     NSData *imageData = UIImageJPEGRepresentation(aImage, .7f);
     
     if (imageData)
@@ -26,5 +28,17 @@
     
     [request startSynchronous];
     
+}
+
++(void)testUrl:(NSURL *)aURL  delegate:(id)aDelegate
+{
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:aURL];
+    
+    [ASIFormDataRequest requestWithURL:aURL];
+        
+    request.delegate = aDelegate;
+    
+    [request startSynchronous];
+
 }
 @end

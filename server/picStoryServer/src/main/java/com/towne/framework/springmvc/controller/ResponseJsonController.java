@@ -22,7 +22,6 @@ import com.towne.framework.springmvc.model.Moments;
 import com.towne.framework.springmvc.model.PageVO;
 import com.towne.framework.common.model.Trader;
 import com.towne.framework.core.utils.GsonUtil;
-import com.towne.framework.hibernate.bo.Moment;
 
 /**
  * return json format data
@@ -50,6 +49,16 @@ public class ResponseJSONController {
 		return pvs;
 	}
 	
+	@RequestMapping(value="/momentpage/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody PageVO getMomentpageInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
+		Trader trader = new Trader();
+		trader.setTraderName("towne");
+		trader.setTraderPassword("123");
+		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
+		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
+		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
+		return pvs.get(1);
+	}
 	
 	@RequestMapping(value="/moments",produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Moments getContactsInJSON(){
@@ -61,11 +70,12 @@ public class ResponseJSONController {
 		return moments;
 	}
 	
+	//@PathVariable 的json 参数以/结尾否则 json串中的.号处理有问题
 	@RequestMapping(value="/list/{jparam}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Moment tetete(@PathVariable(value="jparam") String jp)
+	public @ResponseBody PageVO tetete(@PathVariable(value="jparam") String jp)
 	{
 		System.out.println(jp); 
-		Moment ctt = (Moment) GsonUtil.jsonToModel(jp,Moment.class);
+		PageVO ctt = (PageVO) GsonUtil.jsonToModel(jp,PageVO.class);
 //		List<Contact> ss =  (List<Contact>) GsonUtil.getJsonValue(jp, "contacts");
 		Map<?, ?> map = GsonUtil.jsonToMap(jp);
 		System.out.println(map.get("trader"));

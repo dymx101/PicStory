@@ -10,6 +10,7 @@
 
 @interface TMDTest : NSObject
 +(void)uploadImage:(UIImage *)aImage url:(NSURL *)aURL  delegate:(id)aDelegate;
++(void)testUrl:(NSURL *)aURL  delegate:(id)aDelegate;
 @end
 
 //http://localhost:8080/picStoryServer/upload.do
