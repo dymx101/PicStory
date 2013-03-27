@@ -18,9 +18,9 @@ import com.google.code.ssm.api.format.SerializationType;
 import com.google.code.ssm.providers.CacheException;
 import com.towne.framework.common.service.IFacadeService;
 import com.towne.framework.common.model.Trader;
-import com.towne.framework.hibernate.bo.Moment;
 import com.towne.framework.springmvc.model.MomentVO;
 import com.towne.framework.springmvc.model.Moments;
+import com.towne.framework.springmvc.model.PageVO;
 
 /**
  * return xml format data
@@ -28,7 +28,7 @@ import com.towne.framework.springmvc.model.Moments;
  *
  */
 @Controller
-@RequestMapping(value="/",method={RequestMethod.GET})
+@RequestMapping(value="/xml",method={RequestMethod.GET})
 public class ResponseXMLController {
 	
 	@Autowired
@@ -40,12 +40,18 @@ public class ResponseXMLController {
 	 * query a xml date by id
 	 * @param id
 	 * @return
+	 * @throws CacheException 
+	 * @throws TimeoutException 
 	 */
 	@RequestMapping(value="/moment/{id}",produces=MediaType.APPLICATION_XML_VALUE)
-	public @ResponseBody Moment getContactInXML(@PathVariable(value="id")int id){
+	public @ResponseBody PageVO getContactInXML(@PathVariable(value="id")int id) throws TimeoutException, CacheException{
 		Trader trader = new Trader();
-		Moment moment = ifacadeService.findById(trader, id);
-		return moment;
+		trader.setTraderName("towne");
+		trader.setTraderPassword("123");
+		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
+		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
+		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
+		return pvs.get(0);
 	}
 	
 	

@@ -30,7 +30,7 @@ import com.towne.framework.hibernate.bo.Moment;
  *
  */
 @Controller
-@RequestMapping(value="/",method={RequestMethod.GET})
+@RequestMapping(value="/json",method={RequestMethod.GET})
 public class ResponseJSONController {
 	
 	@Autowired
