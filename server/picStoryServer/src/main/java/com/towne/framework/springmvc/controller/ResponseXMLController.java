@@ -41,7 +41,7 @@ public class ResponseXMLController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value="/contact/{id}",produces=MediaType.APPLICATION_XML_VALUE)
+	@RequestMapping(value="/moment/{id}",produces=MediaType.APPLICATION_XML_VALUE)
 	public @ResponseBody Moment getContactInXML(@PathVariable(value="id")int id){
 		Trader trader = new Trader();
 		Moment moment = ifacadeService.findById(trader, id);
