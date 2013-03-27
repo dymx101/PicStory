@@ -28,7 +28,7 @@ import com.towne.framework.springmvc.model.Moments;
  *
  */
 @Controller
-@RequestMapping(value="/xml",method={RequestMethod.GET})
+@RequestMapping(value="/",method={RequestMethod.GET})
 public class ResponseXMLController {
 	
 	@Autowired

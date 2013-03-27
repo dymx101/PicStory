@@ -98,7 +98,7 @@
 	</filter-mapping>
 
 
-	<!-- SpringMVC SpringMVC DWR -->
+	<!-- SpringMVC SpringMVC Json Xml -->
 	<servlet>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -114,7 +114,11 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
-		<url-pattern>/dwr/*</url-pattern>
+		<url-pattern>/json/*</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>/xml/*</url-pattern>
 	</servlet-mapping>
 	
 	<session-config>
