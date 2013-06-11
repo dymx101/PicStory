@@ -1,0 +1,9 @@
+1.svn账号：
+    ios.one/iosone@2013
+    ios.two/iostwo@2013
+    svn地址:http://rhtsoft.gnway.cc:18080/svn/ios_reps/
+
+2.联系方式：
+	邓斌：15549087554
+	     QQ:695335103
+	邮箱：dfbhaiou@163.com

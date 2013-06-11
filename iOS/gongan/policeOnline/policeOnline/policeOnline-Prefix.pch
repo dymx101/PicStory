@@ -1,0 +1,33 @@
+//
+// Prefix header for all source files of the 'policeOnline' target in the 'policeOnline' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+#import "AFNetworking.h"
+#import "GGApi.h"
+#import "GGApiParser.h"
+#import "GGDefine.h"
+#import "UIView+LoadFromNib.h"
+#import "NSObject+BeeNotification.h"
+#import "GGAlert.h"
+#import "MBProgressHUD.h"
+#import "GGRuntimeData.h"
+
+#import "GGColor.h"
+#import "UIImageView+WebCache.h"
+#import "GGUtils.h"
+#import "GGAnimation.h"
+#import "GGImagePool.h"
+#import "GGBaseViewController.h"
+#endif
