@@ -22,7 +22,7 @@ public class MomentServiceTest {
 	@Resource(name = "momentServiceImplHibernate4")
 	MomentService momentService;
 
-//	 @Test
+	 @Test
 	public void tetstts() {
 
 		Moment moment = new Moment();

@@ -5,6 +5,11 @@
 	version="2.5">
 	<display-name>picStoryServer_0.0.1</display-name>
 	
+	<!-- 清除 缓冲泄露 -->
+	<listener> 
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class> 
+    </listener>
+    
 	<!-- Spring MVC中获取Request -->
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
