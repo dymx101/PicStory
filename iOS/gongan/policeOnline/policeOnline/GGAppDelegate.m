@@ -134,6 +134,7 @@ BMKMapManager* _mapManager;
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     DLog(@"BACK");
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"reportPosition" object:nil];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
