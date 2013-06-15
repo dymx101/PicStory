@@ -12,6 +12,7 @@
 #import "GGWantedVC.h"
 #import "GGMyFavoriteVC.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "GGClueReport.h"
 
 @interface GGMainVC ()
 {
@@ -219,6 +220,13 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(IBAction)clueReportAction:(id)sender
+{
+    GGClueReport *vc = [[GGClueReport alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - map
 - (void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
     self.userLocation = userLocation;

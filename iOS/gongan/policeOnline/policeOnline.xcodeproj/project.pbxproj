@@ -62,6 +62,8 @@
 		EA495A36172E6C3E009117EF /* btnMyFavorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA495A33172E6C3E009117EF /* btnMyFavorite@2x.png */; };
 		EA495A37172E6C3E009117EF /* btnOnlinePolice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA495A34172E6C3E009117EF /* btnOnlinePolice@2x.png */; };
 		EA495A38172E6C3E009117EF /* btnServiceGuide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA495A35172E6C3E009117EF /* btnServiceGuide@2x.png */; };
+		EA612269176CC44500A42EA1 /* GGClueReport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA612267176CC44500A42EA1 /* GGClueReport.m */; };
+		EA61226A176CC44500A42EA1 /* GGClueReport.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA612268176CC44500A42EA1 /* GGClueReport.xib */; };
 		EA931A3D172C1B6400FB0C49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA931A3C172C1B6400FB0C49 /* UIKit.framework */; };
 		EA931A3F172C1B6400FB0C49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA931A3E172C1B6400FB0C49 /* Foundation.framework */; };
 		EA931A41172C1B6400FB0C49 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA931A40172C1B6400FB0C49 /* CoreGraphics.framework */; };
@@ -255,6 +257,9 @@
 		EA495A33172E6C3E009117EF /* btnMyFavorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnMyFavorite@2x.png"; sourceTree = "<group>"; };
 		EA495A34172E6C3E009117EF /* btnOnlinePolice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnOnlinePolice@2x.png"; sourceTree = "<group>"; };
 		EA495A35172E6C3E009117EF /* btnServiceGuide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnServiceGuide@2x.png"; sourceTree = "<group>"; };
+		EA612266176CC44500A42EA1 /* GGClueReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGClueReport.h; sourceTree = "<group>"; };
+		EA612267176CC44500A42EA1 /* GGClueReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGClueReport.m; sourceTree = "<group>"; };
+		EA612268176CC44500A42EA1 /* GGClueReport.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGClueReport.xib; sourceTree = "<group>"; };
 		EA931A38172C1B6400FB0C49 /* policeOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = policeOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA931A3C172C1B6400FB0C49 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA931A3E172C1B6400FB0C49 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -538,6 +543,9 @@
 				4CE44E05172FBE5B00BA6097 /* GGWantedCell.m */,
 				4CE44E071730350000BA6097 /* GGMyFavoriteCell.h */,
 				4CE44E081730350100BA6097 /* GGMyFavoriteCell.m */,
+				EA612266176CC44500A42EA1 /* GGClueReport.h */,
+				EA612267176CC44500A42EA1 /* GGClueReport.m */,
+				EA612268176CC44500A42EA1 /* GGClueReport.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -922,6 +930,7 @@
 				4C3CB768175C61420000A414 /* Icon-Small-50.png in Resources */,
 				4C3CB769175C61420000A414 /* Icon-Small.png in Resources */,
 				4C3CB76A175C61420000A414 /* Icon-Small@2x.png in Resources */,
+				EA61226A176CC44500A42EA1 /* GGClueReport.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1015,6 +1024,7 @@
 				EAF6765F1734EDCE00CE9F7D /* NSString+MD5Addition.m in Sources */,
 				4C9313D0173B6E67007352CB /* mt.mm in Sources */,
 				4C84CD1F1749206600B9F661 /* GTMBase64.m in Sources */,
+				EA612269176CC44500A42EA1 /* GGClueReport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
