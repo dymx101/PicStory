@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface GGClueReport : GGBaseViewController
-<UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate>
+<UIScrollViewDelegate
+, UITextFieldDelegate
+, UITextViewDelegate
+, UIActionSheetDelegate
+, UINavigationControllerDelegate
+, UIImagePickerControllerDelegate>
 
 @end

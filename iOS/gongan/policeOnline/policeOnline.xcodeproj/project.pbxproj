@@ -64,6 +64,7 @@
 		EA495A38172E6C3E009117EF /* btnServiceGuide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA495A35172E6C3E009117EF /* btnServiceGuide@2x.png */; };
 		EA612269176CC44500A42EA1 /* GGClueReport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA612267176CC44500A42EA1 /* GGClueReport.m */; };
 		EA61226A176CC44500A42EA1 /* GGClueReport.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA612268176CC44500A42EA1 /* GGClueReport.xib */; };
+		EA61226C176CCC1100A42EA1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA61226B176CCC1100A42EA1 /* AssetsLibrary.framework */; };
 		EA931A3D172C1B6400FB0C49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA931A3C172C1B6400FB0C49 /* UIKit.framework */; };
 		EA931A3F172C1B6400FB0C49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA931A3E172C1B6400FB0C49 /* Foundation.framework */; };
 		EA931A41172C1B6400FB0C49 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA931A40172C1B6400FB0C49 /* CoreGraphics.framework */; };
@@ -260,6 +261,7 @@
 		EA612266176CC44500A42EA1 /* GGClueReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGClueReport.h; sourceTree = "<group>"; };
 		EA612267176CC44500A42EA1 /* GGClueReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGClueReport.m; sourceTree = "<group>"; };
 		EA612268176CC44500A42EA1 /* GGClueReport.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGClueReport.xib; sourceTree = "<group>"; };
+		EA61226B176CCC1100A42EA1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		EA931A38172C1B6400FB0C49 /* policeOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = policeOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA931A3C172C1B6400FB0C49 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EA931A3E172C1B6400FB0C49 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -400,6 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA61226C176CCC1100A42EA1 /* AssetsLibrary.framework in Frameworks */,
 				EA244B08172D52BA005A4FBF /* CoreLocation.framework in Frameworks */,
 				EA244AE5172CEC95005A4FBF /* libsqlite3.dylib in Frameworks */,
 				EA931AED172C1EA600FB0C49 /* MobileCoreServices.framework in Frameworks */,
@@ -553,6 +556,7 @@
 		EA931A2D172C1B6400FB0C49 = {
 			isa = PBXGroup;
 			children = (
+				EA61226B176CCC1100A42EA1 /* AssetsLibrary.framework */,
 				4C84CD151748D12200B9F661 /* Settings.bundle */,
 				4CC7F53E173A97910060FA2A /* inc */,
 				EAD355FE172E9B6F008AFEF8 /* Views */,
@@ -1102,8 +1106,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "policeOnline/policeOnline-Prefix.pch";
 				INFOPLIST_FILE = "policeOnline/policeOnline-Info.plist";
@@ -1114,8 +1118,8 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
