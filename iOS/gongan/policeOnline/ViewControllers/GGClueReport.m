@@ -60,10 +60,24 @@
 {
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
     NSString *requiredMediaType = (__bridge NSString *)kUTTypeImage; controller.mediaTypes = [[NSArray alloc]
                                                                                               initWithObjects:requiredMediaType, nil]; controller.allowsEditing = YES;
     controller.delegate = self;
     [self.navigationController presentViewController:controller animated:YES completion:nil];
+}
+
+-(void)visitAlbum
+{
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+    [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+    
+    controller.mediaTypes = mediaTypes;
+    controller.delegate = self;
+    [self.navigationController presentModalViewController:controller animated:YES];
 }
 
 #pragma mark - action sheet
@@ -75,7 +89,7 @@
     }
     else if (buttonIndex == 1)
     {
-        // album
+        [self visitAlbum];
     }
 }
 
