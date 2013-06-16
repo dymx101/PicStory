@@ -1182,8 +1182,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bin Deng (P2N4VAA4KT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "policeOnline/policeOnline-Prefix.pch";
 				INFOPLIST_FILE = "policeOnline/policeOnline-Info.plist";
@@ -1194,8 +1194,8 @@
 				);
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C332741-3AB1-4FF5-BB1B-61B43E65DF66";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
