@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
+#import "RDVTabBarController.h"
 
 @class GGTestVC;
 
@@ -17,4 +18,7 @@
 
 @property (strong, nonatomic) UIViewController *viewController;
 @property (strong, nonatomic) UINavigationController *nc;
+@property (strong, nonatomic)   RDVTabBarController *tabBarController;
 @end
+
+#define GGSharedDelegate ((GGAppDelegate *)[UIApplication sharedApplication].delegate)

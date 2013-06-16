@@ -11,6 +11,10 @@
 
 @interface GGBaseViewController : UIViewController
 
++(GGBaseViewController *)createInstance;
+
+-(void)setMyTitle:(NSString *)aTitle;
+
 -(void)showLoadingHUD;
 -(void)hideLoadingHUD;
 -(void)alertNetError;

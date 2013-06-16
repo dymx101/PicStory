@@ -18,6 +18,17 @@
     __weak MBProgressHUD *hud;
 }
 
++(GGBaseViewController *)createInstance
+{
+    return [[self alloc] init];
+}
+
+-(void)setMyTitle:(NSString *)aTitle
+{
+    self.title = aTitle;
+    self.navigationItem.title = aTitle;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

@@ -7,11 +7,17 @@
 //
 
 #import "GGAppDelegate.h"
+
 #import "GGMainVC.h"
+#import "GGSettingVC.h"
+#import "GGClueReportVC.h"
+
 #import "GGAPIService.h"
 #import "GGVersionInfo.h"
 
 #import "GGTestVC.h"
+
+
 
 BMKMapManager* _mapManager;
 @implementation GGAppDelegate
@@ -27,15 +33,21 @@ BMKMapManager* _mapManager;
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     
-#if 0       // for test
-    self.viewController = [[GGTestVC alloc] initWithNibName:@"GGTestVC" bundle:nil];
-#else       // for real
-    self.viewController = [[GGMainVC alloc] initWithNibName:@"GGMainVC" bundle:nil];
-#endif
-    _nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
-    self.window.rootViewController = _nc;
+//#if 0       // for test
+//    self.viewController = [[GGTestVC alloc] initWithNibName:@"GGTestVC" bundle:nil];
+//#else       // for real
+//    self.viewController = [[GGMainVC alloc] initWithNibName:@"GGMainVC" bundle:nil];
+//#endif
+//    _nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
     
-    [_nc.navigationBar setTintColor:[GGSharedColor lightNavy]];
+    
+    [self setupViewControllers];
+    
+    self.window.rootViewController = _tabBarController;
+    
+    [[UINavigationBar appearance] setTintColor:[GGSharedColor lightNavy]];
+    
+    //[_nc.navigationBar setTintColor:[GGSharedColor lightNavy]];
     
     [self.window makeKeyAndVisible];
     
@@ -120,6 +132,41 @@ BMKMapManager* _mapManager;
 {    
     NSURL * iTunesUrl = [NSURL URLWithString:@"http://itunes.apple.com/cn/app/id427457043?mt=8&ls=1"];
     [[UIApplication	sharedApplication] openURL:iTunesUrl];
+}
+
+#pragma mark - Methods
+
+- (void)setupViewControllers
+{
+    
+    
+    UIViewController *nc1 = [[UINavigationController alloc] initWithRootViewController:[GGMainVC createInstance]];
+    UIViewController *nc2 = [[UINavigationController alloc] initWithRootViewController:[GGClueReportVC createInstance]];
+    UIViewController *nc3 = [[UINavigationController alloc] initWithRootViewController:[GGSettingVC createInstance]];
+    
+    _tabBarController = [[RDVTabBarController alloc] init];
+    [_tabBarController setViewControllers:@[nc1, nc2, nc3]];
+    
+    [self customizeTabBarForController:_tabBarController];
+}
+
+- (void)customizeTabBarForController:(RDVTabBarController *)tabBarController
+{
+    UIImage *finishedImage = [[UIImage imageNamed:@"tabbar_selected_background"]
+                              resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 0)];
+    
+    UIImage *unfinishedImage = [[UIImage imageNamed:@"tabbar_unselected_background"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 0)];
+    
+    //[tabBarController setTabBarHeight:63];
+    
+    for (RDVTabBarItem *item in [[tabBarController tabBar] items])
+    {
+        [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
+        
+        //UIImage *image = [UIImage imageNamed:@"first"];
+        //[item setFinishedSelectedImage:image withFinishedUnselectedImage:image];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

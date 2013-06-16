@@ -12,7 +12,7 @@
 #import "GGWantedVC.h"
 #import "GGMyFavoriteVC.h"
 #import "UIDevice+IdentifierAddition.h"
-#import "GGClueReport.h"
+#import "GGClueReportVC.h"
 
 @interface GGMainVC ()
 {
@@ -50,6 +50,8 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         pcName = [defaults objectForKey:@"ggname"];
         pcPhone = [defaults objectForKey:@"ggtel"];
+        
+        [self setMyTitle:@"微公安"];
     }
     return self;
 }
@@ -57,7 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"微公安";
+    
     self.navigationItem.leftBarButtonItem = nil;
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportPosition) name:@"reportPosition" object:nil];
@@ -222,7 +224,7 @@
 
 -(IBAction)clueReportAction:(id)sender
 {
-    GGClueReport *vc = [[GGClueReport alloc] init];
+    GGClueReportVC *vc = [[GGClueReportVC alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

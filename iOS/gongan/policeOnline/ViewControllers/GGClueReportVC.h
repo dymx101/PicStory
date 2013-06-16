@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GGClueReport : GGBaseViewController
+@interface GGClueReportVC : GGBaseViewController
 <UIScrollViewDelegate
 , UITextFieldDelegate
 , UITextViewDelegate

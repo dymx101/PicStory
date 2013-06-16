@@ -177,7 +177,6 @@
 								<string key="NSFrame">{{109, 307}, {100, 101}}</string>
 								<reference key="NSSuperview" ref="594398745"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -263,6 +262,14 @@
 						<reference key="destination" ref="146556669"/>
 					</object>
 					<int key="connectionID">21</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">viewScroll</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="594398745"/>
+					</object>
+					<int key="connectionID">22</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -391,7 +398,7 @@
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.CustomClassName">GGClueReport</string>
+				<string key="-1.CustomClassName">GGClueReportVC</string>
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -408,7 +415,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">22</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -421,7 +428,7 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">GGClueReport</string>
+					<string key="className">GGClueReportVC</string>
 					<string key="superclassName">GGBaseViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addPicture:">id</string>
@@ -440,6 +447,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="btnCaptured">UIButton</string>
 						<string key="ivCaptured">UIImageView</string>
+						<string key="viewScroll">UIScrollView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="btnCaptured">
@@ -450,10 +458,14 @@
 							<string key="name">ivCaptured</string>
 							<string key="candidateClassName">UIImageView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="viewScroll">
+							<string key="name">viewScroll</string>
+							<string key="candidateClassName">UIScrollView</string>
+						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/GGClueReport.h</string>
+						<string key="minorKey">./Classes/GGClueReportVC.h</string>
 					</object>
 				</object>
 			</array>

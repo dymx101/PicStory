@@ -62,8 +62,8 @@
 		EA495A36172E6C3E009117EF /* btnMyFavorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA495A33172E6C3E009117EF /* btnMyFavorite@2x.png */; };
 		EA495A37172E6C3E009117EF /* btnOnlinePolice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA495A34172E6C3E009117EF /* btnOnlinePolice@2x.png */; };
 		EA495A38172E6C3E009117EF /* btnServiceGuide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA495A35172E6C3E009117EF /* btnServiceGuide@2x.png */; };
-		EA612269176CC44500A42EA1 /* GGClueReport.m in Sources */ = {isa = PBXBuildFile; fileRef = EA612267176CC44500A42EA1 /* GGClueReport.m */; };
-		EA61226A176CC44500A42EA1 /* GGClueReport.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA612268176CC44500A42EA1 /* GGClueReport.xib */; };
+		EA612269176CC44500A42EA1 /* GGClueReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA612267176CC44500A42EA1 /* GGClueReportVC.m */; };
+		EA61226A176CC44500A42EA1 /* GGClueReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA612268176CC44500A42EA1 /* GGClueReportVC.xib */; };
 		EA61226C176CCC1100A42EA1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA61226B176CCC1100A42EA1 /* AssetsLibrary.framework */; };
 		EA931A3D172C1B6400FB0C49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA931A3C172C1B6400FB0C49 /* UIKit.framework */; };
 		EA931A3F172C1B6400FB0C49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA931A3E172C1B6400FB0C49 /* Foundation.framework */; };
@@ -131,6 +131,19 @@
 		EA931B52172C241800FB0C49 /* GGWantedCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EA931B42172C241800FB0C49 /* GGWantedCategory.m */; };
 		EA931B53172C241800FB0C49 /* GGArea.m in Sources */ = {isa = PBXBuildFile; fileRef = EA931B44172C241800FB0C49 /* GGArea.m */; };
 		EA931B54172C241800FB0C49 /* GGPoliceman.m in Sources */ = {isa = PBXBuildFile; fileRef = EA931B46172C241800FB0C49 /* GGPoliceman.m */; };
+		EA96DDD7176D57BF007355DB /* RDVTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EA96DDD2176D57BF007355DB /* RDVTabBar.m */; };
+		EA96DDD8176D57BF007355DB /* RDVTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA96DDD4176D57BF007355DB /* RDVTabBarController.m */; };
+		EA96DDD9176D57BF007355DB /* RDVTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA96DDD6176D57BF007355DB /* RDVTabBarItem.m */; };
+		EA96DDDD176D5A50007355DB /* GGSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA96DDDB176D5A50007355DB /* GGSettingVC.m */; };
+		EA96DDDE176D5A50007355DB /* GGSettingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDDC176D5A50007355DB /* GGSettingVC.xib */; };
+		EA96DDE8176D5DBF007355DB /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE0176D5DBF007355DB /* first.png */; };
+		EA96DDE9176D5DBF007355DB /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE1176D5DBF007355DB /* first@2x.png */; };
+		EA96DDEA176D5DBF007355DB /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE2176D5DBF007355DB /* second.png */; };
+		EA96DDEB176D5DBF007355DB /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE3176D5DBF007355DB /* second@2x.png */; };
+		EA96DDEC176D5DBF007355DB /* tabbar_selected_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE4176D5DBF007355DB /* tabbar_selected_background.png */; };
+		EA96DDED176D5DBF007355DB /* tabbar_selected_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE5176D5DBF007355DB /* tabbar_selected_background@2x.png */; };
+		EA96DDEE176D5DBF007355DB /* tabbar_unselected_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE6176D5DBF007355DB /* tabbar_unselected_background.png */; };
+		EA96DDEF176D5DBF007355DB /* tabbar_unselected_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE7176D5DBF007355DB /* tabbar_unselected_background@2x.png */; };
 		EAD355F5172E97E3008AFEF8 /* btnReportPolice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */; };
 		EAD35602172E9B7C008AFEF8 /* GGSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */; };
 		EAF676561734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF676551734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m */; };
@@ -258,9 +271,9 @@
 		EA495A33172E6C3E009117EF /* btnMyFavorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnMyFavorite@2x.png"; sourceTree = "<group>"; };
 		EA495A34172E6C3E009117EF /* btnOnlinePolice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnOnlinePolice@2x.png"; sourceTree = "<group>"; };
 		EA495A35172E6C3E009117EF /* btnServiceGuide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnServiceGuide@2x.png"; sourceTree = "<group>"; };
-		EA612266176CC44500A42EA1 /* GGClueReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGClueReport.h; sourceTree = "<group>"; };
-		EA612267176CC44500A42EA1 /* GGClueReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGClueReport.m; sourceTree = "<group>"; };
-		EA612268176CC44500A42EA1 /* GGClueReport.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGClueReport.xib; sourceTree = "<group>"; };
+		EA612266176CC44500A42EA1 /* GGClueReportVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGClueReportVC.h; sourceTree = "<group>"; };
+		EA612267176CC44500A42EA1 /* GGClueReportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGClueReportVC.m; sourceTree = "<group>"; };
+		EA612268176CC44500A42EA1 /* GGClueReportVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGClueReportVC.xib; sourceTree = "<group>"; };
 		EA61226B176CCC1100A42EA1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		EA931A38172C1B6400FB0C49 /* policeOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = policeOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA931A3C172C1B6400FB0C49 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -388,6 +401,23 @@
 		EA931B44172C241800FB0C49 /* GGArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGArea.m; sourceTree = "<group>"; };
 		EA931B45172C241800FB0C49 /* GGPoliceman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPoliceman.h; sourceTree = "<group>"; };
 		EA931B46172C241800FB0C49 /* GGPoliceman.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPoliceman.m; sourceTree = "<group>"; };
+		EA96DDD1176D57BF007355DB /* RDVTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBar.h; sourceTree = "<group>"; };
+		EA96DDD2176D57BF007355DB /* RDVTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVTabBar.m; sourceTree = "<group>"; };
+		EA96DDD3176D57BF007355DB /* RDVTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarController.h; sourceTree = "<group>"; };
+		EA96DDD4176D57BF007355DB /* RDVTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVTabBarController.m; sourceTree = "<group>"; };
+		EA96DDD5176D57BF007355DB /* RDVTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVTabBarItem.h; sourceTree = "<group>"; };
+		EA96DDD6176D57BF007355DB /* RDVTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVTabBarItem.m; sourceTree = "<group>"; };
+		EA96DDDA176D5A50007355DB /* GGSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSettingVC.h; sourceTree = "<group>"; };
+		EA96DDDB176D5A50007355DB /* GGSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSettingVC.m; sourceTree = "<group>"; };
+		EA96DDDC176D5A50007355DB /* GGSettingVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGSettingVC.xib; sourceTree = "<group>"; };
+		EA96DDE0176D5DBF007355DB /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		EA96DDE1176D5DBF007355DB /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		EA96DDE2176D5DBF007355DB /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		EA96DDE3176D5DBF007355DB /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		EA96DDE4176D5DBF007355DB /* tabbar_selected_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_selected_background.png; sourceTree = "<group>"; };
+		EA96DDE5176D5DBF007355DB /* tabbar_selected_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_selected_background@2x.png"; sourceTree = "<group>"; };
+		EA96DDE6176D5DBF007355DB /* tabbar_unselected_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_unselected_background.png; sourceTree = "<group>"; };
+		EA96DDE7176D5DBF007355DB /* tabbar_unselected_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_unselected_background@2x.png"; sourceTree = "<group>"; };
 		EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnReportPolice@2x.png"; sourceTree = "<group>"; };
 		EAD35600172E9B7C008AFEF8 /* GGSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSearchBar.h; sourceTree = "<group>"; };
 		EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSearchBar.m; sourceTree = "<group>"; };
@@ -546,9 +576,12 @@
 				4CE44E05172FBE5B00BA6097 /* GGWantedCell.m */,
 				4CE44E071730350000BA6097 /* GGMyFavoriteCell.h */,
 				4CE44E081730350100BA6097 /* GGMyFavoriteCell.m */,
-				EA612266176CC44500A42EA1 /* GGClueReport.h */,
-				EA612267176CC44500A42EA1 /* GGClueReport.m */,
-				EA612268176CC44500A42EA1 /* GGClueReport.xib */,
+				EA612266176CC44500A42EA1 /* GGClueReportVC.h */,
+				EA612267176CC44500A42EA1 /* GGClueReportVC.m */,
+				EA612268176CC44500A42EA1 /* GGClueReportVC.xib */,
+				EA96DDDA176D5A50007355DB /* GGSettingVC.h */,
+				EA96DDDB176D5A50007355DB /* GGSettingVC.m */,
+				EA96DDDC176D5A50007355DB /* GGSettingVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -639,6 +672,7 @@
 		EA931A63172C1DDC00FB0C49 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				EA96DDD0176D57BF007355DB /* RDVTabBarController */,
 				4C84CD1B1749206600B9F661 /* CTMBase64 */,
 				EA244ACE172CE9EE005A4FBF /* FMDB */,
 				EA931A64172C1DDC00FB0C49 /* AFNetworking */,
@@ -843,6 +877,35 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		EA96DDD0176D57BF007355DB /* RDVTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				EA96DDDF176D5DBF007355DB /* TabBarImages */,
+				EA96DDD1176D57BF007355DB /* RDVTabBar.h */,
+				EA96DDD2176D57BF007355DB /* RDVTabBar.m */,
+				EA96DDD3176D57BF007355DB /* RDVTabBarController.h */,
+				EA96DDD4176D57BF007355DB /* RDVTabBarController.m */,
+				EA96DDD5176D57BF007355DB /* RDVTabBarItem.h */,
+				EA96DDD6176D57BF007355DB /* RDVTabBarItem.m */,
+			);
+			path = RDVTabBarController;
+			sourceTree = "<group>";
+		};
+		EA96DDDF176D5DBF007355DB /* TabBarImages */ = {
+			isa = PBXGroup;
+			children = (
+				EA96DDE0176D5DBF007355DB /* first.png */,
+				EA96DDE1176D5DBF007355DB /* first@2x.png */,
+				EA96DDE2176D5DBF007355DB /* second.png */,
+				EA96DDE3176D5DBF007355DB /* second@2x.png */,
+				EA96DDE4176D5DBF007355DB /* tabbar_selected_background.png */,
+				EA96DDE5176D5DBF007355DB /* tabbar_selected_background@2x.png */,
+				EA96DDE6176D5DBF007355DB /* tabbar_unselected_background.png */,
+				EA96DDE7176D5DBF007355DB /* tabbar_unselected_background@2x.png */,
+			);
+			path = TabBarImages;
+			sourceTree = "<group>";
+		};
 		EAD355FE172E9B6F008AFEF8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,7 +997,16 @@
 				4C3CB768175C61420000A414 /* Icon-Small-50.png in Resources */,
 				4C3CB769175C61420000A414 /* Icon-Small.png in Resources */,
 				4C3CB76A175C61420000A414 /* Icon-Small@2x.png in Resources */,
-				EA61226A176CC44500A42EA1 /* GGClueReport.xib in Resources */,
+				EA61226A176CC44500A42EA1 /* GGClueReportVC.xib in Resources */,
+				EA96DDDE176D5A50007355DB /* GGSettingVC.xib in Resources */,
+				EA96DDE8176D5DBF007355DB /* first.png in Resources */,
+				EA96DDE9176D5DBF007355DB /* first@2x.png in Resources */,
+				EA96DDEA176D5DBF007355DB /* second.png in Resources */,
+				EA96DDEB176D5DBF007355DB /* second@2x.png in Resources */,
+				EA96DDEC176D5DBF007355DB /* tabbar_selected_background.png in Resources */,
+				EA96DDED176D5DBF007355DB /* tabbar_selected_background@2x.png in Resources */,
+				EA96DDEE176D5DBF007355DB /* tabbar_unselected_background.png in Resources */,
+				EA96DDEF176D5DBF007355DB /* tabbar_unselected_background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,7 +1100,11 @@
 				EAF6765F1734EDCE00CE9F7D /* NSString+MD5Addition.m in Sources */,
 				4C9313D0173B6E67007352CB /* mt.mm in Sources */,
 				4C84CD1F1749206600B9F661 /* GTMBase64.m in Sources */,
-				EA612269176CC44500A42EA1 /* GGClueReport.m in Sources */,
+				EA612269176CC44500A42EA1 /* GGClueReportVC.m in Sources */,
+				EA96DDD7176D57BF007355DB /* RDVTabBar.m in Sources */,
+				EA96DDD8176D57BF007355DB /* RDVTabBarController.m in Sources */,
+				EA96DDD9176D57BF007355DB /* RDVTabBarItem.m in Sources */,
+				EA96DDDD176D5A50007355DB /* GGSettingVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

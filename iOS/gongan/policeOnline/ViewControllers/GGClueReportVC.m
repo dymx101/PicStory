@@ -6,16 +6,19 @@
 //  Copyright (c) 2013 tmd. All rights reserved.
 //
 
-#import "GGClueReport.h"
+#import "GGClueReportVC.h"
 
-@interface GGClueReport ()
+#import "GGAppDelegate.h"
+
+@interface GGClueReportVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *ivCaptured;
 @property (weak, nonatomic) IBOutlet UIButton *btnCaptured;
+@property (weak, nonatomic) IBOutlet UIScrollView *viewScroll;
 
 
 @end
 
-@implementation GGClueReport
+@implementation GGClueReportVC
 {
     UIImage     *_capturedImage;
 }
@@ -24,7 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self setMyTitle:@"线索征集"];
     }
     return self;
 }
@@ -33,9 +36,12 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"线索征集";
-    //_ivCaptured.hidden = YES;
+    self.navigationItem.leftBarButtonItem = nil;
+    
+   
     _btnCaptured.enabled = NO;
+    
+    _viewScroll.contentSize = CGSizeMake(_viewScroll.contentSize.width, CGRectGetMaxY(_ivCaptured.frame) + 20);
     
 }
 
@@ -53,7 +59,7 @@
 -(IBAction)addPicture:(id)sender
 {
     UIActionSheet *shit = [[UIActionSheet alloc] initWithTitle:@"添加照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"相册",nil];
-    [shit showInView:self.view];
+    [shit showInView:GGSharedDelegate.tabBarController.view];
 }
 
 -(void)takePicture
@@ -130,6 +136,7 @@
     [self setIvCaptured:nil];
     [self setIvCaptured:nil];
     [self setBtnCaptured:nil];
+    [self setViewScroll:nil];
     [super viewDidUnload];
 }
 @end
