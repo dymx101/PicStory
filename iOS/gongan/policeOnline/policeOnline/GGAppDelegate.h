@@ -12,7 +12,7 @@
 
 @class GGTestVC;
 
-@interface GGAppDelegate : UIResponder <UIApplicationDelegate,BMKGeneralDelegate>
+@interface GGAppDelegate : UIResponder <UIApplicationDelegate,BMKGeneralDelegate, RDVTabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

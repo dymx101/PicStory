@@ -174,7 +174,15 @@
 
 #pragma mark - RDVTabBarDelegate
 
-- (BOOL)tabBar:(RDVTabBar *)tabBar shouldSelectItemAtIndex:(NSInteger)index {
+- (BOOL)tabBar:(RDVTabBar *)tabBar shouldSelectItemAtIndex:(NSInteger)index
+{
+    if (index >= self.viewControllers.count)
+    {
+        // 一键报警
+        //[GGAlert alert:@"一键报警"];
+        return NO;
+    }
+    
     if ([[self delegate] respondsToSelector:@selector(tabBarController:shouldSelectViewController:)]) {
         if (![[self delegate] tabBarController:self shouldSelectViewController:[self viewControllers][index]]) {
             return NO;

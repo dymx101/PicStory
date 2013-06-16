@@ -138,7 +138,8 @@ BMKMapManager* _mapManager;
 
 - (void)setupViewControllers
 {
-    
+    //id obj = @(1);
+    //NSLog(@"%@", NSStringFromClass([obj class]));
     
     UIViewController *nc1 = [[UINavigationController alloc] initWithRootViewController:[GGMainVC createInstance]];
     UIViewController *nc2 = [[UINavigationController alloc] initWithRootViewController:[GGClueReportVC createInstance]];
@@ -160,6 +161,32 @@ BMKMapManager* _mapManager;
     
     //[tabBarController setTabBarHeight:63];
     
+    // 安装 一键报警按钮 to tabbar
+    NSMutableArray * itemsWithExtra = [NSMutableArray array];
+    [itemsWithExtra addObjectsFromArray:tabBarController.tabBar.items];
+    RDVTabBarItem *extraItem = [[RDVTabBarItem alloc] init];
+    //[extraItem setTitle:@"一键报警" forState:UIControlStateNormal];
+    [itemsWithExtra addObject:extraItem];
+    tabBarController.tabBar.items = itemsWithExtra;
+    
+    UIButton *alertBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    alertBtn.frame = CGRectMake(20, 5, 40, 40);
+    alertBtn.backgroundColor = [GGSharedColor silver];
+    [alertBtn setTitle:@"警" forState:UIControlStateNormal];
+    [alertBtn setTitleColor:[GGSharedColor darkRed] forState:UIControlStateNormal];
+    [alertBtn setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [alertBtn addTarget:self action:@selector(dummy) forControlEvents:UIControlEventTouchUpInside];
+    
+    alertBtn.layer.cornerRadius = 20.f;
+    alertBtn.layer.borderColor = [GGSharedColor darkRed].CGColor;
+    alertBtn.layer.borderWidth = 4;
+    alertBtn.layer.shadowColor = [GGSharedColor black].CGColor;
+    alertBtn.layer.shadowOffset = CGSizeMake(2, 2);
+    alertBtn.layer.shadowRadius = 3.f;
+    
+    [extraItem addSubview:alertBtn];
+    
+    // 自定义tabbar item 图片
     for (RDVTabBarItem *item in [[tabBarController tabBar] items])
     {
         [item setBackgroundSelectedImage:finishedImage withUnselectedImage:unfinishedImage];
@@ -167,6 +194,16 @@ BMKMapManager* _mapManager;
         //UIImage *image = [UIImage imageNamed:@"first"];
         //[item setFinishedSelectedImage:image withFinishedUnselectedImage:image];
     }
+}
+
+-(void)dummy
+{
+    [GGAlert alert:@"一键报警"];
+}
+
+- (BOOL)tabBarController:(RDVTabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
