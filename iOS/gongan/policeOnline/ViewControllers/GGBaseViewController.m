@@ -7,7 +7,8 @@
 //
 
 #import "GGBaseViewController.h"
-
+#import "MBProgressHUD.h"
+#import "GGColor.h"
 
 @interface GGBaseViewController ()
 

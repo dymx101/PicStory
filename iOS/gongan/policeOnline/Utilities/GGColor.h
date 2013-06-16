@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GGDefine.h"
 
 @interface GGColor : NSObject
 AS_SINGLETON(GGColor)
