@@ -14,7 +14,7 @@
 
 #import "GGAPIService.h"
 #import "GGVersionInfo.h"
-
+#import "GGColor.h"
 #import "GGTestVC.h"
 
 
@@ -33,21 +33,21 @@ BMKMapManager* _mapManager;
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     
-//#if 0       // for test
-//    self.viewController = [[GGTestVC alloc] initWithNibName:@"GGTestVC" bundle:nil];
-//#else       // for real
-//    self.viewController = [[GGMainVC alloc] initWithNibName:@"GGMainVC" bundle:nil];
-//#endif
-//    _nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
+#if 0       // for test
+    self.viewController = [[GGTestVC alloc] initWithNibName:@"GGTestVC" bundle:nil];
+#else       // for real
+    self.viewController = [[GGMainVC alloc] initWithNibName:@"GGMainVC" bundle:nil];
+#endif
+    _nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
     
     
-    [self setupViewControllers];
+//    [self setupViewControllers];    
+//    self.window.rootViewController = _tabBarController;
+    self.window.rootViewController = _nc;
     
-    self.window.rootViewController = _tabBarController;
+//    [[UINavigationBar appearance] setTintColor:[GGSharedColor lightNavy]];
     
-    [[UINavigationBar appearance] setTintColor:[GGSharedColor lightNavy]];
-    
-    //[_nc.navigationBar setTintColor:[GGSharedColor lightNavy]];
+    [_nc.navigationBar setTintColor:[GGSharedColor lightNavy]];
     
     [self.window makeKeyAndVisible];
     

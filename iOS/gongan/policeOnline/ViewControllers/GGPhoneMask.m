@@ -48,7 +48,9 @@ DEF_SINGLETON(GGPhoneMask)
         //Animated
         CGRect mainRect = [[UIScreen mainScreen] bounds];
         CGRect startRect = CGRectMake(0, mainRect.size.height, mainRect.size.width, mainRect.size.height);
-        [GGSharedTabBar.view addSubview:view];
+      //[GGSharedTabBar.view addSubview:view];
+        //暂时没有 TabBar 可以 把 mask 加在 window 上面
+        [GGSharedDelegate.window addSubview:view];
         view.frame = startRect;
         
         [UIView animateWithDuration:0.3 animations:^{
@@ -58,7 +60,9 @@ DEF_SINGLETON(GGPhoneMask)
         }];
     } else{
         view.frame = [[UIScreen mainScreen] bounds];
-        [GGSharedTabBar.view addSubview:view];
+      //[GGSharedTabBar.view addSubview:view];
+        //暂时没有 TabBar 可以 把 mask 加在 window 上面
+        [GGSharedDelegate.window addSubview:view];
     }
 }
 

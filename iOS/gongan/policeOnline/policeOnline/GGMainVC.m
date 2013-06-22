@@ -13,6 +13,9 @@
 #import "GGMyFavoriteVC.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "GGClueReportVC.h"
+#import "GGGlobalValue.h"
+#import "GGChangeProvinceVC.h"
+#import "GGPhoneMask.h"
 
 @interface GGMainVC ()
 {
@@ -20,6 +23,10 @@
     UIWebView * phoneCallWebView;
     NSString * pcName;
     NSString * pcPhone;
+    
+    //定位城市
+    NSString * cityStr;
+    NSString * cityName;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *ivBg;
 @property (weak, nonatomic) IBOutlet UIButton *btnReportPolice;
@@ -32,6 +39,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnMyFavorite;
 @property (weak, nonatomic) IBOutlet UIButton *btnPoliceInfomation;
 @property (weak, nonatomic) BMKUserLocation * userLocation;
+
+@property(nonatomic,strong) UIButton *theButton;
 
 @end
 
@@ -52,6 +61,8 @@
         pcPhone = [defaults objectForKey:@"ggtel"];
         
         [self setMyTitle:@"微公安"];
+        [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:1];
+        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"上海");
     }
     return self;
 }
@@ -60,7 +71,10 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = nil;
+//    self.navigationItem.leftBarButtonItem = nil;
+    [self setNaviLeftButtonLocationType];
+    self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, 56, 44);
+    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 17, 0, 0)];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportPosition) name:@"reportPosition" object:nil];
     if (IS_WIDESCREEN) {
@@ -77,6 +91,56 @@
         ivBgRc.origin.y = self.view.bounds.size.height - ivBgRc.size.height;
         _ivBg.frame = ivBgRc;
     }
+}
+
+/**
+ * 功能:左键定位省份的设置
+ */
+-(void)setNaviLeftButtonLocationType
+{
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = btnItem;
+    [button addTarget:self action:@selector(leftBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _theButton = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+    
+    UIImage *normalImage;
+    UIImage *highlightImage;
+    
+    normalImage = [UIImage imageNamed:@"at_normal"];
+    highlightImage = [UIImage imageNamed:@"at_hover"];
+    
+    _theButton.showsTouchWhenHighlighted = YES;
+    [_theButton setBackgroundImage:normalImage forState:UIControlStateNormal];
+    [_theButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+}
+
+/**
+ * 功能:左键定位省份的设置
+ */
+-(void)setNaviLeftButtonText:(NSString *)text edgeInsets:(UIEdgeInsets)edgeInsets
+{
+    [_theButton setTitle:text forState:UIControlStateNormal];
+    [_theButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _theButton.titleLabel.font = [UIFont boldSystemFontOfSize:13.0];
+    _theButton.titleLabel.shadowOffset = CGSizeMake(1.0, -1.0);
+    _theButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    if (!UIEdgeInsetsEqualToEdgeInsets(edgeInsets, UIEdgeInsetsZero)) {
+        _theButton.contentEdgeInsets = edgeInsets;
+    }
+}
+
+/*
+ *功能:点击左按钮，进行省份切换
+ */
+-(void)leftBtnClicked:(id)sender{
+    GGChangeProvinceVC *changeProvinceVC = [[GGChangeProvinceVC alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *baseNC = [[UINavigationController alloc] initWithRootViewController:changeProvinceVC];
+    
+    [[GGPhoneMask sharedInstance] addMaskVC:baseNC animated:YES alpha:1.0];
+    
 }
 
 - (void)viewDidUnload {
@@ -232,6 +296,18 @@
 - (void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
     self.userLocation = userLocation;
+    CLGeocoder *Geocoder=[[CLGeocoder alloc]init];//CLGeocoder用法参加之前博客
+    CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
+        for (CLPlacemark *placemark in place) {
+            cityStr=placemark.thoroughfare;
+            cityName=placemark.locality;
+            NSLog(@"city %@",cityStr);//获取街道地址
+            NSLog(@"cityName %@",cityName);//获取城市名
+            break;
+        }
+    };
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
+    [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
 }
 
 - (void)mapView:(BMKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
