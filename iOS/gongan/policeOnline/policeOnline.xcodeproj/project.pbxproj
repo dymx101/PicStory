@@ -158,6 +158,12 @@
 		EA96DDED176D5DBF007355DB /* tabbar_selected_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE5176D5DBF007355DB /* tabbar_selected_background@2x.png */; };
 		EA96DDEE176D5DBF007355DB /* tabbar_unselected_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE6176D5DBF007355DB /* tabbar_unselected_background.png */; };
 		EA96DDEF176D5DBF007355DB /* tabbar_unselected_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA96DDE7176D5DBF007355DB /* tabbar_unselected_background@2x.png */; };
+		EA970E5D177651620035CBAD /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA970E56177651620035CBAD /* MMDrawerBarButtonItem.m */; };
+		EA970E5E177651620035CBAD /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA970E58177651620035CBAD /* MMDrawerController.m */; };
+		EA970E5F177651620035CBAD /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = EA970E5A177651620035CBAD /* MMDrawerVisualState.m */; };
+		EA970E60177651620035CBAD /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA970E5C177651620035CBAD /* UIViewController+MMDrawerController.m */; };
+		EA970E641776521B0035CBAD /* GGLeftDrawerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA970E621776521B0035CBAD /* GGLeftDrawerVC.m */; };
+		EA970E651776521B0035CBAD /* GGLeftDrawerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA970E631776521B0035CBAD /* GGLeftDrawerVC.xib */; };
 		EAD355F5172E97E3008AFEF8 /* btnReportPolice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */; };
 		EAD35602172E9B7C008AFEF8 /* GGSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */; };
 		EAF676561734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF676551734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m */; };
@@ -452,6 +458,17 @@
 		EA96DDE5176D5DBF007355DB /* tabbar_selected_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_selected_background@2x.png"; sourceTree = "<group>"; };
 		EA96DDE6176D5DBF007355DB /* tabbar_unselected_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_unselected_background.png; sourceTree = "<group>"; };
 		EA96DDE7176D5DBF007355DB /* tabbar_unselected_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_unselected_background@2x.png"; sourceTree = "<group>"; };
+		EA970E55177651620035CBAD /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		EA970E56177651620035CBAD /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		EA970E57177651620035CBAD /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		EA970E58177651620035CBAD /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		EA970E59177651620035CBAD /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		EA970E5A177651620035CBAD /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		EA970E5B177651620035CBAD /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		EA970E5C177651620035CBAD /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		EA970E611776521B0035CBAD /* GGLeftDrawerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLeftDrawerVC.h; sourceTree = "<group>"; };
+		EA970E621776521B0035CBAD /* GGLeftDrawerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGLeftDrawerVC.m; sourceTree = "<group>"; };
+		EA970E631776521B0035CBAD /* GGLeftDrawerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGLeftDrawerVC.xib; sourceTree = "<group>"; };
 		EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnReportPolice@2x.png"; sourceTree = "<group>"; };
 		EAD35600172E9B7C008AFEF8 /* GGSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSearchBar.h; sourceTree = "<group>"; };
 		EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSearchBar.m; sourceTree = "<group>"; };
@@ -636,6 +653,9 @@
 				4C4C74BF176E3266007AE397 /* GGChangeProvinceVC.m */,
 				4C4C74C3176E35BB007AE397 /* GGPhoneMask.h */,
 				4C4C74C4176E35BB007AE397 /* GGPhoneMask.m */,
+				EA970E611776521B0035CBAD /* GGLeftDrawerVC.h */,
+				EA970E621776521B0035CBAD /* GGLeftDrawerVC.m */,
+				EA970E631776521B0035CBAD /* GGLeftDrawerVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -726,6 +746,7 @@
 		EA931A63172C1DDC00FB0C49 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				EA970E54177651620035CBAD /* MMDrawerController */,
 				EA96DDD0176D57BF007355DB /* RDVTabBarController */,
 				4C84CD1B1749206600B9F661 /* CTMBase64 */,
 				EA244ACE172CE9EE005A4FBF /* FMDB */,
@@ -968,6 +989,21 @@
 			path = TabBarImages;
 			sourceTree = "<group>";
 		};
+		EA970E54177651620035CBAD /* MMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				EA970E55177651620035CBAD /* MMDrawerBarButtonItem.h */,
+				EA970E56177651620035CBAD /* MMDrawerBarButtonItem.m */,
+				EA970E57177651620035CBAD /* MMDrawerController.h */,
+				EA970E58177651620035CBAD /* MMDrawerController.m */,
+				EA970E59177651620035CBAD /* MMDrawerVisualState.h */,
+				EA970E5A177651620035CBAD /* MMDrawerVisualState.m */,
+				EA970E5B177651620035CBAD /* UIViewController+MMDrawerController.h */,
+				EA970E5C177651620035CBAD /* UIViewController+MMDrawerController.m */,
+			);
+			path = MMDrawerController;
+			sourceTree = "<group>";
+		};
 		EAD355FE172E9B6F008AFEF8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1077,6 +1113,7 @@
 				4C4C74CE176E3E28007AE397 /* title_left_btn.png in Resources */,
 				4C499A6F17757DB1006B4D98 /* banmaxian2_sel.png in Resources */,
 				4C499A7017757DB1006B4D98 /* banmaxian2.png in Resources */,
+				EA970E651776521B0035CBAD /* GGLeftDrawerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1181,6 +1218,11 @@
 				4C4C74C0176E3266007AE397 /* GGChangeProvinceVC.m in Sources */,
 				4C4C74C5176E35BC007AE397 /* GGPhoneMask.m in Sources */,
 				4C4C74C8176E3BFF007AE397 /* NSArray+Safe.m in Sources */,
+				EA970E5D177651620035CBAD /* MMDrawerBarButtonItem.m in Sources */,
+				EA970E5E177651620035CBAD /* MMDrawerController.m in Sources */,
+				EA970E5F177651620035CBAD /* MMDrawerVisualState.m in Sources */,
+				EA970E60177651620035CBAD /* UIViewController+MMDrawerController.m in Sources */,
+				EA970E641776521B0035CBAD /* GGLeftDrawerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

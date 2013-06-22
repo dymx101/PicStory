@@ -17,7 +17,7 @@
 #import "GGColor.h"
 #import "GGTestVC.h"
 
-
+#import "GGLeftDrawerVC.h"
 
 BMKMapManager* _mapManager;
 @implementation GGAppDelegate
@@ -40,10 +40,17 @@ BMKMapManager* _mapManager;
 #endif
     _nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
     
+    UIViewController *leftDrawerVC = [[GGLeftDrawerVC alloc] init];
+    
+    _drawerVC = [[MMDrawerController alloc] initWithCenterViewController:_nc leftDrawerViewController:leftDrawerVC];
+    
+    [_drawerVC setMaximumLeftDrawerWidth:200];
+    [_drawerVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [_drawerVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
 //    [self setupViewControllers];    
 //    self.window.rootViewController = _tabBarController;
-    self.window.rootViewController = _nc;
+    self.window.rootViewController = _drawerVC;
     
 //    [[UINavigationBar appearance] setTintColor:[GGSharedColor lightNavy]];
     

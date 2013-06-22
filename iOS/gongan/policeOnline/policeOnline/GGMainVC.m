@@ -16,6 +16,8 @@
 #import "GGGlobalValue.h"
 #import "GGChangeProvinceVC.h"
 #import "GGPhoneMask.h"
+#import "MMDrawerBarButtonItem.h"
+#import "GGAppDelegate.h"
 
 @interface GGMainVC ()
 {
@@ -72,7 +74,8 @@
     [super viewDidLoad];
     
 //    self.navigationItem.leftBarButtonItem = nil;
-    [self setNaviLeftButtonLocationType];
+    [self setMenuButton];
+    [self setNaviButtonLocationType];
     self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, 56, 44);
     [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 17, 0, 0)];
     
@@ -93,18 +96,24 @@
     }
 }
 
+-(void)setMenuButton
+{
+    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+}
+
 /**
  * 功能:左键定位省份的设置
  */
--(void)setNaviLeftButtonLocationType
+-(void)setNaviButtonLocationType
 {
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
     UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = btnItem;
+    self.navigationItem.rightBarButtonItem = btnItem;
     [button addTarget:self action:@selector(leftBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    _theButton = (UIButton *)self.navigationItem.leftBarButtonItem.customView;
+    _theButton = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
     
     UIImage *normalImage;
     UIImage *highlightImage;
@@ -127,9 +136,9 @@
     _theButton.titleLabel.font = [UIFont boldSystemFontOfSize:13.0];
     _theButton.titleLabel.shadowOffset = CGSizeMake(1.0, -1.0);
     _theButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    if (!UIEdgeInsetsEqualToEdgeInsets(edgeInsets, UIEdgeInsetsZero)) {
+    //if (!UIEdgeInsetsEqualToEdgeInsets(edgeInsets, UIEdgeInsetsZero)) {
         _theButton.contentEdgeInsets = edgeInsets;
-    }
+    //}
 }
 
 /*
@@ -337,5 +346,10 @@
  [[GGGps sharedInstance] stopUpdate];
  }
  */
+
+#pragma mark - Button Handlers
+-(void)leftDrawerButtonPress:(id)sender{
+    [GGSharedDelegate.drawerVC toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
 
 @end
