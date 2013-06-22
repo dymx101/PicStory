@@ -19,6 +19,20 @@
 #import "MMDrawerBarButtonItem.h"
 #import "GGAppDelegate.h"
 
+
+//1.九宫格这个需要调接口的，但是他们那边现在没做，所有可以先写成配置文件
+//区域数据：“武汉""老河口""襄阳""孝感""宜昌""荆州""十堰""黄石""黄冈""马口"
+//0        1        2      3      4       5    (其他)
+//大类是这几个区域 分别对应区域 position 0－5
+//每个position 对应的九宫格数据为  0 ： 1,2,3
+//1 ： 1,2,3,4
+//2 :   1,2,3,4,5
+//3 :    1,2,3,4,5,6
+//4 :     1,2,3,4,5,6,7
+//5 :     1,2,3,4,5,6,7,8
+//else:     1,2,3,4,5,6,7,8,9
+
+
 @interface GGMainVC ()
 {
     BMKMapView* _mapView;
@@ -31,7 +45,7 @@
     NSString * cityName;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *ivBg;
-@property (weak, nonatomic) IBOutlet UIButton *btnReportPolice;
+@property (weak, nonatomic) IBOutlet UIButton *btnReportPolice;    
 @property (weak, nonatomic) IBOutlet UIButton *btnOnlinePolice;
 @property (weak, nonatomic) IBOutlet UIButton *btnWanted;
 @property (weak, nonatomic) IBOutlet UIButton *btnServiceWindow;
@@ -40,6 +54,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnBreakRule;
 @property (weak, nonatomic) IBOutlet UIButton *btnMyFavorite;
 @property (weak, nonatomic) IBOutlet UIButton *btnPoliceInfomation;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblReportPolice;
+@property (weak, nonatomic) IBOutlet UILabel *lblOnlinePolice;
+@property (weak, nonatomic) IBOutlet UILabel *lblWanted;
+@property (weak, nonatomic) IBOutlet UILabel *lblServiceWindow;
+@property (weak, nonatomic) IBOutlet UILabel *lblServiceGuide;
+@property (weak, nonatomic) IBOutlet UILabel *lblGuardTip;
+@property (weak, nonatomic) IBOutlet UILabel *lblBreakRule;
+@property (weak, nonatomic) IBOutlet UILabel *lblMyFavorite;
+@property (weak, nonatomic) IBOutlet UILabel *lblPoliceInfomation;
+
 @property (weak, nonatomic) BMKUserLocation * userLocation;
 
 @property(nonatomic,strong) UIButton *theButton;
@@ -47,6 +72,15 @@
 @end
 
 @implementation GGMainVC
+{
+    NSArray         *_locations;
+    NSArray         *_buttonIndexDic;
+    
+    NSArray         *_allButtons;
+    NSArray         *_allTitles;
+    
+    NSUInteger      _currentPositonIndex;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,6 +99,29 @@
         [self setMyTitle:@"微公安"];
         [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:1];
         [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"上海");
+        
+        _locations = [NSArray arrayWithObjects:@"武汉", @"老河口", @"襄阳", @"孝感", @"宜昌", @"荆州", @"十堰", @"黄石", @"黄冈", @"马口", nil];
+                                         //       0       1       2           3       4       5       6       7       8       9
+        
+        _currentPositonIndex = 6;
+        
+        //每个position 对应的九宫格数据为  0 ： 1,2,3
+        //1 ： 1,2,3,4
+        //2 :   1,2,3,4,5
+        //3 :    1,2,3,4,5,6
+        //4 :     1,2,3,4,5,6,7
+        //5 :     1,2,3,4,5,6,7,8
+        //else:     1,2,3,4,5,6,7,8,9
+        
+        _buttonIndexDic = [NSArray arrayWithObjects:
+                           [NSArray arrayWithObjects:@(0), @(1), @(2), nil]                             // 0
+                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), nil]                     // 1
+                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), nil]               // 2
+                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), nil]                     // 3
+                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), nil]               // 4
+                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), nil]         // 5
+                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), @(8), nil]   // 6
+                           , nil];
     }
     return self;
 }
@@ -72,6 +129,62 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    @property (weak, nonatomic) IBOutlet UIButton *btnReportPolice;
+//    @property (weak, nonatomic) IBOutlet UIButton *btnOnlinePolice;
+//    @property (weak, nonatomic) IBOutlet UIButton *btnWanted;
+    
+//    @property (weak, nonatomic) IBOutlet UIButton *btnServiceWindow;
+//    @property (weak, nonatomic) IBOutlet UIButton *btnServiceGuide;
+//    @property (weak, nonatomic) IBOutlet UIButton *btnGuardTip;
+    
+//    @property (weak, nonatomic) IBOutlet UIButton *btnBreakRule;
+//    @property (weak, nonatomic) IBOutlet UIButton *btnMyFavorite;
+//    @property (weak, nonatomic) IBOutlet UIButton *btnMyFavorite;
+    
+    
+    _allButtons = [NSArray arrayWithObjects: _btnReportPolice, _btnOnlinePolice, _btnGuardTip
+                   , _btnBreakRule, _btnServiceGuide, _btnServiceWindow
+                   , _btnPoliceInfomation, _btnWanted, _btnMyFavorite, nil];
+    
+    for (UIButton *btn in _allButtons)
+    {
+        btn.hidden = YES;
+    }
+    
+    NSArray *indexs = _buttonIndexDic[_currentPositonIndex];
+    
+    for (id index in indexs)
+    {
+        UIButton *btn = _allButtons[([index intValue])];
+        btn.hidden = NO;
+    }
+    
+//    @property (weak, nonatomic) IBOutlet UILabel *lblReportPolice;
+//    @property (weak, nonatomic) IBOutlet UILabel *lblOnlinePolice;
+//    @property (weak, nonatomic) IBOutlet UILabel *lblWanted;
+//    @property (weak, nonatomic) IBOutlet UILabel *lblServiceWindow;
+//    @property (weak, nonatomic) IBOutlet UILabel *lblServiceGuide;
+//    @property (weak, nonatomic) IBOutlet UILabel *lblGuardTip;
+//    @property (weak, nonatomic) IBOutlet UILabel *lblBreakRule;
+//    @property (weak, nonatomic) IBOutlet UILabel *lblMyFavorite;
+//    @property (weak, nonatomic) IBOutlet UILabel *lblPoliceInfomation;
+    
+    _allTitles = [NSArray arrayWithObjects: _lblReportPolice, _lblOnlinePolice, _lblGuardTip
+                  , _lblBreakRule, _lblServiceGuide, _lblServiceWindow
+                  , _lblPoliceInfomation, _lblWanted, _lblMyFavorite, nil];
+    
+    for (UILabel *lbl in _allTitles)
+    {
+        lbl.hidden = YES;
+    }
+    
+    for (id index in indexs)
+    {
+        UILabel *lbl = _allTitles[([index intValue])];
+        lbl.hidden = NO;
+    }
+    
     
 //    self.navigationItem.leftBarButtonItem = nil;
     [self setMenuButton];
@@ -163,6 +276,7 @@
     [self setBtnBreakRule:nil];
     [self setBtnMyFavorite:nil];
     [self setBtnPoliceInfomation:nil];
+    [self setLblPoliceInfomation:nil];
     [super viewDidUnload];
 }
 
