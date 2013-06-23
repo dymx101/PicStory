@@ -25,7 +25,7 @@
     if (self) {
         [self setMyTitle:@"设置中心"];
         [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:1];
-        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"上海");
+        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"武汉");
     }
     return self;
 }

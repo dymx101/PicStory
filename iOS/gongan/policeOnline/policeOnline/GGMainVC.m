@@ -98,7 +98,7 @@
         
         [self setMyTitle:@"微公安"];
         [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:1];
-        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"上海");
+        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"武汉");
         
         _locations = [NSArray arrayWithObjects:@"武汉", @"老河口", @"襄阳", @"孝感", @"宜昌", @"荆州", @"十堰", @"黄石", @"黄冈", @"马口", nil];
                                          //       0       1       2           3       4       5       6       7       8       9
