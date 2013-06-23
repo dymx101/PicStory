@@ -97,8 +97,8 @@
         pcPhone = [defaults objectForKey:@"ggtel"];
         
         [self setMyTitle:@"微公安"];
-        [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:1];
-        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"上海");
+        [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:0];
+        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"武汉");
         
         _locations = [NSArray arrayWithObjects:@"武汉", @"老河口", @"襄阳", @"孝感", @"宜昌", @"荆州", @"十堰", @"黄石", @"黄冈", @"马口", nil];
                                          //       0       1       2           3       4       5       6       7       8       9
@@ -144,7 +144,8 @@
     [self setMenuButton];
     [self setNaviButtonLocationType];
     self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, 56, 44);
-    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 17, 0, 0)];
+    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
+    [self observeNotification:GG_NOTIFY_PROVINCE_CHANGED];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportPosition) name:@"reportPosition" object:nil];
     if (IS_WIDESCREEN) {
@@ -249,6 +250,14 @@
     
     [[GGPhoneMask sharedInstance] addMaskVC:baseNC animated:YES alpha:1.0];
     
+}
+
+//消息监听
+- (void)handleNotification:(NSNotification *)notification
+{
+    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
+    DLog(@">>> proviceid %d",[[GGGlobalValue sharedInstance].provinceId integerValue]);
+    [self updateIconsWithCaseIndex:[[GGGlobalValue sharedInstance].provinceId integerValue]];
 }
 
 - (void)viewDidUnload {

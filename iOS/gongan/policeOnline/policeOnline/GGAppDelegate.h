@@ -22,7 +22,3 @@
 @property (strong, nonatomic)   RDVTabBarController *tabBarController;
 @property (strong, nonatomic) MMDrawerController *drawerVC;
 @end
-
-#define GGSharedDelegate ((GGAppDelegate *)[UIApplication sharedApplication].delegate)
-
-#define GGSharedTabBar    (((GGAppDelegate*)[UIApplication sharedApplication].delegate).tabBarController)

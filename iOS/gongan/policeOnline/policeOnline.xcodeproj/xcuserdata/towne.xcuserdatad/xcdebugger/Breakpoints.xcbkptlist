@@ -160,32 +160,6 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "policeOnline/GGMainVC.m"
-         timestampString = "393574754.224385"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
-         landmarkName = "-reportPosition"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "policeOnline/GGMainVC.m"
-         timestampString = "393574754.224385"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "214"
-         endingLineNumber = "214"
-         landmarkName = "-reportPosition"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
@@ -195,7 +169,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "135"
          endingLineNumber = "135"
-         landmarkName = "-enterITunesToUpdate"
+         landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -203,13 +177,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "policeOnline/GGMainVC.m"
-         timestampString = "393574754.224385"
+         timestampString = "393659645.046356"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "280"
-         endingLineNumber = "280"
-         landmarkName = "@implementation GGMainVC"
-         landmarkType = "3">
+         startingLineNumber = "289"
+         endingLineNumber = "289"
+         landmarkName = "-reportPoliceAction:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -306,27 +280,14 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ViewControllers/GGChangeProvinceVC.m"
-         timestampString = "393100868.931078"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "204"
-         endingLineNumber = "204"
-         landmarkName = "-tableView:viewForHeaderInSection:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "policeOnline/GGMainVC.m"
-         timestampString = "393574754.224385"
+         timestampString = "393659645.046356"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "304"
-         endingLineNumber = "304"
-         landmarkName = "-mapView:didUpdateUserLocation:"
-         landmarkType = "5">
+         startingLineNumber = "313"
+         endingLineNumber = "313"
+         landmarkName = "@implementation GGMainVC"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -338,7 +299,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "139"
          endingLineNumber = "139"
-         landmarkName = "-leftBtnClicked:"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -351,19 +312,6 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "65"
          endingLineNumber = "65"
-         landmarkName = "-addMaskVC:animated:alpha:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ViewControllers/GGPhoneMask.m"
-         timestampString = "393575164.095905"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "27"
-         endingLineNumber = "27"
          landmarkName = "-addMaskVC:animated:alpha:"
          landmarkType = "5">
       </FileBreakpoint>

@@ -31,3 +31,12 @@
 #import "GGImagePool.h"
 #import "GGBaseViewController.h"
 #endif
+
+#define GGSharedDelegate ((GGAppDelegate *)[UIApplication sharedApplication].delegate)
+
+#define GGSharedTabBar    (((GGAppDelegate*)[UIApplication sharedApplication].delegate).tabBarController)
+
+#define OTSTEXTCOLOR [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1]
+#define OTSREDCOLOR [UIColor colorWithRed:220.0/255 green:0/255 blue:0/255 alpha:1]
+#define OTSORANGECOLOR [UIColor colorWithRed:223.0/255 green:119.0/255 blue:28.0/255 alpha:1]
+#define OTSBLUECOLOR [UIColor colorWithRed:104.0/255 green:144.0/255 blue:223.0/255 alpha:1]
