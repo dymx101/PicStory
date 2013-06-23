@@ -78,11 +78,7 @@ DEF_SINGLETON(GGColor)
 
 -(UIColor *)lightNavy
 {
-    return [UIColor
-            colorWithRed:78.0/255.0
-            green:156.0/255.0
-            blue:206.0/255.0
-            alpha:1.0];//UIColorFromRGB(0x317DD9);
+    return UIColorFromRGB(0x317DD9);
 }
 
 @end
