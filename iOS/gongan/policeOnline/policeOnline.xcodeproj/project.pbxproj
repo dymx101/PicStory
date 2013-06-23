@@ -168,6 +168,8 @@
 		EA970E651776521B0035CBAD /* GGLeftDrawerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA970E631776521B0035CBAD /* GGLeftDrawerVC.xib */; };
 		EA9A9B8C177771BD00B6AE7E /* GGSettingCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B8A177771BD00B6AE7E /* GGSettingCenterVC.m */; };
 		EA9A9B8D177771BD00B6AE7E /* GGSettingCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A9B8B177771BD00B6AE7E /* GGSettingCenterVC.xib */; };
+		EA9A9B9117777B6A00B6AE7E /* GGProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B8F17777B6A00B6AE7E /* GGProfileVC.m */; };
+		EA9A9B9217777B6A00B6AE7E /* GGProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A9B9017777B6A00B6AE7E /* GGProfileVC.xib */; };
 		EAD355F5172E97E3008AFEF8 /* btnReportPolice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */; };
 		EAD35602172E9B7C008AFEF8 /* GGSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */; };
 		EAF676561734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF676551734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m */; };
@@ -478,6 +480,9 @@
 		EA9A9B89177771BD00B6AE7E /* GGSettingCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSettingCenterVC.h; sourceTree = "<group>"; };
 		EA9A9B8A177771BD00B6AE7E /* GGSettingCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSettingCenterVC.m; sourceTree = "<group>"; };
 		EA9A9B8B177771BD00B6AE7E /* GGSettingCenterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGSettingCenterVC.xib; sourceTree = "<group>"; };
+		EA9A9B8E17777B6A00B6AE7E /* GGProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGProfileVC.h; sourceTree = "<group>"; };
+		EA9A9B8F17777B6A00B6AE7E /* GGProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGProfileVC.m; sourceTree = "<group>"; };
+		EA9A9B9017777B6A00B6AE7E /* GGProfileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGProfileVC.xib; sourceTree = "<group>"; };
 		EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnReportPolice@2x.png"; sourceTree = "<group>"; };
 		EAD35600172E9B7C008AFEF8 /* GGSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSearchBar.h; sourceTree = "<group>"; };
 		EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSearchBar.m; sourceTree = "<group>"; };
@@ -670,6 +675,9 @@
 				EA9A9B89177771BD00B6AE7E /* GGSettingCenterVC.h */,
 				EA9A9B8A177771BD00B6AE7E /* GGSettingCenterVC.m */,
 				EA9A9B8B177771BD00B6AE7E /* GGSettingCenterVC.xib */,
+				EA9A9B8E17777B6A00B6AE7E /* GGProfileVC.h */,
+				EA9A9B8F17777B6A00B6AE7E /* GGProfileVC.m */,
+				EA9A9B9017777B6A00B6AE7E /* GGProfileVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1131,6 +1139,7 @@
 				EA9A9B8D177771BD00B6AE7E /* GGSettingCenterVC.xib in Resources */,
 				4C499A731776B050006B4D98 /* icon01_normal.png in Resources */,
 				4C499A741776B050006B4D98 /* icon02_normal.png in Resources */,
+				EA9A9B9217777B6A00B6AE7E /* GGProfileVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1241,6 +1250,7 @@
 				EA970E60177651620035CBAD /* UIViewController+MMDrawerController.m in Sources */,
 				EA970E641776521B0035CBAD /* GGLeftDrawerVC.m in Sources */,
 				EA9A9B8C177771BD00B6AE7E /* GGSettingCenterVC.m in Sources */,
+				EA9A9B9117777B6A00B6AE7E /* GGProfileVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

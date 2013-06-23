@@ -8,6 +8,8 @@
 
 #import "GGSettingCenterVC.h"
 
+#import "GGProfileVC.h"
+
 @interface GGSettingCenterVC ()
 
 @end
@@ -29,10 +31,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning
+-(IBAction)modifyProfile:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    GGProfileVC *vc = [GGProfileVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
