@@ -11,6 +11,9 @@
 #import "GGProfileVC.h"
 
 @interface GGSettingCenterVC ()
+@property (weak, nonatomic) IBOutlet UISwitch *switchLocation;
+@property (weak, nonatomic) IBOutlet UISwitch *switchPhone;
+@property (weak, nonatomic) IBOutlet UISwitch *switchName;
 
 @end
 
@@ -28,7 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    _switchLocation.on = [GGUserDefault reportMyLocation];
+    _switchPhone.on = [GGUserDefault reportMyPhone];
+    _switchName.on = [GGUserDefault reportMyName];
 }
 
 -(IBAction)modifyProfile:(id)sender
@@ -37,4 +43,27 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(IBAction)switchChanged:(id)sender
+{
+    UISwitch *switcher = sender;
+    if (switcher == _switchLocation)
+    {
+        [GGUserDefault saveReportMyLocation:_switchLocation.on];
+    }
+    else if (switcher == _switchPhone)
+    {
+        [GGUserDefault saveReportMyPhone:_switchPhone.on];
+    }
+    else if (switcher == _switchName)
+    {
+        [GGUserDefault saveReportMyName:_switchName.on];
+    }
+}
+
+- (void)viewDidUnload {
+    [self setSwitchLocation:nil];
+    [self setSwitchPhone:nil];
+    [self setSwitchName:nil];
+    [super viewDidUnload];
+}
 @end

@@ -30,6 +30,7 @@
 #import "GGAnimation.h"
 #import "GGImagePool.h"
 #import "GGBaseViewController.h"
+#import "GGUserDefault.h"
 #endif
 
 #define GGSharedDelegate ((GGAppDelegate *)[UIApplication sharedApplication].delegate)

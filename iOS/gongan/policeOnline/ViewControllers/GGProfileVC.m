@@ -30,6 +30,9 @@
 {
     [super viewDidLoad];
     
+    _tfName.text = [GGUserDefault myName];
+    _tfPhone.text = [GGUserDefault myPhone];
+    
     UIBarButtonItem *barBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
     self.navigationItem.rightBarButtonItem = barBtn;
     
@@ -51,6 +54,10 @@
 -(IBAction)save:(id)sender
 {
     DLog(@"save profile");
+    [GGUserDefault saveMyName:self.tfName.text];
+    [GGUserDefault saveMyPhone:self.tfPhone.text];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

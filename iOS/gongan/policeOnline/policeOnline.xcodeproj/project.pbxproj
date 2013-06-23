@@ -170,6 +170,7 @@
 		EA9A9B8D177771BD00B6AE7E /* GGSettingCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A9B8B177771BD00B6AE7E /* GGSettingCenterVC.xib */; };
 		EA9A9B9117777B6A00B6AE7E /* GGProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B8F17777B6A00B6AE7E /* GGProfileVC.m */; };
 		EA9A9B9217777B6A00B6AE7E /* GGProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A9B9017777B6A00B6AE7E /* GGProfileVC.xib */; };
+		EA9A9B951777896D00B6AE7E /* GGUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B941777896D00B6AE7E /* GGUserDefault.m */; };
 		EAD355F5172E97E3008AFEF8 /* btnReportPolice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */; };
 		EAD35602172E9B7C008AFEF8 /* GGSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */; };
 		EAF676561734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF676551734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m */; };
@@ -483,6 +484,8 @@
 		EA9A9B8E17777B6A00B6AE7E /* GGProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGProfileVC.h; sourceTree = "<group>"; };
 		EA9A9B8F17777B6A00B6AE7E /* GGProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGProfileVC.m; sourceTree = "<group>"; };
 		EA9A9B9017777B6A00B6AE7E /* GGProfileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGProfileVC.xib; sourceTree = "<group>"; };
+		EA9A9B931777896D00B6AE7E /* GGUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGUserDefault.h; sourceTree = "<group>"; };
+		EA9A9B941777896D00B6AE7E /* GGUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGUserDefault.m; sourceTree = "<group>"; };
 		EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnReportPolice@2x.png"; sourceTree = "<group>"; };
 		EAD35600172E9B7C008AFEF8 /* GGSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSearchBar.h; sourceTree = "<group>"; };
 		EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSearchBar.m; sourceTree = "<group>"; };
@@ -921,6 +924,8 @@
 				4C1E9F25172F3C6E007FF828 /* GGStrikeThroughLabel.m */,
 				4C4C74AF176E2941007AE397 /* GGGlobalValue.h */,
 				4C4C74B0176E2941007AE397 /* GGGlobalValue.m */,
+				EA9A9B931777896D00B6AE7E /* GGUserDefault.h */,
+				EA9A9B941777896D00B6AE7E /* GGUserDefault.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1251,6 +1256,7 @@
 				EA970E641776521B0035CBAD /* GGLeftDrawerVC.m in Sources */,
 				EA9A9B8C177771BD00B6AE7E /* GGSettingCenterVC.m in Sources */,
 				EA9A9B9117777B6A00B6AE7E /* GGProfileVC.m in Sources */,
+				EA9A9B951777896D00B6AE7E /* GGUserDefault.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
