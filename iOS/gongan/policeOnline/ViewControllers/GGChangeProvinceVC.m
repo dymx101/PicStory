@@ -29,7 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-         self.hidesBottomBarWhenPushed = YES;
+        self.hidesBottomBarWhenPushed = YES;
     }
     return self;
 }
@@ -67,10 +67,10 @@
         [self.provinceArray addObject:[NSArray arrayWithObject:[GGGlobalValue sharedInstance].gpsProvinceName]];
     }
     [self.titleArray addObject:@"热门地区"];
-//    [self.titleArray addObject:@"华东地区"];
-//    [self.titleArray addObject:@"华北地区"];
-//    [self.titleArray addObject:@"华南地区"];
-//    [self.titleArray addObject:@"华中地区"];
+    //    [self.titleArray addObject:@"华东地区"];
+    //    [self.titleArray addObject:@"华北地区"];
+    //    [self.titleArray addObject:@"华南地区"];
+    //    [self.titleArray addObject:@"华中地区"];
     
     //热门地区
     [self.provinceArray addObject:[NSArray arrayWithObjects:
@@ -181,7 +181,12 @@
  */
 - (void)switchToProvince:(NSString *)aProvinceName
 {
-
+    int provinceId = [GGProvince getProvinceIdFromName:aProvinceName].intValue;
+    
+    [GGGlobalValue sharedInstance].provinceName = aProvinceName;
+    [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:provinceId];
+    [self postNotification:GG_NOTIFY_PROVINCE_CHANGED withObject:aProvinceName];
+    [self leftBtnClicked:nil];
 }
 
 - (void)viewDidUnload
@@ -260,11 +265,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSString *selectedProvinceName = [[self.provinceArray safeObjectAtIndex:[indexPath section]] safeObjectAtIndex:[indexPath row]];
-//    if (![selectedProvinceName isEqualToString:[OTSUserDefault savedProvinceName]]) {
-//        [self switchToProvince:selectedProvinceName];
-//    }
+    if (![[GGGlobalValue sharedInstance].provinceName isEqualToString:selectedProvinceName]) {
+        [self switchToProvince:selectedProvinceName];
+    }
+    else
+    {
+        [self leftBtnClicked:nil];
+    }
 }
-
 
 
 @end

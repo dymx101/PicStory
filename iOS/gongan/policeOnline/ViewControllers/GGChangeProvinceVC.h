@@ -8,6 +8,15 @@
 
 #import "GGBaseViewController.h"
 
+@protocol GGChangeProvinceDelegate
+
+@required
+
+-(void)switchToArea:(NSNumber *) index;
+
+@end
+
+
 @interface GGChangeProvinceVC : GGBaseViewController<UITableViewDataSource, UITableViewDelegate>
 
 @end

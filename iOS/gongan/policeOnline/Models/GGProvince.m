@@ -17,7 +17,9 @@
  */
 + (NSArray *)getAllProvinceName
 {
-    NSArray *allProvinceName = [NSArray arrayWithObjects:OTSSTRING(@"上海"), OTSSTRING(@"北京"), OTSSTRING(@"天津"), OTSSTRING(@"河北"), OTSSTRING(@"江苏"), OTSSTRING(@"浙江"), OTSSTRING(@"重庆"), OTSSTRING(@"内蒙古"), OTSSTRING(@"辽宁"), OTSSTRING(@"吉林"), OTSSTRING(@"黑龙江"), OTSSTRING(@"四川"), OTSSTRING(@"安徽"), OTSSTRING(@"福建"), OTSSTRING(@"江西"), OTSSTRING(@"山东"), OTSSTRING(@"河南"), OTSSTRING(@"湖北"), OTSSTRING(@"湖南"), OTSSTRING(@"广东"), OTSSTRING(@"广西"), OTSSTRING(@"海南"), OTSSTRING(@"贵州"), OTSSTRING(@"云南"), OTSSTRING(@"西藏"), OTSSTRING(@"陕西"), OTSSTRING(@"甘肃"), OTSSTRING(@"青海"), OTSSTRING(@"新疆"), OTSSTRING(@"宁夏"), OTSSTRING(@"台湾"), OTSSTRING(@"山西"), nil];
+    
+    NSArray *allProvinceName = [NSArray arrayWithObjects:OTSSTRING(@"武汉"), OTSSTRING(@"老河口"), OTSSTRING(@"襄阳"), OTSSTRING(@"孝感"), OTSSTRING(@"宜昌"), OTSSTRING(@"荆州"), OTSSTRING(@"十堰"), OTSSTRING(@"黄石"), OTSSTRING(@"黄冈"), OTSSTRING(@"马口"), nil];
+     //       0       1       2           3       4       5       6       7       8       9
     
     return allProvinceName;
 }
@@ -31,7 +33,7 @@
 {
     int provinceIdValue = [provinceId intValue];
     NSArray *allProvinceName = [self getAllProvinceName];
-    NSString *provinceName = [allProvinceName safeObjectAtIndex:provinceIdValue-1];
+    NSString *provinceName = [allProvinceName safeObjectAtIndex:provinceIdValue];
     return provinceName;
 }
 
@@ -45,9 +47,9 @@
     NSArray *allProvinceName = [self getAllProvinceName];
     int index = [allProvinceName indexOfObject:provinceName];
     if (index != NSNotFound) {
-        return [NSNumber numberWithInt:index+1];
+        return [NSNumber numberWithInt:index];
     } else {
-        return [NSNumber numberWithInt:1];
+        return [NSNumber numberWithInt:0];
     }
 }
 
