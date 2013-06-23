@@ -164,6 +164,8 @@
 		EA970E60177651620035CBAD /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA970E5C177651620035CBAD /* UIViewController+MMDrawerController.m */; };
 		EA970E641776521B0035CBAD /* GGLeftDrawerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA970E621776521B0035CBAD /* GGLeftDrawerVC.m */; };
 		EA970E651776521B0035CBAD /* GGLeftDrawerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA970E631776521B0035CBAD /* GGLeftDrawerVC.xib */; };
+		EA9A9B8C177771BD00B6AE7E /* GGSettingCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9A9B8A177771BD00B6AE7E /* GGSettingCenterVC.m */; };
+		EA9A9B8D177771BD00B6AE7E /* GGSettingCenterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9A9B8B177771BD00B6AE7E /* GGSettingCenterVC.xib */; };
 		EAD355F5172E97E3008AFEF8 /* btnReportPolice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */; };
 		EAD35602172E9B7C008AFEF8 /* GGSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */; };
 		EAF676561734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF676551734EA5E00CE9F7D /* UIDevice+IdentifierAddition.m */; };
@@ -469,6 +471,9 @@
 		EA970E611776521B0035CBAD /* GGLeftDrawerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLeftDrawerVC.h; sourceTree = "<group>"; };
 		EA970E621776521B0035CBAD /* GGLeftDrawerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGLeftDrawerVC.m; sourceTree = "<group>"; };
 		EA970E631776521B0035CBAD /* GGLeftDrawerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGLeftDrawerVC.xib; sourceTree = "<group>"; };
+		EA9A9B89177771BD00B6AE7E /* GGSettingCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSettingCenterVC.h; sourceTree = "<group>"; };
+		EA9A9B8A177771BD00B6AE7E /* GGSettingCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSettingCenterVC.m; sourceTree = "<group>"; };
+		EA9A9B8B177771BD00B6AE7E /* GGSettingCenterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGSettingCenterVC.xib; sourceTree = "<group>"; };
 		EAD355F4172E97E3008AFEF8 /* btnReportPolice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnReportPolice@2x.png"; sourceTree = "<group>"; };
 		EAD35600172E9B7C008AFEF8 /* GGSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSearchBar.h; sourceTree = "<group>"; };
 		EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSearchBar.m; sourceTree = "<group>"; };
@@ -656,6 +661,9 @@
 				EA970E611776521B0035CBAD /* GGLeftDrawerVC.h */,
 				EA970E621776521B0035CBAD /* GGLeftDrawerVC.m */,
 				EA970E631776521B0035CBAD /* GGLeftDrawerVC.xib */,
+				EA9A9B89177771BD00B6AE7E /* GGSettingCenterVC.h */,
+				EA9A9B8A177771BD00B6AE7E /* GGSettingCenterVC.m */,
+				EA9A9B8B177771BD00B6AE7E /* GGSettingCenterVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1114,6 +1122,7 @@
 				4C499A6F17757DB1006B4D98 /* banmaxian2_sel.png in Resources */,
 				4C499A7017757DB1006B4D98 /* banmaxian2.png in Resources */,
 				EA970E651776521B0035CBAD /* GGLeftDrawerVC.xib in Resources */,
+				EA9A9B8D177771BD00B6AE7E /* GGSettingCenterVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1223,6 +1232,7 @@
 				EA970E5F177651620035CBAD /* MMDrawerVisualState.m in Sources */,
 				EA970E60177651620035CBAD /* UIViewController+MMDrawerController.m in Sources */,
 				EA970E641776521B0035CBAD /* GGLeftDrawerVC.m in Sources */,
+				EA9A9B8C177771BD00B6AE7E /* GGSettingCenterVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,9 @@
 
 #import "GGLeftDrawerVC.h"
 #import "GGAppDelegate.h"
+
 #import "GGClueReportVC.h"
+#import "GGSettingCenterVC.h"
 
 @interface GGLeftDrawerVC ()
 
@@ -41,6 +43,17 @@
     
     GGClueReportVC *vc = [GGClueReportVC new];
     [centerVC pushViewController:vc animated:YES];
+}
+
+-(IBAction)settingCenter:(id)sender
+{
+    [GGSharedDelegate.drawerVC closeDrawerAnimated:YES completion:nil];
+    
+    UINavigationController *centerVC = (UINavigationController *)[GGSharedDelegate.drawerVC centerViewController];
+    
+    GGSettingCenterVC *vc = [GGSettingCenterVC new];
+    [centerVC pushViewController:vc animated:YES];
+    
 }
 
 @end
