@@ -144,7 +144,7 @@
     [self setMenuButton];
     [self setNaviButtonLocationType];
     self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, 56, 44);
-    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 17, 0, 0)];
+    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportPosition) name:@"reportPosition" object:nil];
     if (IS_WIDESCREEN) {

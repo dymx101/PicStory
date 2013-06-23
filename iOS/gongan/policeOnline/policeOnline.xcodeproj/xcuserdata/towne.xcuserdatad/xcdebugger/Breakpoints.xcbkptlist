@@ -169,8 +169,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "211"
          endingLineNumber = "211"
-         landmarkName = "@implementation GGMainVC"
-         landmarkType = "3">
+         landmarkName = "-setNaviButtonLocationType"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -182,7 +182,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "214"
          endingLineNumber = "214"
-         landmarkName = "-setMenuButton"
+         landmarkName = "-setNaviButtonLocationType"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -208,7 +208,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "280"
          endingLineNumber = "280"
-         landmarkName = "-viewDidUnload"
+         landmarkName = "-reportPoliceAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -307,11 +307,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ViewControllers/GGChangeProvinceVC.m"
-         timestampString = "393100868.931078"
+         timestampString = "393656044.020139"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "204"
-         endingLineNumber = "204"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
          landmarkName = "-tableView:viewForHeaderInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -325,8 +325,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "304"
          endingLineNumber = "304"
-         landmarkName = "-reportPoliceAction:"
-         landmarkType = "5">
+         landmarkName = "@implementation GGMainVC"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

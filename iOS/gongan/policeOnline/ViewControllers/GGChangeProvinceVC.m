@@ -63,22 +63,26 @@
     self.provinceArray = [NSMutableArray array];
     
     if ([GGGlobalValue sharedInstance].gpsProvinceName != nil) {
-        [self.titleArray addObject:@"定位省份"];
+        [self.titleArray addObject:@"定位地区"];
         [self.provinceArray addObject:[NSArray arrayWithObject:[GGGlobalValue sharedInstance].gpsProvinceName]];
     }
-    [self.titleArray addObject:@"热门省份"];
-    [self.titleArray addObject:@"华东地区"];
-    [self.titleArray addObject:@"华北地区"];
-    [self.titleArray addObject:@"华南地区"];
-    [self.titleArray addObject:@"华中地区"];
+    [self.titleArray addObject:@"热门地区"];
+//    [self.titleArray addObject:@"华东地区"];
+//    [self.titleArray addObject:@"华北地区"];
+//    [self.titleArray addObject:@"华南地区"];
+//    [self.titleArray addObject:@"华中地区"];
     
-    //热门省份
+    //热门地区
     [self.provinceArray addObject:[NSArray arrayWithObjects:
-                                   @"上海"
-                                   , @"北京"
-                                   , @"广东"
-                                   , @"江苏"
-                                   , @"浙江"
+                                   @"武汉"
+                                   , @"老河口"
+                                   , @"襄阳"
+                                   , @"孝感"
+                                   , @"宜昌"
+                                   , @"荆州"
+                                   , @"十堰"
+                                   , @"黄石"
+                                   , @"马口"
                                    , nil]];
     
     //华东地区
@@ -160,7 +164,7 @@
     UILabel *topLbl = [[UILabel alloc] initWithFrame:CGRectMake(44, 7, 266, 40)];
     topLbl.backgroundColor = [UIColor clearColor];
     topLbl.numberOfLines = 2;
-    topLbl.text = @"因各省份公安数据不同，请根据您的地区选择相应的省份";
+    topLbl.text = @"因各地区公安数据不同，请根据您的所在地选择相应的地区";
     topLbl.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
     topLbl.font = [UIFont systemFontOfSize:14.0];
     [topView addSubview:topLbl];
