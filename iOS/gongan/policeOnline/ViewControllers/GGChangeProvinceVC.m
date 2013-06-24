@@ -145,7 +145,7 @@
     self.navigationItem.leftBarButtonItem = btnItem;
     [button addTarget:self action:@selector(leftBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.navigationItem.title = [NSString stringWithFormat:@"定位省份-%@", [GGGlobalValue sharedInstance].provinceName];
+    self.navigationItem.title = [NSString stringWithFormat:@"当前地区-%@", [GGGlobalValue sharedInstance].provinceName];
 }
 
 /**
