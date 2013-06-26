@@ -40,9 +40,8 @@
     NSString * pcName;
     NSString * pcPhone;
     
-    //定位城市
-    NSString * cityStr;
-    NSString * cityName;
+    //定位信息
+    NSDictionary * area_dic;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *ivBg;
 @property (weak, nonatomic) IBOutlet UIButton *btnReportPolice;    
@@ -415,14 +414,19 @@
 #pragma mark - map
 - (void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
+    // if the location is older than 30s ignore
+    if (fabs([userLocation.location.timestamp timeIntervalSinceDate:[NSDate date]]) > 30.0)
+    {
+        return;
+    }
     self.userLocation = userLocation;
-    CLGeocoder *Geocoder=[[CLGeocoder alloc]init];//CLGeocoder用法参加之前博客
+    CLGeocoder *Geocoder=[[CLGeocoder alloc]init];
     CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
         for (CLPlacemark *placemark in place) {
-            cityStr=placemark.thoroughfare;
-            cityName=placemark.locality;
-            NSLog(@"city %@",cityStr);//获取街道地址
-            NSLog(@"cityName %@",cityName);//获取城市名
+            area_dic = [placemark addressDictionary];
+            NSString * city = [area_dic objectForKey:@"City"]; //市
+            NSString * locality = [area_dic objectForKey:@"SubLocality"];//地区
+            DLog(@"area_dic %@ %@",city,locality);
             break;
         }
     };
