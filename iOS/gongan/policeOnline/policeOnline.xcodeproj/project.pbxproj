@@ -43,6 +43,9 @@
 		4C9313D1173B6E8C007352CB /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC7F55C173A97C60060FA2A /* libbaidumapapi.a */; };
 		4C9313D5173BE2A7007352CB /* btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9313D4173BE2A7007352CB /* btn@2x.png */; };
 		4C9815E51734D69200B9790A /* cellbg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9815E41734D69200B9790A /* cellbg2@2x.png */; };
+		4C9DC0A6177B1711000C1FC9 /* RadioButton-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DC0A4177B1711000C1FC9 /* RadioButton-Selected.png */; };
+		4C9DC0A7177B1711000C1FC9 /* RadioButton-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DC0A5177B1711000C1FC9 /* RadioButton-Unselected.png */; };
+		4C9DC0AD177B1837000C1FC9 /* GGRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DC0AC177B1837000C1FC9 /* GGRadioButton.m */; };
 		4CE44DFE172FB8A400BA6097 /* GGWantedCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE44DFD172FB8A400BA6097 /* GGWantedCategoryCell.m */; };
 		4CE44E02172FB8D300BA6097 /* GGWantedDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE44E00172FB8D300BA6097 /* GGWantedDetailVC.m */; };
 		4CE44E03172FB8D300BA6097 /* GGWantedDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE44E01172FB8D300BA6097 /* GGWantedDetailVC.xib */; };
@@ -232,6 +235,10 @@
 		4C9313CF173B6E67007352CB /* mt.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mt.mm; sourceTree = "<group>"; };
 		4C9313D4173BE2A7007352CB /* btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn@2x.png"; sourceTree = "<group>"; };
 		4C9815E41734D69200B9790A /* cellbg2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellbg2@2x.png"; sourceTree = "<group>"; };
+		4C9DC0A4177B1711000C1FC9 /* RadioButton-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Selected.png"; sourceTree = "<group>"; };
+		4C9DC0A5177B1711000C1FC9 /* RadioButton-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Unselected.png"; sourceTree = "<group>"; };
+		4C9DC0AB177B1837000C1FC9 /* GGRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRadioButton.h; sourceTree = "<group>"; };
+		4C9DC0AC177B1837000C1FC9 /* GGRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRadioButton.m; sourceTree = "<group>"; };
 		4CC7F53F173A97910060FA2A /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		4CC7F540173A97910060FA2A /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
 		4CC7F541173A97910060FA2A /* BMKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotationView.h; sourceTree = "<group>"; };
@@ -522,6 +529,8 @@
 		4C4C74B3176E2B12007AE397 /* 1X */ = {
 			isa = PBXGroup;
 			children = (
+				4C9DC0A4177B1711000C1FC9 /* RadioButton-Selected.png */,
+				4C9DC0A5177B1711000C1FC9 /* RadioButton-Unselected.png */,
 				4C499A711776B050006B4D98 /* icon01_normal.png */,
 				4C499A721776B050006B4D98 /* icon02_normal.png */,
 				4C499A6D17757DB1006B4D98 /* banmaxian2_sel.png */,
@@ -1036,6 +1045,8 @@
 			children = (
 				EAD35600172E9B7C008AFEF8 /* GGSearchBar.h */,
 				EAD35601172E9B7C008AFEF8 /* GGSearchBar.m */,
+				4C9DC0AB177B1837000C1FC9 /* GGRadioButton.h */,
+				4C9DC0AC177B1837000C1FC9 /* GGRadioButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1145,6 +1156,8 @@
 				4C499A731776B050006B4D98 /* icon01_normal.png in Resources */,
 				4C499A741776B050006B4D98 /* icon02_normal.png in Resources */,
 				EA9A9B9217777B6A00B6AE7E /* GGProfileVC.xib in Resources */,
+				4C9DC0A6177B1711000C1FC9 /* RadioButton-Selected.png in Resources */,
+				4C9DC0A7177B1711000C1FC9 /* RadioButton-Unselected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1257,6 +1270,7 @@
 				EA9A9B8C177771BD00B6AE7E /* GGSettingCenterVC.m in Sources */,
 				EA9A9B9117777B6A00B6AE7E /* GGProfileVC.m in Sources */,
 				EA9A9B951777896D00B6AE7E /* GGUserDefault.m in Sources */,
+				4C9DC0AD177B1837000C1FC9 /* GGRadioButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,10 @@
 #import "GGBaseViewController.h"
 #import "GGPoliceman.h"
 #import "GGUtils.h"
+#import "GGRadioButton.h"
 
-@interface GGPoliceDetailViewController : GGBaseViewController
+@interface GGPoliceDetailViewController : GGBaseViewController<RadioButtonDelegate>
+
 @property (copy) NSString *naviTitleString;
 @property (strong,nonatomic)GGPoliceman * policeman;
 @property (nonatomic)BOOL keep;   // 收藏 1 or 取消收藏 0
