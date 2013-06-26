@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3AB05BEE174CBD3300F2B95D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB05BED174CBD3300F2B95D /* UIKit.framework */; };
+		3AB05BF0174CBD3300F2B95D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB05BEF174CBD3300F2B95D /* Foundation.framework */; };
+		3AB05BF2174CBD3300F2B95D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB05BF1174CBD3300F2B95D /* CoreGraphics.framework */; };
+		3AB05BF8174CBD3300F2B95D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3AB05BF6174CBD3300F2B95D /* InfoPlist.strings */; };
+		3AB05BFA174CBD3300F2B95D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB05BF9174CBD3300F2B95D /* main.m */; };
+		3AB05BFE174CBD3300F2B95D /* ZYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB05BFD174CBD3300F2B95D /* ZYAppDelegate.m */; };
+		3AB05C00174CBD3300F2B95D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB05BFF174CBD3300F2B95D /* Default.png */; };
+		3AB05C02174CBD3300F2B95D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB05C01174CBD3300F2B95D /* Default@2x.png */; };
+		3AB05C04174CBD3300F2B95D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB05C03174CBD3300F2B95D /* Default-568h@2x.png */; };
+		3AB05C07174CBD3300F2B95D /* ZYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB05C06174CBD3300F2B95D /* ZYViewController.m */; };
+		3AB05C0A174CBD3300F2B95D /* ZYViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB05C08174CBD3300F2B95D /* ZYViewController.xib */; };
+		3AB05C12174CBD4F00F2B95D /* RadioButton-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB05C10174CBD4F00F2B95D /* RadioButton-Selected.png */; };
+		3AB05C13174CBD4F00F2B95D /* RadioButton-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AB05C11174CBD4F00F2B95D /* RadioButton-Unselected.png */; };
+		3AB05C16174CBD8200F2B95D /* ZYRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB05C15174CBD8200F2B95D /* ZYRadioButton.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3AB05BEA174CBD3300F2B95D /* RadioButtonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioButtonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AB05BED174CBD3300F2B95D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3AB05BEF174CBD3300F2B95D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3AB05BF1174CBD3300F2B95D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3AB05BF5174CBD3300F2B95D /* RadioButtonDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RadioButtonDemo-Info.plist"; sourceTree = "<group>"; };
+		3AB05BF7174CBD3300F2B95D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3AB05BF9174CBD3300F2B95D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3AB05BFB174CBD3300F2B95D /* RadioButtonDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RadioButtonDemo-Prefix.pch"; sourceTree = "<group>"; };
+		3AB05BFC174CBD3300F2B95D /* ZYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYAppDelegate.h; sourceTree = "<group>"; };
+		3AB05BFD174CBD3300F2B95D /* ZYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYAppDelegate.m; sourceTree = "<group>"; };
+		3AB05BFF174CBD3300F2B95D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3AB05C01174CBD3300F2B95D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		3AB05C03174CBD3300F2B95D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3AB05C05174CBD3300F2B95D /* ZYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYViewController.h; sourceTree = "<group>"; };
+		3AB05C06174CBD3300F2B95D /* ZYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYViewController.m; sourceTree = "<group>"; };
+		3AB05C09174CBD3300F2B95D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ZYViewController.xib; sourceTree = "<group>"; };
+		3AB05C10174CBD4F00F2B95D /* RadioButton-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Selected.png"; sourceTree = "<group>"; };
+		3AB05C11174CBD4F00F2B95D /* RadioButton-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Unselected.png"; sourceTree = "<group>"; };
+		3AB05C14174CBD8200F2B95D /* ZYRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYRadioButton.h; sourceTree = "<group>"; };
+		3AB05C15174CBD8200F2B95D /* ZYRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYRadioButton.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3AB05BE7174CBD3300F2B95D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB05BEE174CBD3300F2B95D /* UIKit.framework in Frameworks */,
+				3AB05BF0174CBD3300F2B95D /* Foundation.framework in Frameworks */,
+				3AB05BF2174CBD3300F2B95D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3AB05BE1174CBD3300F2B95D = {
+			isa = PBXGroup;
+			children = (
+				3AB05BF3174CBD3300F2B95D /* RadioButtonDemo */,
+				3AB05BEC174CBD3300F2B95D /* Frameworks */,
+				3AB05BEB174CBD3300F2B95D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3AB05BEB174CBD3300F2B95D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AB05BEA174CBD3300F2B95D /* RadioButtonDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3AB05BEC174CBD3300F2B95D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3AB05BED174CBD3300F2B95D /* UIKit.framework */,
+				3AB05BEF174CBD3300F2B95D /* Foundation.framework */,
+				3AB05BF1174CBD3300F2B95D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3AB05BF3174CBD3300F2B95D /* RadioButtonDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3AB05C10174CBD4F00F2B95D /* RadioButton-Selected.png */,
+				3AB05C11174CBD4F00F2B95D /* RadioButton-Unselected.png */,
+				3AB05BFC174CBD3300F2B95D /* ZYAppDelegate.h */,
+				3AB05BFD174CBD3300F2B95D /* ZYAppDelegate.m */,
+				3AB05C05174CBD3300F2B95D /* ZYViewController.h */,
+				3AB05C06174CBD3300F2B95D /* ZYViewController.m */,
+				3AB05C08174CBD3300F2B95D /* ZYViewController.xib */,
+				3AB05BF4174CBD3300F2B95D /* Supporting Files */,
+				3AB05C14174CBD8200F2B95D /* ZYRadioButton.h */,
+				3AB05C15174CBD8200F2B95D /* ZYRadioButton.m */,
+			);
+			path = RadioButtonDemo;
+			sourceTree = "<group>";
+		};
+		3AB05BF4174CBD3300F2B95D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3AB05BF5174CBD3300F2B95D /* RadioButtonDemo-Info.plist */,
+				3AB05BF6174CBD3300F2B95D /* InfoPlist.strings */,
+				3AB05BF9174CBD3300F2B95D /* main.m */,
+				3AB05BFB174CBD3300F2B95D /* RadioButtonDemo-Prefix.pch */,
+				3AB05BFF174CBD3300F2B95D /* Default.png */,
+				3AB05C01174CBD3300F2B95D /* Default@2x.png */,
+				3AB05C03174CBD3300F2B95D /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3AB05BE9174CBD3300F2B95D /* RadioButtonDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AB05C0D174CBD3300F2B95D /* Build configuration list for PBXNativeTarget "RadioButtonDemo" */;
+			buildPhases = (
+				3AB05BE6174CBD3300F2B95D /* Sources */,
+				3AB05BE7174CBD3300F2B95D /* Frameworks */,
+				3AB05BE8174CBD3300F2B95D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadioButtonDemo;
+			productName = RadioButtonDemo;
+			productReference = 3AB05BEA174CBD3300F2B95D /* RadioButtonDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3AB05BE2174CBD3300F2B95D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ZY;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = zhangyuc;
+			};
+			buildConfigurationList = 3AB05BE5174CBD3300F2B95D /* Build configuration list for PBXProject "RadioButtonDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3AB05BE1174CBD3300F2B95D;
+			productRefGroup = 3AB05BEB174CBD3300F2B95D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3AB05BE9174CBD3300F2B95D /* RadioButtonDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3AB05BE8174CBD3300F2B95D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB05BF8174CBD3300F2B95D /* InfoPlist.strings in Resources */,
+				3AB05C00174CBD3300F2B95D /* Default.png in Resources */,
+				3AB05C02174CBD3300F2B95D /* Default@2x.png in Resources */,
+				3AB05C04174CBD3300F2B95D /* Default-568h@2x.png in Resources */,
+				3AB05C0A174CBD3300F2B95D /* ZYViewController.xib in Resources */,
+				3AB05C12174CBD4F00F2B95D /* RadioButton-Selected.png in Resources */,
+				3AB05C13174CBD4F00F2B95D /* RadioButton-Unselected.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3AB05BE6174CBD3300F2B95D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB05BFA174CBD3300F2B95D /* main.m in Sources */,
+				3AB05BFE174CBD3300F2B95D /* ZYAppDelegate.m in Sources */,
+				3AB05C07174CBD3300F2B95D /* ZYViewController.m in Sources */,
+				3AB05C16174CBD8200F2B95D /* ZYRadioButton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3AB05BF6174CBD3300F2B95D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AB05BF7174CBD3300F2B95D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3AB05C08174CBD3300F2B95D /* ZYViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AB05C09174CBD3300F2B95D /* en */,
+			);
+			name = ZYViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3AB05C0B174CBD3300F2B95D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3AB05C0C174CBD3300F2B95D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3AB05C0E174CBD3300F2B95D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RadioButtonDemo/RadioButtonDemo-Prefix.pch";
+				INFOPLIST_FILE = "RadioButtonDemo/RadioButtonDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3AB05C0F174CBD3300F2B95D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RadioButtonDemo/RadioButtonDemo-Prefix.pch";
+				INFOPLIST_FILE = "RadioButtonDemo/RadioButtonDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3AB05BE5174CBD3300F2B95D /* Build configuration list for PBXProject "RadioButtonDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AB05C0B174CBD3300F2B95D /* Debug */,
+				3AB05C0C174CBD3300F2B95D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AB05C0D174CBD3300F2B95D /* Build configuration list for PBXNativeTarget "RadioButtonDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AB05C0E174CBD3300F2B95D /* Debug */,
+				3AB05C0F174CBD3300F2B95D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3AB05BE2174CBD3300F2B95D /* Project object */;
+}
