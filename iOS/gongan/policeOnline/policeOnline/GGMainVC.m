@@ -100,9 +100,8 @@
         [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:0];
         [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"武汉");
         
-        _locations = [NSArray arrayWithObjects:@"武汉", @"老河口", @"襄阳", @"孝感", @"宜昌", @"荆州", @"十堰", @"黄石", @"黄冈", @"马口", nil];
-                                         //       0       1       2           3       4       5       6       7       8       9
-        
+        _locations = @[@"武汉", @"老河口", @"襄阳", @"孝感", @"宜昌", @"荆州", @"十堰", @"黄石", @"黄冈", @"马口"];
+           //       0       1       2           3       4       5       6       7       8       9
         
         //每个position 对应的九宫格数据为  0 ： 1,2,3
         //1 ： 1,2,3,4
@@ -196,6 +195,9 @@
     }
 }
 
+/**
+ * 功能:左键设菜单
+ */
 -(void)setMenuButton
 {
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
@@ -203,7 +205,7 @@
 }
 
 /**
- * 功能:左键定位省份的设置
+ * 功能:右键定位省份的设置
  */
 -(void)setNaviButtonLocationType
 {
