@@ -199,8 +199,9 @@
  */
 -(void)setMenuButton
 {
-    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    //MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    UIBarButtonItem *leftDrawerButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setRightBarButtonItem:leftDrawerButton animated:YES];
 }
 
 /**
@@ -211,10 +212,10 @@
     
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
     UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = btnItem;
+    self.navigationItem.leftBarButtonItem = btnItem;
     [button addTarget:self action:@selector(leftBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    _theButton = (UIButton *)self.navigationItem.rightBarButtonItem.customView;
+    _theButton = (UIButton *)btnItem.customView;
     
     UIImage *normalImage;
     UIImage *highlightImage;
@@ -464,7 +465,7 @@
 
 #pragma mark - Button Handlers
 -(void)leftDrawerButtonPress:(id)sender{
-    [GGSharedDelegate.drawerVC toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    [GGSharedDelegate.drawerVC toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 @end

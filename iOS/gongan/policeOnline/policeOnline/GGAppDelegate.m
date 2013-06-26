@@ -42,9 +42,10 @@ BMKMapManager* _mapManager;
     
     UIViewController *leftDrawerVC = [[GGLeftDrawerVC alloc] init];
     
-    _drawerVC = [[MMDrawerController alloc] initWithCenterViewController:_nc leftDrawerViewController:leftDrawerVC];
+    _drawerVC = [[MMDrawerController alloc] initWithCenterViewController:_nc rightDrawerViewController:leftDrawerVC];
     
-    [_drawerVC setMaximumLeftDrawerWidth:200];
+    [_drawerVC setMaximumLeftDrawerWidth:100];
+    [_drawerVC setMaximumRightDrawerWidth:200];
     [_drawerVC setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [_drawerVC setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     

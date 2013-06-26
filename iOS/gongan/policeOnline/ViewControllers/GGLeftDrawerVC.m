@@ -47,12 +47,16 @@
 
 -(IBAction)settingCenter:(id)sender
 {
-    [GGSharedDelegate.drawerVC closeDrawerAnimated:YES completion:nil];
+    [GGSharedDelegate.drawerVC closeDrawerAnimated:YES completion:^(BOOL completed){
+        
+        UINavigationController *centerVC = (UINavigationController *)[GGSharedDelegate.drawerVC centerViewController];
+        
+        GGSettingCenterVC *vc = [GGSettingCenterVC new];
+        [centerVC pushViewController:vc animated:YES];
+        
+    }];
     
-    UINavigationController *centerVC = (UINavigationController *)[GGSharedDelegate.drawerVC centerViewController];
     
-    GGSettingCenterVC *vc = [GGSettingCenterVC new];
-    [centerVC pushViewController:vc animated:YES];
     
 }
 
