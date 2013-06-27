@@ -34,7 +34,15 @@ DEF_SINGLETON(GGAPITest)
 -(void)run
 {
 //    [self _testGetWantedRootCategory];
-    [self testInsertWanted];
+//    [self testInsertWanted];
+    [self _testchooseAreaIos];
+}
+
+-(void)_testchooseAreaIos
+{
+   [GGSharedAPI chooseAreas:^(id operation, id aResultObject, NSError *anError) {
+       GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+   }];
 }
 
 -(void)_testReportPoliceWithAreaID

@@ -14,7 +14,7 @@
 
 +(NSString *)apiBaseUrl
 {
-    return [NSString stringWithFormat:@"%@/", GGN_STR_PRODUCTION_SERVER_URL];
+    return [NSString stringWithFormat:@"%@/", GGN_STR_TEST_SERVER_URL];
 }
 
 + (GGApi *)sharedApi
@@ -274,4 +274,16 @@
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
+
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile- chooseAreaIos.rht
+//返回参数：(json格式)
+//地区信息
+-(void)chooseAreas:(GGApiBlock)aCallback
+{
+    NSString *path = @"mobile-chooseAreaIos.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
 @end

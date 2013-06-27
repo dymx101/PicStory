@@ -54,6 +54,10 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 #define PHONE_PLATFORM @"iOS"
 -(void)reportDeviceCode:(NSString *)aDeviceCode
                callback:(GGApiBlock)aCallback;
+//v2 的接口
+
+//返回程序支持的区域
+-(void)chooseAreas:(GGApiBlock)aCallback;
 
 @end
 
