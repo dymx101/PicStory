@@ -37,6 +37,7 @@
 		4C4C74CA176E3D60007AE397 /* province_title_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4C74C9176E3D60007AE397 /* province_title_bg.png */; };
 		4C4C74CD176E3E28007AE397 /* title_left_btn_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4C74CB176E3E28007AE397 /* title_left_btn_sel.png */; };
 		4C4C74CE176E3E28007AE397 /* title_left_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4C74CC176E3E28007AE397 /* title_left_btn.png */; };
+		4C7E0686177C860400493DC7 /* GGLocateArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E0685177C860400493DC7 /* GGLocateArea.m */; };
 		4C84CD161748D12300B9F661 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C84CD151748D12200B9F661 /* Settings.bundle */; };
 		4C84CD1F1749206600B9F661 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C84CD1D1749206600B9F661 /* GTMBase64.m */; };
 		4C9313D0173B6E67007352CB /* mt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4C9313CF173B6E67007352CB /* mt.mm */; };
@@ -228,6 +229,8 @@
 		4C4C74C9176E3D60007AE397 /* province_title_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = province_title_bg.png; sourceTree = "<group>"; };
 		4C4C74CB176E3E28007AE397 /* title_left_btn_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_left_btn_sel.png; sourceTree = "<group>"; };
 		4C4C74CC176E3E28007AE397 /* title_left_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_left_btn.png; sourceTree = "<group>"; };
+		4C7E0684177C860400493DC7 /* GGLocateArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLocateArea.h; sourceTree = "<group>"; };
+		4C7E0685177C860400493DC7 /* GGLocateArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGLocateArea.m; sourceTree = "<group>"; };
 		4C84CD151748D12200B9F661 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		4C84CD1C1749206600B9F661 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		4C84CD1D1749206600B9F661 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
@@ -992,6 +995,8 @@
 				EA495A20172E5F8F009117EF /* GGVersionInfo.m */,
 				4C4C74B8176E2F07007AE397 /* GGProvince.h */,
 				4C4C74B9176E2F07007AE397 /* GGProvince.m */,
+				4C7E0684177C860400493DC7 /* GGLocateArea.h */,
+				4C7E0685177C860400493DC7 /* GGLocateArea.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1271,6 +1276,7 @@
 				EA9A9B9117777B6A00B6AE7E /* GGProfileVC.m in Sources */,
 				EA9A9B951777896D00B6AE7E /* GGUserDefault.m in Sources */,
 				4C9DC0AD177B1837000C1FC9 /* GGRadioButton.m in Sources */,
+				4C7E0686177C860400493DC7 /* GGLocateArea.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

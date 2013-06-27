@@ -33,7 +33,7 @@ BMKMapManager* _mapManager;
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     
-#if 0       // for test
+#if 1       // for test
     self.viewController = [[GGTestVC alloc] initWithNibName:@"GGTestVC" bundle:nil];
 #else       // for real
     self.viewController = [[GGMainVC alloc] initWithNibName:@"GGMainVC" bundle:nil];

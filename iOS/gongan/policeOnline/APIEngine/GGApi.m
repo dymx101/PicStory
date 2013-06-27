@@ -8,6 +8,7 @@
 
 #import "GGApi.h"
 #import "NSString+MD5Addition.h"
+#import "UIDevice+IdentifierAddition.h"
 
 
 @implementation GGApi
@@ -143,6 +144,24 @@
     [self _execPostWithPath:path params:parameters callback:aCallback];
 }
 
+//找警察搜索
+//接口地址：http://rhtsoft.gnway.et:8888/mobile/mobile-searchAreaInfo.rht
+//参数：searchKey 查找关键字
+//参数：unitId     区域id
+//返回参数：(json格式)
+//typeId：0表示为地区列表信息，3表示没有查询到信息
+//地区列表信息：地区id，地区名称
+-(void)searchAreaByKeyword:(NSString *)aKeyword AreaID:(long)anAreaID callback:(GGApiBlock)aCallback
+{
+    NSString *path = @"mobile-searchAreaInfo.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:aKeyword forKey:@"searchKey"];
+    [parameters setObject:__LONGLONG(anAreaID) forKey:@"unitId"];
+    
+    [self _execPostWithPath:path params:parameters callback:aCallback];
+}
+
 
 //接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile-clueInfo.rht
 //参数：contentType：通缉令栏目文章列表 值为2
@@ -161,6 +180,17 @@
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
+-(void)getWantedRootCategoryWithAreaID:(long)anAreaID callback:(GGApiBlock)aCallback
+{
+    NSString *path = @"mobile-clueInfo.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:__LONGLONG(2) forKey:@"contentType"];
+    [parameters setObject:__LONGLONG(anAreaID) forKey:@"unitId"];
+    
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
 -(void)getWantedSubCategoryWithID:(long long)aColumnID callback:(GGApiBlock)aCallback
 {
     NSString *path = @"mobile-clueInfo.rht";
@@ -170,6 +200,66 @@
     
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
+
+-(void)getWantedSubCategoryWithID:(long long)aColumnID AreaID:(long)anAreaID callback:(GGApiBlock)aCallback
+{
+    NSString *path = @"mobile-clueInfo.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:__LONGLONG(aColumnID) forKey:@"columnId"];
+    [parameters setObject:__LONGLONG(anAreaID) forKey:@"unitId"];
+    
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile-clueInfo.rht
+//参数：contentType：线索征集栏目文章列表 值为403
+//contentId：文章id  根据具体列表传其中一个值
+//返回参数：（json格式）
+//typeId: 0表示为栏目列表  1标示为文章列表
+//栏目列表：栏目列表id: columnId  栏目列表名称：name
+//文章列表：文章列表id: contentId  文章列表名称：title
+-(void)getCluesRootCategory:(GGApiBlock)aCallback;
+{
+    NSString *path = @"mobile-clueInfo.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:__LONGLONG(403) forKey:@"contentType"];
+    
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
+-(void)getCluesSubCategoryWithColumnID:(long long)aColumnID callback:(GGApiBlock)aCallback
+{
+    NSString *path = @"mobile-clueInfo.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:__LONGLONG(aColumnID) forKey:@"columnId"];
+    
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
+-(void)getCluesSubCategoryWithContentID:(long long)aContentID callback:(GGApiBlock)aCallback
+{
+    NSString *path = @"mobile-clueInfo.rht";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:__LONGLONG(aContentID) forKey:@"contentId"];
+    
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/fileUpload
+//参数：
+//contentId: 线索文章id
+//clContext: 线索内容
+//clPhoneId：手机编号
+//clPhone：手机号码
+//约定：图片拍摄时间为文件名
+//参数请按照顺序传入。
+//无返回参数。
+//-(void)CluesFileUpload
+
 
 //接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile-versionCompare.rht
 //参数：cltVerion  客户端版本
@@ -278,12 +368,34 @@
 //接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile- chooseAreaIos.rht
 //返回参数：(json格式)
 //地区信息
--(void)chooseAreas:(GGApiBlock)aCallback
+-(void)getLocateAreas:(GGApiBlock)aCallback
 {
     NSString *path = @"mobile-chooseAreaIos.rht";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile-addPoliceEvaluate.rht
+//参数：policeId  警员Id
+//phoneId   机器编码
+//evaluate  评价 1 满意 2基本满意 3不满意
+//unitId    区域id
+//返回值：flag: 0 评价失败
+//1 评价成功
+-(void)addPoliceEvaluateWithPolice:(long long)plId
+                             phone:(NSString *)phoneId
+                          evaluate:(int)evaluate
+                            unitId:(long)unitId
+                          callback:(GGApiBlock)aCallback
+{
+    NSString *path = @"mobile-addPoliceEvaluate.rht";
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:__LONGLONG(plId) forKey:@"policeId"];
+    [parameters setObject:[UIDevice macaddress] forKey:@"phoneId"];
+    [parameters setObject:__INT(evaluate) forKey:@"evaluate"];
+    [parameters setObject:__LONGLONG(unitId) forKey:@"unitId"];
+    [self _execPostWithPath:path params:parameters callback:aCallback];
 }
 @end

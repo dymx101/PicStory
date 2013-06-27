@@ -29,5 +29,6 @@
 -(NSMutableArray *)parseGetAreas;
 -(NSMutableArray *)parseGetPoliceman;
 -(NSMutableArray *)parseGetWantedRootCategory;
+-(NSMutableArray *)parseGetLocateArea;
 -(GGVersionInfo *)parseGetVersionInfo;
 @end

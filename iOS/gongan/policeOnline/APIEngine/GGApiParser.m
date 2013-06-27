@@ -13,6 +13,7 @@
 #import "SBJsonParser.h"
 #import "GGVersionInfo.h"
 #import "GGWanted.h"
+#import "GGLocateArea.h"
 
 #define GG_ASSERT_API_DATA_IS_DIC   NSAssert([_apiData isKindOfClass:[NSDictionary class]], @"Api Data should be a NSDictionary");
 
@@ -134,6 +135,11 @@
 -(NSMutableArray *)parseGetPoliceman
 {
     return [self _parseArrForClass:[GGPoliceman class]];
+}
+
+-(NSMutableArray *)parseGetLocateArea
+{
+    return [self _parseArrForClass:[GGLocateArea class]];
 }
 
 -(GGVersionInfo *)parseGetVersionInfo

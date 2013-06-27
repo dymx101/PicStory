@@ -15,6 +15,7 @@
 #import "GGVersionInfo.h"
 #import "GGWanted.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "GGLocateArea.h"
 
 @implementation GGAPITest
 {
@@ -36,12 +37,26 @@ DEF_SINGLETON(GGAPITest)
 //    [self _testGetWantedRootCategory];
 //    [self testInsertWanted];
     [self _testchooseAreaIos];
+//    [self _testgetCluesRootCategory];
 }
+
+-(void)_testgetCluesRootCategory
+{
+//   [GGSharedAPI getCluesRootCategory:^(id operation, id aResultObject, NSError *anError) {
+//       GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+//   }];
+    [GGSharedAPI getCluesSubCategoryWithContentID:231L callback:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+    }];
+}
+
 
 -(void)_testchooseAreaIos
 {
-   [GGSharedAPI chooseAreas:^(id operation, id aResultObject, NSError *anError) {
+   [GGSharedAPI getLocateAreas:^(id operation, id aResultObject, NSError *anError) {
        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+       NSMutableArray *arr = [parser parseGetLocateArea];
+       
    }];
 }
 

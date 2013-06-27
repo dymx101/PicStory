@@ -25,8 +25,11 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(void)getAreas:(GGApiBlock)aCallback;
 -(void)getPolicemanByAreaID:(long long)anAreaID callback:(GGApiBlock)aCallback;
 -(void)searchAreaByKeyword:(NSString *)aKeyword callback:(GGApiBlock)aCallback;
+-(void)searchAreaByKeyword:(NSString *)aKeyword AreaID:(long)anAreaID callback:(GGApiBlock)aCallback;
 -(void)getWantedRootCategory:(GGApiBlock)aCallback;
+-(void)getWantedRootCategoryWithAreaID:(long)anAreaID callback:(GGApiBlock)aCallback;
 -(void)getWantedSubCategoryWithID:(long long)aColumnID callback:(GGApiBlock)aCallback;
+-(void)getWantedSubCategoryWithID:(long long)aColumnID AreaID:(long)anAreaID callback:(GGApiBlock)aCallback;
 -(void)checkUpdateWithCurrentVersion:(NSString *)aCurrentVersion  callback:(GGApiBlock)aCallback;
 
 #define REPORT_AREA_ID  2
@@ -57,7 +60,22 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 //v2 的接口
 
 //返回程序支持的区域
--(void)chooseAreas:(GGApiBlock)aCallback;
+-(void)getLocateAreas:(GGApiBlock)aCallback;
+
+//警员评价
+-(void)addPoliceEvaluateWithPolice:(long long)plId
+                             phone:(NSString *)phoneId
+                          evaluate:(int)evaluate
+                            unitId:(long)unitId
+                          callback:(GGApiBlock)aCallback;
+
+//线索征集
+-(void)getCluesRootCategory:(GGApiBlock)aCallback;
+-(void)getCluesSubCategoryWithID:(long long)aColumnID callback:(GGApiBlock)aCallback;
+-(void)getCluesSubCategoryWithContentID:(long long)aContentID callback:(GGApiBlock)aCallback;
+
+//线索图片上传
+//-(void)CluesFileUpload
 
 @end
 
