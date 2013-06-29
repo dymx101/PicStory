@@ -84,6 +84,14 @@ AS_SINGLETON(GGAPIService)
 -(void)getWantedRootCategory:(void(^)(NSMutableArray * arr))aCompletion;
 
 /**
+ * <h2>获取root悬赏信息</h2>
+ * @param anAreaID  区域id
+ * <br/>
+ * @param aCompletion  回调更新UI
+ * @return
+ */
+-(void)getWantedRootCategoryWithAreaID:(long)anAreaID aCompletion:(void(^)(NSMutableArray * arr))aCompletion;
+/**
  * <h2>获取次级悬赏信息类别</h2>
  * <br/>
  * @param subCategoryID 类别ID
@@ -99,6 +107,14 @@ AS_SINGLETON(GGAPIService)
  * @return
  */
 -(void)getArea:(void(^)(NSMutableArray * arr))aCompletion;
+
+/**
+ * <h2>获取民警片区信息</h2>
+ * <br/>
+ * @param aCompletion  回调更新UI
+ * @return
+ */
+-(void)getAreaById:(long long)anAreaID aCompletion:(void(^)(NSMutableArray * arr))aCompletion;
 
 /**
  * <h2>获取民警片区信息</h2>
@@ -160,10 +176,30 @@ AS_SINGLETON(GGAPIService)
 -(void)hasWantedWithID:(long long)aWantedID aCompletion:(void(^)(BOOL success))aCompletion;
 
 /**
+ * <h2>获取程序支持的区域信息</h2>
+ * <br/>
+ * @return
+ */
+-(void)getLocateAreas:(void(^)(NSArray * arr))aCompletion;
+
+/**
+ * <h2>获取区域－模块对应信息</h2>
+ * <br/>
+ * @return
+ */
+-(void)getFunctionsAll:(void(^)(NSArray * arr))aCompletion;
+
+
+/**
  *<h2>警员评价</h2>
  * @param (long long)plId
  * @param (int)evaluate
  * @
  */
+-(void)addPoliceEvaluateWithPolice:(long long)plId
+                          evaluate:(int)evaluate
+                            unitId:(long)unitId
+                       aCompletion:(void(^)(long flag))aCompletion;
+
 
 @end

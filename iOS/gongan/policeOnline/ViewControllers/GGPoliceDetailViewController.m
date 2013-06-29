@@ -8,6 +8,7 @@
 
 #import "GGPoliceDetailViewController.h"
 #import "GGAPIService.h"
+#import "GGGlobalValue.h"
 
 #define RELOADGGPOLICEMAN  @"RELOADGGPOLICEMAN"
 
@@ -34,7 +35,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-         phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+        phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
     }
     return self;
 }
@@ -172,6 +173,18 @@
 //代理方法
 -(void)radioButtonSelectedAtIndex:(NSUInteger)index inGroup:(NSString *)groupId{
     NSLog(@"changed to %d in %@",index,groupId);
+    int aEvaluate = index+1;
+    NSNumber * area = [GGGlobalValue sharedInstance].provinceId;
+    [[GGAPIService sharedInstance] addPoliceEvaluateWithPolice:_policeman.ID evaluate:aEvaluate unitId:[area intValue] aCompletion:^(long flag) {
+        if (flag == 1) {
+            [self showError:@"您的评价已经提交到服务器,谢谢您的参与"];
+        }
+        else
+        {
+            [self showError:@"您今天已对该警员评价过, 请勿重复评价"];
+        }
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

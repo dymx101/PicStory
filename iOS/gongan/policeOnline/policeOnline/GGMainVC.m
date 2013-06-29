@@ -18,6 +18,9 @@
 #import "GGPhoneMask.h"
 #import "MMDrawerBarButtonItem.h"
 #import "GGAppDelegate.h"
+#import "GGLocateArea.h"
+#import "GGAreaFunction.h"
+#import "GGAPIService.h"
 
 
 //1.九宫格这个需要调接口的，但是他们那边现在没做，所有可以先写成配置文件
@@ -44,7 +47,7 @@
     NSDictionary * area_dic;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *ivBg;
-@property (weak, nonatomic) IBOutlet UIButton *btnReportPolice;    
+@property (weak, nonatomic) IBOutlet UIButton *btnReportPolice;
 @property (weak, nonatomic) IBOutlet UIButton *btnOnlinePolice;
 @property (weak, nonatomic) IBOutlet UIButton *btnWanted;
 @property (weak, nonatomic) IBOutlet UIButton *btnServiceWindow;
@@ -96,11 +99,45 @@
         pcPhone = [defaults objectForKey:@"ggtel"];
         
         [self setMyTitle:@"微公安"];
-        [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:0];
-        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"武汉");
+        //启动的时候设置一个状态
+        [GGGlobalValue sharedInstance].isFirstLaunch  = YES;
+        //地区默认定位在老河口
+        [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:2];
+        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"老河口");
         
-        _locations = @[@"武汉", @"老河口", @"襄阳", @"孝感", @"宜昌", @"荆州", @"十堰", @"黄石", @"黄冈", @"马口"];
-           //       0       1       2           3       4       5       6       7       8       9
+        //区域信息
+        [[GGAPIService sharedInstance] getLocateAreas:^(NSArray *arr) {
+            if (arr !=nil) {
+                _locations = arr;
+                [GGGlobalValue sharedInstance].locations = _locations;
+            }
+            else
+            {
+                [self alertNetError];
+            }
+        }];
+        
+        //区域模块信息
+        __block NSMutableArray  * _areafunctions = [NSMutableArray array];
+        [[GGAPIService sharedInstance] getFunctionsAll:^(NSArray *arr) {
+            if (arr !=nil) {
+                for (GGAreaFunction * aFunction in arr) {
+                    NSArray *aArray = [[aFunction functionIds] componentsSeparatedByString:@","];
+                    [_areafunctions addObject:aArray];
+                }
+                _buttonIndexDic = [NSArray arrayWithArray:_areafunctions];
+                GGAreaFunction * _tempAF = [arr objectAtIndex:0];
+                DLog(@">>area id %@", _tempAF.areaId);
+                [self updateIconsWithCaseIndex:0];
+            }
+            else
+            {
+                [self alertNetError];
+            }
+        }];
+        
+        //        _locations = @[@"武汉", @"老河口", @"襄阳", @"孝感", @"宜昌", @"荆州", @"十堰", @"黄石", @"黄冈", @"马口"];
+        //       0       1       2           3       4       5       6       7       8       9
         
         //每个position 对应的九宫格数据为  0 ： 1,2,3
         //1 ： 1,2,3,4
@@ -110,15 +147,16 @@
         //5 :     1,2,3,4,5,6,7,8
         //else:     1,2,3,4,5,6,7,8,9
         
-        _buttonIndexDic = [NSArray arrayWithObjects:
-                           [NSArray arrayWithObjects:@(0), @(1), @(2), nil]                             // 0
-                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), nil]                     // 1
-                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), nil]               // 2
-                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), nil]                     // 3
-                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), nil]               // 4
-                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), nil]         // 5
-                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), @(8), nil]   // 6
-                           , nil];
+//        _buttonIndexDic = [NSArray arrayWithObjects:
+//                           [NSArray arrayWithObjects:@(0), @(1), @(2), nil]                             // 0
+//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), nil]                     // 1
+//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), nil]               // 2
+//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), nil]                     // 3
+//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), nil]               // 4
+//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), nil]         // 5
+//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), @(8), nil]   // 6
+//                           , nil];
+        
     }
     return self;
 }
@@ -135,17 +173,14 @@
                   , _lblBreakRule, _lblServiceGuide, _lblServiceWindow
                   , _lblPoliceInfomation, _lblWanted, _lblMyFavorite, nil];
     
-    
-    
-    
-//    self.navigationItem.leftBarButtonItem = nil;
+    //    self.navigationItem.leftBarButtonItem = nil;
     [self setMenuButton];
     [self setNaviButtonLocationType];
-    self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, 56, 44);
+    self.navigationItem.leftBarButtonItem.customView.frame = CGRectMake(0, 0, 86, 44);
     [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
     [self observeNotification:GG_NOTIFY_PROVINCE_CHANGED];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportPosition) name:@"reportPosition" object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportPosition) name:@"reportPosition" object:nil];
     if (IS_WIDESCREEN) {
         _ivBg.image = GGSharedImagePool.mainBgWide;
         CGRect ivBgRc = _ivBg.frame;
@@ -160,8 +195,6 @@
         ivBgRc.origin.y = self.view.bounds.size.height - ivBgRc.size.height;
         _ivBg.frame = ivBgRc;
     }
-    
-    [self updateIconsWithCaseIndex:4];
 }
 
 -(void)updateIconsWithCaseIndex:(NSUInteger)aCaseIndex
@@ -178,10 +211,10 @@
     
     for (id index in indexs)
     {
-        UIButton *btn = _allButtons[([index intValue])];
+        UIButton *btn = _allButtons[([index intValue]-1)];
         btn.hidden = NO;
     }
-
+    
     for (UILabel *lbl in _allTitles)
     {
         lbl.hidden = YES;
@@ -189,7 +222,7 @@
     
     for (id index in indexs)
     {
-        UILabel *lbl = _allTitles[([index intValue])];
+        UILabel *lbl = _allTitles[([index intValue]-1)];
         lbl.hidden = NO;
     }
 }
@@ -210,7 +243,7 @@
 -(void)setNaviButtonLocationType
 {
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 86, 44)];
     UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = btnItem;
     [button addTarget:self action:@selector(leftBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -239,7 +272,7 @@
     _theButton.titleLabel.shadowOffset = CGSizeMake(1.0, -1.0);
     _theButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     //if (!UIEdgeInsetsEqualToEdgeInsets(edgeInsets, UIEdgeInsetsZero)) {
-        _theButton.contentEdgeInsets = edgeInsets;
+    _theButton.contentEdgeInsets = edgeInsets;
     //}
 }
 
@@ -257,9 +290,11 @@
 //消息监听
 - (void)handleNotification:(NSNotification *)notification
 {
-    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
-    DLog(@">>> proviceid %d",[[GGGlobalValue sharedInstance].provinceId integerValue]);
-    [self updateIconsWithCaseIndex:[[GGGlobalValue sharedInstance].provinceId integerValue]];
+    if ([notification.name isEqualToString:GG_NOTIFY_PROVINCE_CHANGED]) {
+        [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
+        DLog(@">>> proviceid %d",[[GGGlobalValue sharedInstance].provinceId integerValue]);
+        [self updateIconsWithCaseIndex:[[GGGlobalValue sharedInstance].provinceId integerValue]];
+    }
 }
 
 - (void)viewDidUnload {
@@ -281,22 +316,7 @@
 -(IBAction)reportPoliceAction:(id)sender
 {
     DLog(@"reportPoliceAction");
-//    [NSThread detachNewThreadSelector:@selector(reportPosition) toTarget:self withObject:nil];
-//    //创建操作队列
-//    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
-//    //设置队列中最大的操作数
-//    [operationQueue setMaxConcurrentOperationCount:1];
-//    //创建操作（最后的object参数是传递给selector方法的参数）
-//    NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(reportPosition) object:nil];
-//    //将操作添加到操作队列
-//    [operationQueue addOperation:operation];
-
-//    [[NSRunLoop mainRunLoop]runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-//    [GGUtils call:@"10010" webView:phoneCallWebView];
-
-    
     dispatch_queue_t  _disPatchQueue  = dispatch_queue_create([[NSString stringWithFormat:@"%@.%@", [self.class description], self] UTF8String], NULL);
-    
     dispatch_async(_disPatchQueue, ^{
         
         [self reportPosition];
@@ -308,7 +328,6 @@
             NSString *number = @"10010";// 此处读入电话号码
             NSString *num = [[NSString alloc] initWithFormat:@"tel://%@",number];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
-            
         });
     });
 }
@@ -361,7 +380,8 @@
 -(IBAction)serviceWindowAction:(id)sender
 {
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@?r=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-getServiceWindowList.rht",arc4random()%1000];
+    int unitId = [[GGGlobalValue sharedInstance].provinceId intValue];
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@?r=%d&unitId=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-getServiceWindowList.rht",arc4random()%1000,unitId];
     vc.naviTitleString = @"服务窗口";
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -428,11 +448,24 @@
             NSString * city = [area_dic objectForKey:@"City"]; //市
             NSString * locality = [area_dic objectForKey:@"SubLocality"];//地区
             DLog(@"area_dic %@ %@",city,locality);
-            break;
+            for (GGLocateArea * locate in _locations) {
+                if ([locality rangeOfString:locate.prepare2].location != NSNotFound) {
+                    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
+                    [GGGlobalValue sharedInstance].provinceId = locate.areaId;
+                    [GGGlobalValue sharedInstance].provinceName = OTSSTRING(locate.address);
+                    [self updateIconsWithCaseIndex:[[GGGlobalValue sharedInstance].provinceId integerValue]];
+                    break;
+                }
+            }
         }
+        [GGGlobalValue sharedInstance].isFirstLaunch = NO;
     };
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
-    [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
+    //首次启动的时候才解析地址
+    if ([GGGlobalValue sharedInstance].isFirstLaunch) {
+        [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
+    }
+    
 }
 
 - (void)mapView:(BMKMapView *)mapView didFailToLocateUserWithError:(NSError *)error

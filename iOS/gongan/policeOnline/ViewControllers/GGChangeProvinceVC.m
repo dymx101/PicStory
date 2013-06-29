@@ -12,13 +12,16 @@
 #import "GGPhoneMask.h"
 #import "GGProvince.h"
 #import "NSMutableArray+Safe2.h"
+#import "GGLocateArea.h"
+#import "GGAPIService.h"
 
 @interface GGChangeProvinceVC ()
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *titleArray;
-@property (nonatomic, strong) NSMutableArray *provinceArray;
+
+@property (nonatomic, strong) GGProvince * ggProvince;
 
 @end
 
@@ -38,12 +41,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    [self initTitleBar];
     [self initData];
     
-    [self initTitleBar];
-    
-    [self initMainView];
 }
 
 /**
@@ -60,76 +60,33 @@
 - (void)initData
 {
     self.titleArray = [NSMutableArray array];
-    self.provinceArray = [NSMutableArray array];
+    __block NSMutableArray * allProvince = [NSMutableArray array];
+    self.ggProvince  = [[GGProvince alloc]init];
+    self.ggProvince.provinceArray = [NSMutableArray array];
     
-    if ([GGGlobalValue sharedInstance].gpsProvinceName != nil) {
-        [self.titleArray addObject:@"定位地区"];
-        [self.provinceArray addObject:[NSArray arrayWithObject:[GGGlobalValue sharedInstance].gpsProvinceName]];
-    }
     [self.titleArray addObject:@"热门地区"];
-    //    [self.titleArray addObject:@"华东地区"];
-    //    [self.titleArray addObject:@"华北地区"];
-    //    [self.titleArray addObject:@"华南地区"];
-    //    [self.titleArray addObject:@"华中地区"];
     
-    //热门地区
-    [self.provinceArray addObject:[NSArray arrayWithObjects:
-                                   @"武汉"
-                                   , @"老河口"
-                                   , @"襄阳"
-                                   , @"孝感"
-                                   , @"宜昌"
-                                   , @"荆州"
-                                   , @"十堰"
-                                   , @"黄石"
-                                   , @"马口"
-                                   , nil]];
     
-    //华东地区
-    [self.provinceArray addObject:[NSArray arrayWithObjects:
-                                   @"上海"
-                                   , @"江苏"
-                                   , @"浙江"
-                                   , @"安徽"
-                                   , @"山东"
-                                   , nil]];
-    
-    //华北地区
-    [self.provinceArray addObject:[NSArray arrayWithObjects:
-                                   @"北京"
-                                   , @"天津"
-                                   , @"河北"
-                                   , @"山西"
-                                   , @"吉林"
-                                   , @"黑龙江"
-                                   , @"辽宁"
-                                   , @"内蒙古"
-                                   , nil]];
-    //华南地区
-    [self.provinceArray addObject:[NSArray arrayWithObjects:
-                                   @"广东"
-                                   , @"海南"
-                                   , @"广西"
-                                   , @"福建"
-                                   , @"四川"
-                                   , @"重庆"
-                                   , @"贵州"
-                                   , @"云南"
-                                   , @"西藏"
-                                   , nil]];
-    
-    //华中地区
-    [self.provinceArray addObject:[NSArray arrayWithObjects:
-                                   @"湖北"
-                                   , @"湖南"
-                                   , @"河南"
-                                   , @"江西"
-                                   , @"陕西"
-                                   , @"甘肃"
-                                   , @"青海"
-                                   , @"宁夏"
-                                   , @"新疆"
-                                   , nil]];
+    [self showLoadingHUD];
+    [[GGAPIService sharedInstance] getLocateAreas:^(NSArray *arr) {
+
+        if (arr !=nil)
+        {
+            for (GGLocateArea * locate in arr) {
+                //热门地区 排除襄阳
+                if ([locate.superId intValue] != 0) {
+                    [allProvince addObject:locate.address];
+                }
+            }
+            [self.ggProvince.provinceArray addObject:allProvince];
+        }
+        else
+        {
+            [self alertNetError];
+        }
+        [self hideLoadingHUD];
+        [self initMainView];
+    }];
 }
 
 /**
@@ -181,7 +138,7 @@
  */
 - (void)switchToProvince:(NSString *)aProvinceName
 {
-    int provinceId = [GGProvince getProvinceIdFromName:aProvinceName].intValue;
+    int provinceId = [self.ggProvince getProvinceIdFromName:aProvinceName].intValue;
     
     [GGGlobalValue sharedInstance].provinceName = aProvinceName;
     [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:provinceId];
@@ -226,7 +183,7 @@
 //cell
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *arr = [self.provinceArray safeObjectAtIndex:section];
+    NSArray *arr = [self.ggProvince.provinceArray safeObjectAtIndex:section];
     return arr.count;
 }
 
@@ -249,7 +206,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:16.0];
     }
     
-    NSString *provinceName = [[self.provinceArray safeObjectAtIndex:indexPath.section] safeObjectAtIndex:indexPath.row];
+    NSString *provinceName = [[self.ggProvince.provinceArray safeObjectAtIndex:indexPath.section] safeObjectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@" %@", provinceName];
     
     return cell;
@@ -264,7 +221,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *selectedProvinceName = [[self.provinceArray safeObjectAtIndex:[indexPath section]] safeObjectAtIndex:[indexPath row]];
+    NSString *selectedProvinceName = [[self.ggProvince.provinceArray safeObjectAtIndex:[indexPath section]] safeObjectAtIndex:[indexPath row]];
     if (![[GGGlobalValue sharedInstance].provinceName isEqualToString:selectedProvinceName]) {
         [self switchToProvince:selectedProvinceName];
     }

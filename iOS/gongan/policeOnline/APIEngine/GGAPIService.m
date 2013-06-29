@@ -14,6 +14,8 @@
 #import "GGWantedCategory.h"
 #import "GGVersionInfo.h"
 #import "GGWanted.h"
+#import "GGLocateArea.h"
+#import "GGAreaFunction.h"
 
 @implementation GGAPIService
 {
@@ -21,6 +23,8 @@
     NSMutableArray  *_areas;
     NSMutableArray  *_wantedCategorys;
     NSMutableArray  *_wanteds;
+    NSMutableArray  *_localAreas;
+    NSMutableArray  *_areaFunctions;
     GGVersionInfo   *_verson;
 }
 
@@ -34,6 +38,8 @@ DEF_SINGLETON(GGAPIService)
         _areas = [NSMutableArray array];
         _wantedCategorys = [NSMutableArray array];
         _wanteds  = [NSMutableArray array];
+        _localAreas = [NSMutableArray array];
+        _areaFunctions = [NSMutableArray array];
     }
     return self;
 }
@@ -191,6 +197,33 @@ DEF_SINGLETON(GGAPIService)
 }
 
 /**
+ * <h2>获取root悬赏信息</h2>
+ * @param anAreaID  区域id
+ * <br/>
+ * @param aCompletion  回调更新UI
+ * @return
+ */
+-(void)getWantedRootCategoryWithAreaID:(long)anAreaID aCompletion:(void(^)(NSMutableArray * arr))aCompletion
+{
+    [GGSharedAPI getWantedRootCategoryWithAreaID:anAreaID callback:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *arr = [parser parseGetWantedRootCategory];
+        DLog(@"%@", arr);
+        if (arr == nil) {
+            _wantedCategorys = nil;
+        }
+        [_wantedCategorys removeAllObjects];
+        for (GGWantedCategory *data in arr) {
+            DLog(@"area -- id:%lld, name:%@", data.ID, data.name);
+            [_wantedCategorys addObject:data];
+        }
+        if (aCompletion) {
+            aCompletion(_wantedCategorys);
+        }
+    }];
+}
+
+/**
  * <h2>获取次级悬赏信息类别</h2>
  * <br/>
  * @param subCategoryID 类别ID
@@ -259,6 +292,33 @@ DEF_SINGLETON(GGAPIService)
 
 /**
  * <h2>获取民警片区信息</h2>
+ * <br/>
+ * @param aCompletion  回调更新UI
+ * @return
+ */
+-(void)getAreaById:(long long)anAreaID aCompletion:(void(^)(NSMutableArray * arr))aCompletion
+{
+    [GGSharedAPI getPolicemanByAreaID:anAreaID callback:^(id operation, id aResultObject, NSError *anError) {
+        
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *arr = [parser parseGetAreas];
+        DLog(@"%@", arr);
+        if (arr == nil) {
+            _areas = nil;
+        }
+        [_areas removeAllObjects];
+        for (GGArea *area in arr) {
+            DLog(@"area -- id:%lld, address:%@", area.ID, area.address);
+            [_areas addObject:area];
+        }
+        if (aCompletion) {
+            aCompletion(_areas);
+        }
+    }];
+}
+
+/**
+ * <h2>获取民警信息</h2>
  * <br/>
  * @param anAreaID     民警片区ID
  * @param aCompletion  回调更新UI
@@ -380,6 +440,75 @@ DEF_SINGLETON(GGAPIService)
     if (aCompletion) {
         aCompletion(success);
     }
+}
+
+/**
+ * <h2>获取区域信息</h2>
+ * <br/>
+ * @return
+ */
+-(void)getLocateAreas:(void(^)(NSArray * arr))aCompletion
+{
+    [GGSharedAPI getLocateAreas:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *arr = [parser parseGetLocateArea];
+        DLog(@"%@", arr);
+        if (arr == nil) {
+            _localAreas = nil;
+        }
+        [_localAreas removeAllObjects];
+        for (GGLocateArea *locatearea in arr) {
+            [_localAreas addObject:locatearea];
+        }
+        if (aCompletion) {
+            aCompletion(_localAreas);
+        }
+    }];
+}
+
+/**
+ * <h2>获取区域－模块对应信息</h2>
+ * <br/>
+ * @return
+ */
+-(void)getFunctionsAll:(void(^)(NSArray * arr))aCompletion
+{
+    [GGSharedAPI getFunctionsAll:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *arr = [parser parseGetAreaFunction];
+        DLog(@"%@", arr);
+        if (arr == nil) {
+            _areaFunctions = nil;
+        }
+        [_areaFunctions removeAllObjects];
+        for (GGAreaFunction * areafunction in arr) {
+            [_areaFunctions addObject:areafunction];
+        }
+        if (aCompletion) {
+            aCompletion(_areaFunctions);
+        }
+    }];
+}
+
+/**
+ *<h2>警员评价</h2>
+ * @param (long long)plId
+ * @param (int)evaluate
+ * @
+ */
+-(void)addPoliceEvaluateWithPolice:(long long)plId
+                          evaluate:(int)evaluate
+                            unitId:(long)unitId
+                       aCompletion:(void(^)(long flag))aCompletion
+{
+    __block long flag;
+    [GGSharedAPI addPoliceEvaluateWithPolice:plId evaluate:evaluate unitId:unitId callback:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        flag = [[[parser apiData] objectForKey:@"flag"] longValue];
+        if (aCompletion) {
+            aCompletion(flag);
+        }
+    }];
 }
 
 @end

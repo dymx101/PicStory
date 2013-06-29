@@ -14,6 +14,7 @@
 #import "GGOnlinePoliceCell.h"
 #import "GGAPIService.h"
 #import "GGPoliceDetailViewController.h"
+#import "GGGlobalValue.h"
 
 @interface GGOnlinePoliceVC()
 @property (strong, nonatomic)   UITableView *table;
@@ -66,7 +67,7 @@
 {
     [self showLoadingHUD];
     if (self.area == nil) {
-        [[GGAPIService sharedInstance] getArea:^(NSMutableArray * arr){
+        [[GGAPIService sharedInstance] getAreaById:[[GGGlobalValue sharedInstance].provinceId longLongValue] aCompletion:^(NSMutableArray * arr){
             if (arr != nil) {
                 _mutableAreaKeys = arr;
                 [_table reloadData];
@@ -234,7 +235,7 @@
 -(void)resetSearch
 {//重置搜索
     if (self.area == nil) {
-        [[GGAPIService sharedInstance] getArea:^(NSMutableArray * arr){
+        [[GGAPIService sharedInstance] getAreaById:[[GGGlobalValue sharedInstance].provinceId longLongValue] aCompletion:^(NSMutableArray * arr){
             if (arr != nil) {
                 _mutableAreaKeys = arr;
                 [_table reloadData];

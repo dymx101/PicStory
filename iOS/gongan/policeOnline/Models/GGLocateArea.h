@@ -12,6 +12,6 @@
 
 @property(copy) NSString * address;
 @property(copy) NSString * prepare2;
-@property(copy) NSString * areaId;
-@property(copy) NSString * superId;
+@property(copy) NSNumber * areaId;
+@property(copy) NSNumber * superId;
 @end

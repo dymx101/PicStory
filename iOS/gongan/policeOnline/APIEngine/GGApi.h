@@ -29,7 +29,6 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(void)getWantedRootCategory:(GGApiBlock)aCallback;
 -(void)getWantedRootCategoryWithAreaID:(long)anAreaID callback:(GGApiBlock)aCallback;
 -(void)getWantedSubCategoryWithID:(long long)aColumnID callback:(GGApiBlock)aCallback;
--(void)getWantedSubCategoryWithID:(long long)aColumnID AreaID:(long)anAreaID callback:(GGApiBlock)aCallback;
 -(void)checkUpdateWithCurrentVersion:(NSString *)aCurrentVersion  callback:(GGApiBlock)aCallback;
 
 #define REPORT_AREA_ID  2
@@ -74,7 +73,10 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(void)getCluesSubCategoryWithContentID:(long long)aContentID callback:(GGApiBlock)aCallback;
 
 //线索图片上传
-//-(void)CluesFileUpload
+//-(void)CluesPicFileUpload
+
+//获取功能模块
+-(void)getFunctionsAll:(GGApiBlock)aCallback;
 
 @end
 

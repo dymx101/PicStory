@@ -201,17 +201,6 @@
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
--(void)getWantedSubCategoryWithID:(long long)aColumnID AreaID:(long)anAreaID callback:(GGApiBlock)aCallback
-{
-    NSString *path = @"mobile-clueInfo.rht";
-    
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:__LONGLONG(aColumnID) forKey:@"columnId"];
-    [parameters setObject:__LONGLONG(anAreaID) forKey:@"unitId"];
-    
-    [self _execGetWithPath:path params:parameters callback:aCallback];
-}
-
 //接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile-clueInfo.rht
 //参数：contentType：线索征集栏目文章列表 值为403
 //contentId：文章id  根据具体列表传其中一个值
@@ -397,4 +386,16 @@
     [parameters setObject:__LONGLONG(unitId) forKey:@"unitId"];
     [self _execPostWithPath:path params:parameters callback:aCallback];
 }
+
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile-getFunctionsAll.rht
+//返回参数：(json格式)
+//返回：areaId  区域id
+//functionIds功能ids
+-(void)getFunctionsAll:(GGApiBlock)aCallback;
+{
+    NSString *path = @"mobile-getFunctionsAll.rht";
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [self _execGetWithPath:path params:parameters callback:aCallback];
+}
+
 @end

@@ -14,6 +14,7 @@
 #import "GGVersionInfo.h"
 #import "GGWanted.h"
 #import "GGLocateArea.h"
+#import "GGAreaFunction.h"
 
 #define GG_ASSERT_API_DATA_IS_DIC   NSAssert([_apiData isKindOfClass:[NSDictionary class]], @"Api Data should be a NSDictionary");
 
@@ -105,8 +106,14 @@
 #pragma mark - internal
 -(NSMutableArray *)_parseArrForClass:(Class)aClass
 {
+    //判断json第一个元素 是不是{"typeId":0}
+    id firstElement = _apiArray[0];
+    int k = 0;
+    if ([firstElement objectForKey:@"typeId"]) {
+        k = 1;
+    }
     NSMutableArray *array = [NSMutableArray array];
-    for (int i = 1; i < _apiArray.count; i++)
+    for (int i = k; i < _apiArray.count; i++)
     {
         id data = _apiArray[i];
         id area = [aClass model];
@@ -140,6 +147,11 @@
 -(NSMutableArray *)parseGetLocateArea
 {
     return [self _parseArrForClass:[GGLocateArea class]];
+}
+
+-(NSMutableArray *)parseGetAreaFunction
+{
+    return [self _parseArrForClass:[GGAreaFunction class]];
 }
 
 -(GGVersionInfo *)parseGetVersionInfo

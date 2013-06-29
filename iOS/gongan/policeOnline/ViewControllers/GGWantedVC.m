@@ -15,6 +15,7 @@
 #import "GGWanted.h"
 #import "GGWantedCell.h"
 #import "GGWebVC.h"
+#import "GGGlobalValue.h"
 
 @interface GGWantedVC ()
 @property (strong, nonatomic)   UITableView *table;
@@ -66,7 +67,7 @@
 {
     [self showLoadingHUD];
     if (self.category == nil) {
-        [[GGAPIService sharedInstance] getWantedRootCategory:^(NSMutableArray * arr){
+        [[GGAPIService sharedInstance] getWantedRootCategoryWithAreaID:[[GGGlobalValue sharedInstance].provinceId longValue] aCompletion:^(NSMutableArray * arr){
             if (arr != nil) {
                 [_mutableKeys removeAllObjects];
                 [_mutableKeys addObjectsFromArray:arr];

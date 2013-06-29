@@ -24,8 +24,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setMyTitle:@"设置中心"];
-        [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:0];
-        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"武汉");
+        //地区默认定位在老河口
+        [GGGlobalValue sharedInstance].provinceId = [NSNumber numberWithInt:2];
+        [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"老河口");
     }
     return self;
 }
