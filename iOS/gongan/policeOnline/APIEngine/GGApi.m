@@ -248,6 +248,35 @@
 //参数请按照顺序传入。
 //无返回参数。
 //-(void)CluesFileUpload
+-(void)reportClueWithContentID:(long long)aContentID clueText:(NSString *)aClueText phoneID:(NSString *)aPhoneID phone:(NSString *)aPhone images:(NSArray *)aImages
+{
+    NSString *path = @"fileUpload";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:@(aContentID) forKey:@"contentId"];
+    [parameters setObject:aClueText forKey:@"clContext"];
+    [parameters setObject:aPhoneID forKey:@"clPhoneId"];
+    [parameters setObject:aPhoneID forKey:@"clPhone"];
+    
+    NSURLRequest* request = [self multipartFormRequestWithMethod:@"POST" path:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //
+    }];
+    
+//    NSURLRequest* request = [self multipartFormRequestWithMethod:@"POST"
+//                                                                                         path:path
+//                                                                                   parameters:dict
+//                                                                    constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//                                                                        [formData appendPartWithFileData:data1
+//                                                                                                    name:@"image1"
+//                                                                                                fileName:@"image1.jpg"
+//                                                                                                mimeType:@"image/jpeg"];
+//                                                                        [formData appendPartWithFileData:data2
+//                                                                                                    name:@"image2"
+//                                                                                                fileName:@"image2.jpg"
+//                                                                                                mimeType:@"image/jpeg"];
+//                                                                    }
+//                             }];
+}
 
 
 //接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile-versionCompare.rht
