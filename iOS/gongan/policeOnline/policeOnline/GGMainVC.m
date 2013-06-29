@@ -21,7 +21,7 @@
 #import "GGLocateArea.h"
 #import "GGAreaFunction.h"
 #import "GGAPIService.h"
-
+#import "GGArchive.h"
 
 //1.九宫格这个需要调接口的，但是他们那边现在没做，所有可以先写成配置文件
 //区域数据：“武汉""老河口""襄阳""孝感""宜昌""荆州""十堰""黄石""黄冈""马口"
@@ -81,7 +81,10 @@
     NSArray         *_allButtons;
     NSArray         *_allTitles;
     
+    NSArray         *_profile;
+    
     NSUInteger      _currentPositonIndex;
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -94,9 +97,10 @@
         _mapView.delegate = self;
         _mapView.showsUserLocation = YES;
         phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        pcName = [defaults objectForKey:@"ggname"];
-        pcPhone = [defaults objectForKey:@"ggtel"];
+        //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //        pcName = [defaults objectForKey:@"ggname"];
+        //        pcPhone = [defaults objectForKey:@"ggtel"];
+        //         _profile = (NSArray *)[GGArchive unarchiveDataWithFileName:@"profile.plist"];
         
         [self setMyTitle:@"微公安"];
         //启动的时候设置一个状态
@@ -147,15 +151,15 @@
         //5 :     1,2,3,4,5,6,7,8
         //else:     1,2,3,4,5,6,7,8,9
         
-//        _buttonIndexDic = [NSArray arrayWithObjects:
-//                           [NSArray arrayWithObjects:@(0), @(1), @(2), nil]                             // 0
-//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), nil]                     // 1
-//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), nil]               // 2
-//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), nil]                     // 3
-//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), nil]               // 4
-//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), nil]         // 5
-//                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), @(8), nil]   // 6
-//                           , nil];
+        //        _buttonIndexDic = [NSArray arrayWithObjects:
+        //                           [NSArray arrayWithObjects:@(0), @(1), @(2), nil]                             // 0
+        //                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), nil]                     // 1
+        //                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), nil]               // 2
+        //                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), nil]                     // 3
+        //                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), nil]               // 4
+        //                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), nil]         // 5
+        //                           , [NSArray arrayWithObjects:@(0), @(1), @(2), @(3), @(4), @(5), @(6), @(7), @(8), nil]   // 6
+        //                           , nil];
         
     }
     return self;
@@ -336,10 +340,22 @@
 {
     if(self.userLocation!=nil)
     {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        pcName = [defaults objectForKey:@"ggname"];
-        pcPhone = [defaults objectForKey:@"ggtel"];
-        DLog(@"pcName = %@ pcPhone = %@",pcName,pcPhone);
+        //        不用下边的代码 用 GGArchive
+        //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //        pcName = [defaults objectForKey:@"ggname"];
+        //        pcPhone = [defaults objectForKey:@"ggtel"];
+        //        DLog(@"pcName = %@ pcPhone = %@",pcName,pcPhone);
+        //        if (pcName == nil) {
+        //            pcName = @"";
+        //        }
+        //        if (pcPhone == nil) {
+        //            pcPhone = @"";
+        //        }
+        _profile = (NSArray *)[GGArchive unarchiveDataWithFileName:@"profile.plist"];
+        if ([_profile count] > 0) {
+            pcName = [_profile objectAtIndex:0];
+            pcPhone = [_profile objectAtIndex:1];
+        }
         if (pcName == nil) {
             pcName = @"";
         }

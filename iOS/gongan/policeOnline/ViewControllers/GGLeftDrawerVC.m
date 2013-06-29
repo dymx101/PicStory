@@ -45,6 +45,7 @@
     [centerVC pushViewController:vc animated:YES];
 }
 
+#pragma mark - 设置中心
 -(IBAction)settingCenter:(id)sender
 {
     [GGSharedDelegate.drawerVC closeDrawerAnimated:YES completion:^(BOOL completed){

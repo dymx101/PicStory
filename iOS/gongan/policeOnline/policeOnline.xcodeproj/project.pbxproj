@@ -50,6 +50,7 @@
 		4C9DC0A6177B1711000C1FC9 /* RadioButton-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DC0A4177B1711000C1FC9 /* RadioButton-Selected.png */; };
 		4C9DC0A7177B1711000C1FC9 /* RadioButton-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DC0A5177B1711000C1FC9 /* RadioButton-Unselected.png */; };
 		4C9DC0AD177B1837000C1FC9 /* GGRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DC0AC177B1837000C1FC9 /* GGRadioButton.m */; };
+		4CBCEB53177F4A7F00B7CBA3 /* GGArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEB52177F4A7F00B7CBA3 /* GGArchive.m */; };
 		4CE44DFE172FB8A400BA6097 /* GGWantedCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE44DFD172FB8A400BA6097 /* GGWantedCategoryCell.m */; };
 		4CE44E02172FB8D300BA6097 /* GGWantedDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE44E00172FB8D300BA6097 /* GGWantedDetailVC.m */; };
 		4CE44E03172FB8D300BA6097 /* GGWantedDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE44E01172FB8D300BA6097 /* GGWantedDetailVC.xib */; };
@@ -249,6 +250,8 @@
 		4C9DC0A5177B1711000C1FC9 /* RadioButton-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Unselected.png"; sourceTree = "<group>"; };
 		4C9DC0AB177B1837000C1FC9 /* GGRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRadioButton.h; sourceTree = "<group>"; };
 		4C9DC0AC177B1837000C1FC9 /* GGRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRadioButton.m; sourceTree = "<group>"; };
+		4CBCEB51177F4A7F00B7CBA3 /* GGArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGArchive.h; sourceTree = "<group>"; };
+		4CBCEB52177F4A7F00B7CBA3 /* GGArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGArchive.m; sourceTree = "<group>"; };
 		4CC7F53F173A97910060FA2A /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		4CC7F540173A97910060FA2A /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
 		4CC7F541173A97910060FA2A /* BMKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotationView.h; sourceTree = "<group>"; };
@@ -947,6 +950,8 @@
 				4C4C74B0176E2941007AE397 /* GGGlobalValue.m */,
 				EA9A9B931777896D00B6AE7E /* GGUserDefault.h */,
 				EA9A9B941777896D00B6AE7E /* GGUserDefault.m */,
+				4CBCEB51177F4A7F00B7CBA3 /* GGArchive.h */,
+				4CBCEB52177F4A7F00B7CBA3 /* GGArchive.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1291,6 +1296,7 @@
 				4C9DC0AD177B1837000C1FC9 /* GGRadioButton.m in Sources */,
 				4C7E0686177C860400493DC7 /* GGLocateArea.m in Sources */,
 				4C5873C5177E961A00AC8514 /* GGAreaFunction.m in Sources */,
+				4CBCEB53177F4A7F00B7CBA3 /* GGArchive.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

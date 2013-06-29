@@ -7,6 +7,7 @@
 //
 
 #import "GGProfileVC.h"
+#import "GGArchive.h"
 
 @interface GGProfileVC ()
 @property (weak, nonatomic) IBOutlet UITextField *tfName;
@@ -56,7 +57,8 @@
     DLog(@"save profile");
     [GGUserDefault saveMyName:self.tfName.text];
     [GGUserDefault saveMyPhone:self.tfPhone.text];
-    
+    NSArray * profile = [NSArray arrayWithObjects:self.tfName.text,self.tfPhone.text,nil];
+    [GGArchive archiveData:profile withFileName:@"profile.plist"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
