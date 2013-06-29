@@ -152,11 +152,18 @@ AS_SINGLETON(GGAPIService)
 -(void)getAllWanted:(void(^)(NSArray * arr))aCompletion;
 
 /**
- * <h2>判断是否为本地已有的通缉令信息</h2>
+ * 
  * <br/>
  * @param (long long)aWantedID
  * @return
  */
 -(void)hasWantedWithID:(long long)aWantedID aCompletion:(void(^)(BOOL success))aCompletion;
+
+/**
+ *<h2>警员评价</h2>
+ * @param (long long)plId
+ * @param (int)evaluate
+ * @
+ */
 
 @end

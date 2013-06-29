@@ -385,7 +385,6 @@
 //返回值：flag: 0 评价失败
 //1 评价成功
 -(void)addPoliceEvaluateWithPolice:(long long)plId
-                             phone:(NSString *)phoneId
                           evaluate:(int)evaluate
                             unitId:(long)unitId
                           callback:(GGApiBlock)aCallback

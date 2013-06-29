@@ -64,7 +64,6 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 
 //警员评价
 -(void)addPoliceEvaluateWithPolice:(long long)plId
-                             phone:(NSString *)phoneId
                           evaluate:(int)evaluate
                             unitId:(long)unitId
                           callback:(GGApiBlock)aCallback;
