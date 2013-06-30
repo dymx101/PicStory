@@ -59,7 +59,7 @@
 -(IBAction)addPicture:(id)sender
 {
     UIActionSheet *shit = [[UIActionSheet alloc] initWithTitle:@"添加照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"相册",nil];
-    [shit showInView:GGSharedDelegate.tabBarController.view];
+    [shit showInView:self.view.window];
 }
 
 -(void)takePicture
