@@ -247,7 +247,6 @@
 //约定：图片拍摄时间为文件名
 //参数请按照顺序传入。
 //无返回参数。
-//-(void)CluesFileUpload
 -(void)reportClueWithContentID:(long long)aContentID clueText:(NSString *)aClueText phoneID:(NSString *)aPhoneID phone:(NSString *)aPhone images:(NSArray *)aImages callback:(GGApiBlock)aCallback
 {
     NSString *path = @"fileUpload";
