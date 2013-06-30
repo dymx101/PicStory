@@ -22,6 +22,7 @@
 #import "GGAreaFunction.h"
 #import "GGAPIService.h"
 #import "GGArchive.h"
+#import "GGProvince.h"
 
 //1.九宫格这个需要调接口的，但是他们那边现在没做，所有可以先写成配置文件
 //区域数据：“武汉""老河口""襄阳""孝感""宜昌""荆州""十堰""黄石""黄冈""马口"
@@ -38,7 +39,7 @@
 
 @interface GGMainVC ()
 {
-    BMKMapView* _mapView;
+    BMKMapView * _mapView;
     UIWebView * phoneCallWebView;
     NSString * pcName;
     NSString * pcPhone;
@@ -110,10 +111,16 @@
         [GGGlobalValue sharedInstance].provinceName = OTSSTRING(@"老河口");
         
         //区域信息
+        __block NSMutableArray * allProvince = [NSMutableArray array];
         [[GGAPIService sharedInstance] getLocateAreas:^(NSArray *arr) {
             if (arr !=nil) {
-                _locations = arr;
-                [GGGlobalValue sharedInstance].locations = _locations;
+                for (GGLocateArea * locate in arr) {
+                    //热门地区 排除襄阳
+                    if ([locate.superId intValue] != 0) {
+                        [allProvince addObject:locate];
+                    }
+                }
+                [GGGlobalValue sharedInstance].locations = allProvince;
             }
             else
             {
@@ -130,8 +137,9 @@
                     [_areafunctions addObject:aArray];
                 }
                 _buttonIndexDic = [NSArray arrayWithArray:_areafunctions];
-                GGAreaFunction * _tempAF = [arr objectAtIndex:0];
-                DLog(@">>area id %@", _tempAF.areaId);
+                [GGGlobalValue sharedInstance].areafunctions = arr;
+                GGAreaFunction * firstareafuntion = [arr objectAtIndex:0];
+                DLog(@">>firstareafuntion area id %@", firstareafuntion.areaId);
                 [self updateIconsWithCaseIndex:0];
             }
             else
@@ -297,7 +305,9 @@
     if ([notification.name isEqualToString:GG_NOTIFY_PROVINCE_CHANGED]) {
         [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
         DLog(@">>> proviceid %d",[[GGGlobalValue sharedInstance].provinceId integerValue]);
-        [self updateIconsWithCaseIndex:[[GGGlobalValue sharedInstance].provinceId integerValue]];
+         GGProvince * ggprovice = [[GGProvince alloc] init];
+        int modIndex = [ggprovice getProvinceModelIndex:[GGGlobalValue sharedInstance].provinceId];
+        [self updateIconsWithCaseIndex:modIndex];
     }
 }
 
@@ -469,7 +479,9 @@
                     [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
                     [GGGlobalValue sharedInstance].provinceId = locate.areaId;
                     [GGGlobalValue sharedInstance].provinceName = OTSSTRING(locate.address);
-                    [self updateIconsWithCaseIndex:[[GGGlobalValue sharedInstance].provinceId integerValue]];
+                    GGProvince * ggprovice = [[GGProvince alloc] init];
+                    int modIndex = [ggprovice getProvinceModelIndex:[GGGlobalValue sharedInstance].provinceId];
+                    [self updateIconsWithCaseIndex:modIndex];
                     break;
                 }
             }

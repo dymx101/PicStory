@@ -32,4 +32,11 @@
  */
 - (NSNumber *)getProvinceIdFromName:(NSString *)provinceName;
 
+/**
+ *  功能:根据省份ID返回省份模块的索引
+ *  provinceName:省份名称
+ *  返回：模块的索引
+ */
+- (int) getProvinceModelIndex:(NSNumber *)provinceId;
+
 @end

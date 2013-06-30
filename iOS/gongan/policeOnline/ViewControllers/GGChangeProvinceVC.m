@@ -60,33 +60,12 @@
 - (void)initData
 {
     self.titleArray = [NSMutableArray array];
-    __block NSMutableArray * allProvince = [NSMutableArray array];
     self.ggProvince  = [[GGProvince alloc]init];
     self.ggProvince.provinceArray = [NSMutableArray array];
     
     [self.titleArray addObject:@"热门地区"];
-    
-    
-    [self showLoadingHUD];
-    [[GGAPIService sharedInstance] getLocateAreas:^(NSArray *arr) {
-
-        if (arr !=nil)
-        {
-            for (GGLocateArea * locate in arr) {
-                //热门地区 排除襄阳
-                if ([locate.superId intValue] != 0) {
-                    [allProvince addObject:locate.address];
-                }
-            }
-            [self.ggProvince.provinceArray addObject:allProvince];
-        }
-        else
-        {
-            [self alertNetError];
-        }
-        [self hideLoadingHUD];
-        [self initMainView];
-    }];
+    [self.ggProvince.provinceArray addObject:[GGGlobalValue sharedInstance].locations];
+    [self initMainView];
 }
 
 /**
@@ -126,7 +105,7 @@
     topLbl.font = [UIFont systemFontOfSize:14.0];
     [topView addSubview:topLbl];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 54, 320, self.view.bounds.size.height-54) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 54, 320, self.view.bounds.size.height-54-44) style:UITableViewStylePlain];
     self.tableView.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1.0];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -206,8 +185,9 @@
         cell.textLabel.font = [UIFont systemFontOfSize:16.0];
     }
     
-    NSString *provinceName = [[self.ggProvince.provinceArray safeObjectAtIndex:indexPath.section] safeObjectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@" %@", provinceName];
+    GGLocateArea * gglocate = [[self.ggProvince.provinceArray safeObjectAtIndex:indexPath.section] safeObjectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@" %@", gglocate.address];
     
     return cell;
 }
@@ -221,9 +201,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *selectedProvinceName = [[self.ggProvince.provinceArray safeObjectAtIndex:[indexPath section]] safeObjectAtIndex:[indexPath row]];
-    if (![[GGGlobalValue sharedInstance].provinceName isEqualToString:selectedProvinceName]) {
-        [self switchToProvince:selectedProvinceName];
+    GGLocateArea * selectedGGlocate = [[self.ggProvince.provinceArray safeObjectAtIndex:[indexPath section]] safeObjectAtIndex:[indexPath row]];
+    if (![[GGGlobalValue sharedInstance].provinceName isEqualToString:selectedGGlocate.address]) {
+        [self switchToProvince:selectedGGlocate.address];
     }
     else
     {

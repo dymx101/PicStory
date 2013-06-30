@@ -16,6 +16,7 @@ AS_SINGLETON(GGGlobalValue);
 @property(nonatomic,retain)NSNumber * provinceId;                //当前省份id
 @property(nonatomic,retain)NSString * provinceName;              //当前省份名称
 @property(nonatomic,retain)NSArray * locations;                  //当前地域信息
+@property(nonatomic,retain)NSArray * areafunctions;              //地域模块信息
 @property(nonatomic,assign)BOOL isFirstLaunch;                   //是否是第一次启动客户端
 @property(nonatomic,assign)BOOL isLaunch;                        //是启动客户端还是从后台调起
 @property(nonatomic,retain)NSArray *allProvince;                 //所有的省份(省份里包含市，市里面包含区)

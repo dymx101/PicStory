@@ -11,6 +11,7 @@
 #import "GGLocateArea.h"
 #import "GGAPIService.h"
 #import "GGGlobalValue.h"
+#import "GGAreaFunction.h"
 
 @implementation GGProvince
 
@@ -61,6 +62,25 @@
         }
     }
     return  provinceIdValue;
+}
+
+/**
+ *  功能:根据省份ID返回省份模块的索引
+ *  provinceName:省份名称
+ *  返回：模块的索引
+ */
+- (int) getProvinceModelIndex:(NSNumber *)provinceId
+{
+    int modIdex = 0 ; // areafunctions 中的 模块索引
+    NSArray * areafunctions  = [GGGlobalValue sharedInstance].areafunctions;
+    for (int k = 0; k < [areafunctions count]; k++) {
+        GGAreaFunction * areafunction = [areafunctions objectAtIndex:k];
+        if ([areafunction.areaId intValue] == [provinceId intValue]) {
+            modIdex = k;
+            break;
+        }
+    }
+    return  modIdex;
 }
 
 @end
