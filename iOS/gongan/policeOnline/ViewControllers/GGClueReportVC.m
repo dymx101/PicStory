@@ -11,16 +11,27 @@
 #import "GGAppDelegate.h"
 
 @interface GGClueReportVC ()
-@property (weak, nonatomic) IBOutlet UIImageView *ivCaptured;
-@property (weak, nonatomic) IBOutlet UIButton *btnCaptured;
+//@property (weak, nonatomic) IBOutlet UIImageView *ivCaptured;
+//@property (weak, nonatomic) IBOutlet UIButton *btnCaptured;
 @property (weak, nonatomic) IBOutlet UIScrollView *viewScroll;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnCaptured1;
+@property (weak, nonatomic) IBOutlet UIButton *btnCaptured2;
+@property (weak, nonatomic) IBOutlet UIButton *btnCaptured3;
+@property (weak, nonatomic) IBOutlet UIButton *btnCaptured4;
+@property (weak, nonatomic) IBOutlet UIButton *btnCaptured5;
 
 
 @end
 
 @implementation GGClueReportVC
 {
-    UIImage     *_capturedImage;
+    //UIImage     *_capturedImage;
+    NSMutableArray          *_cachedImages;
+    NSArray                     *_capturedButtons;
+    UIImage                 *_defaultBtnImg;
+    int                     _indexForDelete;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,6 +39,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setMyTitle:@"线索征集"];
+        _cachedImages = [NSMutableArray arrayWithCapacity:5];
+        //_capturedButtons = [NSMutableArray arrayWithCapacity:5];
+        _defaultBtnImg = [UIImage imageNamed:@"btnAddPic"];
     }
     return self;
 }
@@ -37,12 +51,40 @@
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = nil;
+    _capturedButtons = @[_btnCaptured1, _btnCaptured2, _btnCaptured3, _btnCaptured4, _btnCaptured5];
+    [self _updateCapturedButtons];
+    //_btnCaptured.enabled = NO;
     
-   
-    _btnCaptured.enabled = NO;
+    _viewScroll.contentSize = CGSizeMake(_viewScroll.contentSize.width, CGRectGetMaxY(_btnSubmit.frame) + 20);
     
-    _viewScroll.contentSize = CGSizeMake(_viewScroll.contentSize.width, CGRectGetMaxY(_ivCaptured.frame) + 20);
-    
+}
+
+-(void)_updateCapturedButtons
+{
+    int btnCount = _capturedButtons.count;
+    int imageCount = _cachedImages.count;
+    for (int i = 0; i < btnCount; i++)
+    {
+        UIButton *btn = _capturedButtons[i];
+        btn.layer.borderWidth = 1;
+        btn.layer.borderColor = GGSharedColor.white.CGColor;
+        if (i < imageCount)
+        {
+            btn.hidden = NO;
+            id dic = _cachedImages[i];
+            UIImage *image = [dic objectForKey:@"image"];
+            [btn setImage:image forState:UIControlStateNormal];
+        }
+        else if (i == imageCount)
+        {
+            btn.hidden = NO;
+            [btn setImage:_defaultBtnImg forState:UIControlStateNormal];
+        }
+        else
+        {
+            btn.hidden = YES;
+        }
+    }
 }
 
 #pragma mark - scroll view delegate
@@ -58,8 +100,22 @@
 
 -(IBAction)addPicture:(id)sender
 {
-    UIActionSheet *shit = [[UIActionSheet alloc] initWithTitle:@"添加照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"相册",nil];
-    [shit showInView:self.view.window];
+    UIButton *btn = sender;
+    if (btn.tag < _cachedImages.count)
+    {
+        // has captured
+        _indexForDelete = btn.tag;
+        UIActionSheet *shit = [[UIActionSheet alloc] initWithTitle:@"删除照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"删除", nil];
+        shit.tag = 1000;
+        [shit showInView:self.view.window];
+    }
+    else
+    {
+        UIActionSheet *shit = [[UIActionSheet alloc] initWithTitle:@"添加照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"相册",nil];
+        shit.tag = 1001;
+        [shit showInView:self.view.window];
+    }
+    
 }
 
 -(void)takePicture
@@ -89,14 +145,30 @@
 #pragma mark - action sheet
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0)
+    if (actionSheet.tag == 1000)    // delete
     {
-        [self takePicture];
+        if (buttonIndex == 0)
+        {
+            [self deletePicture];
+        }
     }
-    else if (buttonIndex == 1)
+    else if (actionSheet.tag == 1001) // add
     {
-        [self visitAlbum];
+        if (buttonIndex == 0)
+        {
+            [self takePicture];
+        }
+        else if (buttonIndex == 1)
+        {
+            [self visitAlbum];
+        }
     }
+}
+
+-(void)deletePicture
+{
+    [_cachedImages removeObjectAtIndex:_indexForDelete];
+    [self _updateCapturedButtons];
 }
 
 #pragma mark - camera delegate
@@ -115,15 +187,38 @@
     { /* Let's get the metadata. This is only for images. Not videos */
         NSDictionary *metadata = [info objectForKey:UIImagePickerControllerMediaMetadata];
         
-        _capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        UIImage *capturedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         NSLog(@"Image Metadata = %@", metadata);
-        NSLog(@"Image = %@", _capturedImage);
+        NSLog(@"Image = %@", capturedImage);
         
-        _ivCaptured.image = _capturedImage;
-        _btnCaptured.enabled = YES;
+        //_ivCaptured.image = capturedImage;
+        [self _cacheCapturedImage:capturedImage];
+        
+        //_btnCaptured.enabled = YES;
     }
     
     [picker dismissModalViewControllerAnimated:YES];
+}
+
+-(void)_cacheCapturedImage:(UIImage *)aCapturedImage
+{
+    if (aCapturedImage)
+    {
+        NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(aCapturedImage)];
+        NSDate *date = [NSDate date];
+        NSDateFormatter *fmtr = [[NSDateFormatter alloc] init];
+        fmtr.dateFormat = @"yyyyMMddhhmmss";
+        
+        NSString *imageName = [NSString stringWithFormat:@"%@.jpg", [fmtr stringFromDate:date]];
+        DLog(@"%@", imageName);
+        
+        NSDictionary *imageDic = [NSDictionary dictionaryWithObjectsAndKeys:imageName, @"name"
+                                  , imageData, @"data"
+                                  , aCapturedImage, @"image", nil];
+        [_cachedImages addObject:imageDic];
+        
+        [self _updateCapturedButtons];
+    }
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -133,10 +228,14 @@
 }
 
 - (void)viewDidUnload {
-    [self setIvCaptured:nil];
-    [self setIvCaptured:nil];
-    [self setBtnCaptured:nil];
+
     [self setViewScroll:nil];
+    [self setBtnCaptured1:nil];
+    [self setBtnCaptured2:nil];
+    [self setBtnCaptured3:nil];
+    [self setBtnCaptured4:nil];
+    [self setBtnCaptured5:nil];
+    [self setBtnSubmit:nil];
     [super viewDidUnload];
 }
 @end
