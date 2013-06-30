@@ -9,6 +9,7 @@
 #import "GGClueReportVC.h"
 
 #import "GGAppDelegate.h"
+#import "UIDevice+IdentifierAddition.h"
 
 @interface GGClueReportVC ()
 //@property (weak, nonatomic) IBOutlet UIImageView *ivCaptured;
@@ -99,7 +100,7 @@
 #warning DUMMY CODE
     if (_viewText.text.length)
     {
-        [GGSharedAPI reportClueWithContentID:1000 clueText:_viewText.text phoneID:@"ffffffffffffffff" phone:@"13800138000" images:_cachedImages callback:^(id operation, id aResultObject, NSError *anError) {
+        [GGSharedAPI reportClueWithContentID:1000 clueText:_viewText.text phoneID:[UIDevice macaddress] phone:[GGUserDefault myPhone] images:_cachedImages callback:^(id operation, id aResultObject, NSError *anError) {
             
             //GGApiParser *parser = [GGApiParser parserWithApiData:aResultObject];
             
@@ -110,6 +111,7 @@
     else
     {
         [GGAlert alert:@"请填写线索内容"];
+        [_viewText becomeFirstResponder];
     }
 }
 
