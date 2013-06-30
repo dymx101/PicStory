@@ -100,7 +100,7 @@
 #warning DUMMY CODE
     if (_viewText.text.length)
     {
-        [GGSharedAPI reportClueWithContentID:1000 clueText:_viewText.text phoneID:[UIDevice macaddress] phone:[GGUserDefault myPhone] images:_cachedImages callback:^(id operation, id aResultObject, NSError *anError) {
+        [GGSharedAPI reportClueWithContentID:_contentID clueText:_viewText.text phoneID:[UIDevice macaddress] phone:[GGUserDefault myPhone] images:_cachedImages callback:^(id operation, id aResultObject, NSError *anError) {
             
             //GGApiParser *parser = [GGApiParser parserWithApiData:aResultObject];
             

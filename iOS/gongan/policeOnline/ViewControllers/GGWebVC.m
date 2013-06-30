@@ -10,6 +10,7 @@
 #import "GGAPIService.h"
 #import "GGWanted.h"
 #import "GGClueReportVC.h"
+#import "GGClue.h"
 
 #define RELOADGGWANTED     @"RELOADGGWANTED"
 
@@ -103,6 +104,7 @@
 {
     NSLog(@"addAnClue+ %@",self.clue);
     GGClueReportVC *vc = [GGClueReportVC new];
+    vc.contentID = _clue.ID;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

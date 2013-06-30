@@ -16,4 +16,6 @@
 , UINavigationControllerDelegate
 , UIImagePickerControllerDelegate>
 
+@property (assign) long long contentID;
+
 @end

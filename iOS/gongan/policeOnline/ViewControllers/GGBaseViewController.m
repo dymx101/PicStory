@@ -46,6 +46,8 @@
     self.navigationController.navigationBar.tintColor = GGSharedColor.lightNavy;
     
     self.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked:)];
+    
+    DLog(@"%@'s view loaded", NSStringFromClass([self class]));
 }
 
 -(void)backButtonClicked:(id)sender
