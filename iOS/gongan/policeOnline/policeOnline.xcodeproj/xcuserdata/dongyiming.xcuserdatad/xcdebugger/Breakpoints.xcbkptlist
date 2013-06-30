@@ -52,7 +52,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "76"
          endingLineNumber = "76"
-         landmarkName = "-_testGetAllPolicemanFromDB"
+         landmarkName = "-_testReportPoliceWithAreaID"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -65,7 +65,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "43"
          endingLineNumber = "43"
-         landmarkName = "-_testReportPoliceWithAreaID"
+         landmarkName = "-run"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -78,7 +78,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "113"
          endingLineNumber = "113"
-         landmarkName = "-_testGetWantedSubCategory"
+         landmarkName = "-_testGetAllPolicemanFromDB"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -157,6 +157,19 @@
          startingLineNumber = "58"
          endingLineNumber = "58"
          landmarkName = "-save:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ViewControllers/GGClueReportVC.m"
+         timestampString = "394269246.025224"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "-submit:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

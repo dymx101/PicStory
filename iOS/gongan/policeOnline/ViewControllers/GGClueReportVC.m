@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCaptured4;
 @property (weak, nonatomic) IBOutlet UIButton *btnCaptured5;
 
+@property (weak, nonatomic) IBOutlet UITextView *viewText;
 
 @end
 
@@ -95,7 +96,21 @@
 
 -(IBAction)submit:(id)sender
 {
-    
+#warning DUMMY CODE
+    if (_viewText.text.length)
+    {
+        [GGSharedAPI reportClueWithContentID:1000 clueText:_viewText.text phoneID:@"ffffffffffffffff" phone:@"13800138000" images:_cachedImages callback:^(id operation, id aResultObject, NSError *anError) {
+            
+            //GGApiParser *parser = [GGApiParser parserWithApiData:aResultObject];
+            
+            DLog(@"%@", aResultObject);
+            
+        }];
+    }
+    else
+    {
+        [GGAlert alert:@"请填写线索内容"];
+    }
 }
 
 -(IBAction)addPicture:(id)sender
@@ -209,10 +224,13 @@
         NSDateFormatter *fmtr = [[NSDateFormatter alloc] init];
         fmtr.dateFormat = @"yyyyMMddhhmmss";
         
-        NSString *imageName = [NSString stringWithFormat:@"%@.jpg", [fmtr stringFromDate:date]];
+        NSString *dateStr = [fmtr stringFromDate:date];
+        NSString *imageName = [NSString stringWithFormat:@"%@.jpg", dateStr];
         DLog(@"%@", imageName);
         
-        NSDictionary *imageDic = [NSDictionary dictionaryWithObjectsAndKeys:imageName, @"name"
+        NSDictionary *imageDic = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  dateStr, @"name"
+                                  , imageName, @"fileName"
                                   , imageData, @"data"
                                   , aCapturedImage, @"image", nil];
         [_cachedImages addObject:imageDic];
@@ -236,6 +254,7 @@
     [self setBtnCaptured4:nil];
     [self setBtnCaptured5:nil];
     [self setBtnSubmit:nil];
+    [self setViewText:nil];
     [super viewDidUnload];
 }
 @end

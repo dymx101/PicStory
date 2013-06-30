@@ -248,7 +248,7 @@
 //参数请按照顺序传入。
 //无返回参数。
 //-(void)CluesFileUpload
--(void)reportClueWithContentID:(long long)aContentID clueText:(NSString *)aClueText phoneID:(NSString *)aPhoneID phone:(NSString *)aPhone images:(NSArray *)aImages
+-(void)reportClueWithContentID:(long long)aContentID clueText:(NSString *)aClueText phoneID:(NSString *)aPhoneID phone:(NSString *)aPhone images:(NSArray *)aImages callback:(GGApiBlock)aCallback
 {
     NSString *path = @"fileUpload";
     
@@ -259,23 +259,30 @@
     [parameters setObject:aPhoneID forKey:@"clPhone"];
     
     NSURLRequest* request = [self multipartFormRequestWithMethod:@"POST" path:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        //
+        
+        for (id dic in aImages)
+        {
+            NSString *name = [dic objectForKey:@"name"];
+            NSString *fileName = [dic objectForKey:@"fileName"];
+            NSData *data = [dic objectForKey:@"data"];
+            
+            [formData appendPartWithFileData:data name:name fileName:fileName mimeType:@"image/jpeg"];
+        }
+        
     }];
     
-//    NSURLRequest* request = [self multipartFormRequestWithMethod:@"POST"
-//                                                                                         path:path
-//                                                                                   parameters:dict
-//                                                                    constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//                                                                        [formData appendPartWithFileData:data1
-//                                                                                                    name:@"image1"
-//                                                                                                fileName:@"image1.jpg"
-//                                                                                                mimeType:@"image/jpeg"];
-//                                                                        [formData appendPartWithFileData:data2
-//                                                                                                    name:@"image2"
-//                                                                                                fileName:@"image2.jpg"
-//                                                                                                mimeType:@"image/jpeg"];
-//                                                                    }
-//                             }];
+
+    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [self _handleResult:responseObject operation:operation error:nil callback:aCallback];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [self _handleResult:nil operation:operation error:error callback:aCallback];
+        
+    }];
+    
+    [self enqueueHTTPRequestOperation:operation];
 }
 
 

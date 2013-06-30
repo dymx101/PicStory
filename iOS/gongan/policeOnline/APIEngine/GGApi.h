@@ -73,7 +73,22 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(void)getCluesSubCategoryWithContentID:(long long)aContentID callback:(GGApiBlock)aCallback;
 
 //线索图片上传
-//-(void)CluesPicFileUpload
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/fileUpload
+//参数：
+//contentId: 线索文章id
+//clContext: 线索内容
+//clPhoneId：手机编号
+//clPhone：手机号码
+//约定：图片拍摄时间为文件名
+//参数请按照顺序传入。
+//无返回参数。
+//-(void)CluesFileUpload
+-(void)reportClueWithContentID:(long long)aContentID
+                      clueText:(NSString *)aClueText
+                       phoneID:(NSString *)aPhoneID
+                         phone:(NSString *)aPhone
+                        images:(NSArray *)aImages
+                      callback:(GGApiBlock)aCallback;
 
 //获取功能模块
 -(void)getFunctionsAll:(GGApiBlock)aCallback;
