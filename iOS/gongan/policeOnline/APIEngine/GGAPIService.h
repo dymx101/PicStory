@@ -135,6 +135,16 @@ AS_SINGLETON(GGAPIService)
 -(void)searchArea:(NSString *) Keyword aCompletion:(void(^)(NSMutableArray * arr))aCompletion;
 
 /**
+ * <h2>搜索警务片区</h2>
+ * <br/>
+ * @param Keyword      搜索关键字
+ * @param anAreaID     搜索的地区
+ * @param aCompletion  回调更新UI
+ * @return
+ */
+-(void)searchArea:(NSString *) Keyword AreaID:(long long)anAreaID aCompletion:(void(^)(NSMutableArray * arr))aCompletion;
+
+/**
  * <h2>判断是否收藏了警员</h2>
  * <br/>
  * @param Keyword      搜索关键字
@@ -200,6 +210,11 @@ AS_SINGLETON(GGAPIService)
                           evaluate:(int)evaluate
                             unitId:(long)unitId
                        aCompletion:(void(^)(long flag))aCompletion;
+
+/**
+ *<h2>获取线索征集列表</h2>
+ */
+-(void)getCluesRoot:(void(^)(NSMutableArray * arr))aCompletion;
 
 
 @end

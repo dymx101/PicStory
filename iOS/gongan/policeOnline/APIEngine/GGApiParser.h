@@ -31,5 +31,6 @@
 -(NSMutableArray *)parseGetWantedRootCategory;
 -(NSMutableArray *)parseGetLocateArea;
 -(NSMutableArray *)parseGetAreaFunction;
+-(NSMutableArray *)parseGetClues;
 -(GGVersionInfo *)parseGetVersionInfo;
 @end

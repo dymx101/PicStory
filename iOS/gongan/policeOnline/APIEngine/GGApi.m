@@ -208,32 +208,12 @@
 //typeId: 0表示为栏目列表  1标示为文章列表
 //栏目列表：栏目列表id: columnId  栏目列表名称：name
 //文章列表：文章列表id: contentId  文章列表名称：title
--(void)getCluesRootCategory:(GGApiBlock)aCallback;
+-(void)getCluesRoot:(GGApiBlock)aCallback;
 {
     NSString *path = @"mobile-clueInfo.rht";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:__LONGLONG(403) forKey:@"contentType"];
-    
-    [self _execGetWithPath:path params:parameters callback:aCallback];
-}
-
--(void)getCluesSubCategoryWithColumnID:(long long)aColumnID callback:(GGApiBlock)aCallback
-{
-    NSString *path = @"mobile-clueInfo.rht";
-    
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:__LONGLONG(aColumnID) forKey:@"columnId"];
-    
-    [self _execGetWithPath:path params:parameters callback:aCallback];
-}
-
--(void)getCluesSubCategoryWithContentID:(long long)aContentID callback:(GGApiBlock)aCallback
-{
-    NSString *path = @"mobile-clueInfo.rht";
-    
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:__LONGLONG(aContentID) forKey:@"contentId"];
     
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }

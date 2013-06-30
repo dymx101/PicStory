@@ -9,6 +9,7 @@
 #import "GGWebVC.h"
 #import "GGAPIService.h"
 #import "GGWanted.h"
+#import "GGClueReportVC.h"
 
 #define RELOADGGWANTED     @"RELOADGGWANTED"
 
@@ -21,9 +22,7 @@
 @end
 
 @implementation GGWebVC
-//{
-//    UIWebView   *_webview;
-//}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,11 +55,19 @@
             self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"取消收藏" style:UIBarButtonItemStylePlain target:self action:@selector(myFavoriteClick:)];
         }
     }
+    
+    //线索征集的时候做一个特殊处理
+    if (_clue !=nil) {
+        self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"提供线索" style:UIBarButtonItemStylePlain target:self action:@selector(addAnClue)];
+    }
     [_viewWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_urlStr]]];
     DLog(@"webview loading: {%@}", _urlStr);
 }
 
 
+/**
+ *  功能：添加收藏
+ */
 -(IBAction)myFavoriteClick:(id)sender
 {
     DLog(@"myFavoriteClick");
@@ -89,6 +96,16 @@
     
 }
 
+/**
+ *  功能：提供线索
+ */
+-(void) addAnClue
+{
+    NSLog(@"addAnClue+ %@",self.clue);
+    GGClueReportVC *vc = [GGClueReportVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(void)showError:(NSString *)error
 {
     UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:nil message:error delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -114,14 +131,14 @@
 
 -(void)backButtonClicked:(id)sender
 {
-//    if (_viewWeb.canGoBack)
-//    {
-//        [_viewWeb goBack];
-//    }
-//    else
-//    {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
+    //    if (_viewWeb.canGoBack)
+    //    {
+    //        [_viewWeb goBack];
+    //    }
+    //    else
+    //    {
+    //        [self.navigationController popViewControllerAnimated:YES];
+    //    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

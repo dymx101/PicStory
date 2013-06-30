@@ -15,6 +15,7 @@
 #import "GGWanted.h"
 #import "GGLocateArea.h"
 #import "GGAreaFunction.h"
+#import "GGClue.h"
 
 #define GG_ASSERT_API_DATA_IS_DIC   NSAssert([_apiData isKindOfClass:[NSDictionary class]], @"Api Data should be a NSDictionary");
 
@@ -152,6 +153,17 @@
 -(NSMutableArray *)parseGetAreaFunction
 {
     return [self _parseArrForClass:[GGAreaFunction class]];
+}
+
+-(NSMutableArray *)parseGetClues
+{
+    if (self.typeID == 1)
+    {
+        return [self _parseArrForClass:[GGClue class]];
+    }
+    else
+        return nil;
+
 }
 
 -(GGVersionInfo *)parseGetVersionInfo

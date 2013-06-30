@@ -212,7 +212,8 @@
     
     _search.showsCancelButton = YES;
     if (self.area == nil) {
-        [[GGAPIService sharedInstance] searchArea:searchTerm aCompletion:^(NSMutableArray * arr){
+        NSNumber * area = [GGGlobalValue sharedInstance].provinceId;
+        [[GGAPIService sharedInstance] searchArea:searchTerm AreaID:[area longLongValue] aCompletion:^(NSMutableArray * arr){
             if (arr !=nil) {
                 _mutableAreaKeys = arr;
                 [_table reloadData];

@@ -204,7 +204,7 @@
 -(void)updateIconsWithCaseIndex:(NSUInteger)aCaseIndex
 {
     _currentPositonIndex = aCaseIndex;
-    _currentPositonIndex = MIN(6, _currentPositonIndex);
+//    _currentPositonIndex = MIN(6, _currentPositonIndex);
     
     for (UIButton *btn in _allButtons)
     {

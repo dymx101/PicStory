@@ -17,6 +17,7 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "GGLocateArea.h"
 #import "GGAreaFunction.h"
+#import "GGClue.h"
 
 @implementation GGAPITest
 {
@@ -40,17 +41,16 @@ DEF_SINGLETON(GGAPITest)
 //    [self _testchooseAreaIos];
 //    [self _testgetCluesRootCategory];
 //    [self _testgetFunctionsAll];
-    [self _testGetAreas];
+    [self _testgetCluesRoot];
 }
 
--(void)_testgetCluesRootCategory
+-(void)_testgetCluesRoot
 {
-//   [GGSharedAPI getCluesRootCategory:^(id operation, id aResultObject, NSError *anError) {
-//       GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-//   }];
-    [GGSharedAPI getCluesSubCategoryWithContentID:231L callback:^(id operation, id aResultObject, NSError *anError) {
-        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-    }];
+   [GGSharedAPI getCluesRoot:^(id operation, id aResultObject, NSError *anError) {
+       GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+       NSMutableArray *arr = [parser parseGetClues];
+       NSLog(@"%@",arr);
+   }];    
 }
 
 -(void)_testgetFunctionsAll
@@ -65,8 +65,7 @@ DEF_SINGLETON(GGAPITest)
 {
    [GGSharedAPI getLocateAreas:^(id operation, id aResultObject, NSError *anError) {
        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
-       NSMutableArray *arr = [parser parseGetLocateArea];
-       
+
    }];
 }
 

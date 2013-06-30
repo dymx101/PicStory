@@ -68,9 +68,7 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
                           callback:(GGApiBlock)aCallback;
 
 //线索征集
--(void)getCluesRootCategory:(GGApiBlock)aCallback;
--(void)getCluesSubCategoryWithID:(long long)aColumnID callback:(GGApiBlock)aCallback;
--(void)getCluesSubCategoryWithContentID:(long long)aContentID callback:(GGApiBlock)aCallback;
+-(void)getCluesRoot:(GGApiBlock)aCallback;
 
 //线索图片上传
 //接口地址：http://rhtsoft.gnway.net:8888/mobile/fileUpload

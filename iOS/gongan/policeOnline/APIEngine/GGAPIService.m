@@ -16,6 +16,7 @@
 #import "GGWanted.h"
 #import "GGLocateArea.h"
 #import "GGAreaFunction.h"
+#import "GGClue.h"
 
 @implementation GGAPIService
 {
@@ -25,6 +26,7 @@
     NSMutableArray  *_wanteds;
     NSMutableArray  *_localAreas;
     NSMutableArray  *_areaFunctions;
+    NSMutableArray  *_clues;
     GGVersionInfo   *_verson;
 }
 
@@ -40,6 +42,7 @@ DEF_SINGLETON(GGAPIService)
         _wanteds  = [NSMutableArray array];
         _localAreas = [NSMutableArray array];
         _areaFunctions = [NSMutableArray array];
+        _clues = [NSMutableArray array];
     }
     return self;
 }
@@ -104,7 +107,7 @@ DEF_SINGLETON(GGAPIService)
  * <br/>
  * @return
  */
--(NSArray *)getAllPolicemanFromDB 
+-(NSArray *)getAllPolicemanFromDB
 {
     NSArray *policemans = [[GGDbManager sharedInstance] getAllPolicemans];
     
@@ -373,6 +376,35 @@ DEF_SINGLETON(GGAPIService)
 
 
 /**
+ * <h2>搜索警务片区</h2>
+ * <br/>
+ * @param Keyword      搜索关键字
+ * @param anAreaID     搜索的地区
+ * @param aCompletion  回调更新UI
+ * @return
+ */
+-(void)searchArea:(NSString *) Keyword AreaID:(long long)anAreaID aCompletion:(void(^)(NSMutableArray * arr))aCompletion
+{
+    [GGSharedAPI searchAreaByKeyword:Keyword AreaID:anAreaID callback:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *arr = [parser parseGetAreas];
+        DLog(@"%@", arr);
+        if (arr == nil) {
+            _areas = nil;
+        }
+        [_areas removeAllObjects];
+        for (GGArea *area in arr) {
+            DLog(@"area -- id:%lld, address:%@", area.ID, area.address);
+            [_areas addObject:area];
+        }
+        if (aCompletion) {
+            aCompletion(_areas);
+        }
+    }];
+}
+
+
+/**
  * <h2>判断是否收藏了警员</h2>
  * <br/>
  * @param Keyword      搜索关键字
@@ -507,6 +539,29 @@ DEF_SINGLETON(GGAPIService)
         flag = [[[parser apiData] objectForKey:@"flag"] longValue];
         if (aCompletion) {
             aCompletion(flag);
+        }
+    }];
+}
+
+/**
+ *<h2>获取线索征集列表</h2>
+ */
+-(void)getCluesRoot:(void(^)(NSMutableArray * arr))aCompletion
+{
+    [GGSharedAPI getCluesRoot:^(id operation, id aResultObject, NSError *anError) {
+        GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
+        NSMutableArray *anArray = [parser parseGetClues];
+        NSLog(@"%@",anArray);
+        if (anArray == nil) {
+            _clues = nil;
+        }
+        [_clues removeAllObjects];
+        for (GGClue * data in anArray) {
+            DLog(@"clues -- id:%lld, name:%@", data.ID, data.title);
+            [_clues addObject:data];
+        }
+        if (aCompletion) {
+            aCompletion(_clues);
         }
     }];
 }
