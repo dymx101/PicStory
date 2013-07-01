@@ -55,6 +55,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)showLoadingHUDTxt:(NSString *) txt
+{
+    [hud hide:YES];
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    hud.labelText = txt;
+}
+
 -(void)showLoadingHUD
 {
     //[MBProgressHUD showHUDAddedTo:self.view animated:YES];

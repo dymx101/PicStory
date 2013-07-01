@@ -234,7 +234,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:@(aContentID) forKey:@"contentId"];
     [parameters setObject:aClueText forKey:@"clContext"];
-    [parameters setObject:aPhoneID forKey:@"clPhoneId"];
+    [parameters setObject:aPhone forKey:@"clPhoneId"];
     [parameters setObject:aPhoneID forKey:@"clPhone"];
     
     NSURLRequest* request = [self multipartFormRequestWithMethod:@"POST" path:path parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {

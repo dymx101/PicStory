@@ -23,6 +23,7 @@
 #import "GGAPIService.h"
 #import "GGArchive.h"
 #import "GGProvince.h"
+#import "GGCluesVC.h"
 
 //1.九宫格这个需要调接口的，但是他们那边现在没做，所有可以先写成配置文件
 //区域数据：“武汉""老河口""襄阳""孝感""宜昌""荆州""十堰""黄石""黄冈""马口"
@@ -403,35 +404,43 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+
+//服务指南变成办事大厅
 -(IBAction)serviceWindowAction:(id)sender
 {
+    int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
     GGWebVC *vc = [[GGWebVC alloc] init];
-    int unitId = [[GGGlobalValue sharedInstance].provinceId intValue];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@?r=%d&unitId=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-getServiceWindowList.rht",arc4random()%1000,unitId];
-    vc.naviTitleString = @"服务窗口";
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@&unitId=%d&r=%d", GGN_STR_TEST_SERVER_URL, @"mobile-column.rht?contentType=3",unitid,arc4random()%1000];
+    vc.naviTitleString = @"办事大厅";
     [self.navigationController pushViewController:vc animated:YES];
+
 }
 
+//服务窗口变成线索征集
 -(IBAction)serviceGuideAction:(id)sender
 {
-    GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@&r=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-column.rht?contentType=1",arc4random()%1000];
-    vc.naviTitleString = @"服务指南";
+    //    GGWebVC *vc = [[GGWebVC alloc] init];
+    //    int unitId = [[GGGlobalValue sharedInstance].provinceId intValue];
+    //    vc.urlStr = [NSString stringWithFormat:@"%@/%@?r=%d&unitId=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-getServiceWindowList.rht",arc4random()%1000,unitId];
+    //    vc.naviTitleString = @"服务窗口";
+    GGCluesVC *vc = [GGCluesVC new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(IBAction)guardTipAction:(id)sender
 {
+    int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@&r=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-column.rht?contentType=4",arc4random()%1000];
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@&unitId=%d&r=%d", GGN_STR_TEST_SERVER_URL, @"mobile-column.rht?contentType=4",unitid,arc4random()%1000];
     vc.naviTitleString = @"防范提示";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(IBAction)breakRuleAction:(id)sender
 {
+    int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@?r=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-searchIllegalCar.rht",arc4random()%1000];
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@?r=%d&unitId=%d", GGN_STR_TEST_SERVER_URL, @"mobile-searchIllegalCar.rht",arc4random()%1000,unitid];
     vc.naviTitleString = @"违章查询";
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -446,8 +455,9 @@
 
 -(IBAction)policeInfomationAction:(id)sender
 {
+    int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@&r=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-column.rht?contentType=139",arc4random()%1000];
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@&r=%d&unitId=%d", GGN_STR_TEST_SERVER_URL, @"mobile-column.rht?contentType=139",arc4random()%1000,unitid];
     vc.naviTitleString = @"警方资讯";
     [self.navigationController pushViewController:vc animated:YES];
 }

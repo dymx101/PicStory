@@ -17,6 +17,7 @@
 
 -(void)showLoadingHUD;
 -(void)hideLoadingHUD;
+-(void)showLoadingHUDTxt:(NSString *) txt;
 -(void)alertNetError;
 
 @end

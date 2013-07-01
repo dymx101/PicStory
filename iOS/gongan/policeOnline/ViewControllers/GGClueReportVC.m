@@ -100,18 +100,39 @@
 #warning DUMMY CODE
     if (_viewText.text.length)
     {
+        [self showLoadingHUDTxt:@"正在上传中..."];
         [GGSharedAPI reportClueWithContentID:_contentID clueText:_viewText.text phoneID:[UIDevice macaddress] phone:[GGUserDefault myPhone] images:_cachedImages callback:^(id operation, id aResultObject, NSError *anError) {
-            
-            //GGApiParser *parser = [GGApiParser parserWithApiData:aResultObject];
-            
+            [self hideLoadingHUD];
+            if (anError) {
+                [GGAlert alert:@"上传失败，请稍后重试"];
+            }
+            else
+            {
+                [self showError:@"上传成功"];
+            }
             DLog(@"%@", aResultObject);
-            
         }];
     }
     else
     {
         [GGAlert alert:@"请填写线索内容"];
         [_viewText becomeFirstResponder];
+    }
+}
+
+-(void)showError:(NSString *)error
+{
+    UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:nil message:error delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView setTag:110];
+    [alertView show];
+}
+
+
+#pragma mark 设置alert点击操作
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 110) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
