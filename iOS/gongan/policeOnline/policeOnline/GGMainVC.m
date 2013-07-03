@@ -373,12 +373,12 @@
         if (pcPhone == nil) {
             pcPhone = @"";
         }
-        [GGSharedAPI reportPoliceWithAreaIDV2:REPORT_AREA_ID mbNum:[UIDevice macaddress] pcNum:[GGSharedAPI uniqueNumber] mapX:self.userLocation.location.coordinate.latitude mapY:self.userLocation.location.coordinate.longitude pcName:pcName pcPhone:pcPhone callback:^(id operation, id aResultObject, NSError *anError) {
+        [GGSharedAPI reportPoliceWithAreaIDV2:[[GGGlobalValue sharedInstance].provinceId longValue] mbNum:[UIDevice macaddress] pcNum:[GGSharedAPI uniqueNumber] mapX:self.userLocation.location.coordinate.latitude mapY:self.userLocation.location.coordinate.longitude pcName:pcName pcPhone:pcPhone callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long typeid = [[[parser apiData] objectForKey:@"typeId"] longValue];
             DLog(@">>>> %ld",typeid);
             if (typeid == 0) {
-                [GGSharedAPI reportPoliceWithAreaIDV2:REPORT_AREA_ID mbNum:[UIDevice macaddress] pcNum:[GGSharedAPI uniqueNumber] mapX:self.userLocation.location.coordinate.latitude mapY:self.userLocation.location.coordinate.longitude pcName:pcName pcPhone:pcPhone callback:^(id operation, id aResultObject, NSError *anError) {
+                [GGSharedAPI reportPoliceWithAreaIDV2:[[GGGlobalValue sharedInstance].provinceId longValue] mbNum:[UIDevice macaddress] pcNum:[GGSharedAPI uniqueNumber] mapX:self.userLocation.location.coordinate.latitude mapY:self.userLocation.location.coordinate.longitude pcName:pcName pcPhone:pcPhone callback:^(id operation, id aResultObject, NSError *anError) {
                     GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
                     NSLog(@">> %ld",[[[parser apiData] objectForKey:@"typeId"] longValue]);
                 }];

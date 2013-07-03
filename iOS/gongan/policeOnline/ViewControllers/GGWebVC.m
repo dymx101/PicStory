@@ -133,15 +133,15 @@
 
 -(void)backButtonClicked:(id)sender
 {
-    //    if (_viewWeb.canGoBack)
-    //    {
-    //        [_viewWeb goBack];
-    //    }
-    //    else
-    //    {
-    //        [self.navigationController popViewControllerAnimated:YES];
-    //    }
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_viewWeb.canGoBack)
+    {
+        [_viewWeb goBack];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - web view delegate

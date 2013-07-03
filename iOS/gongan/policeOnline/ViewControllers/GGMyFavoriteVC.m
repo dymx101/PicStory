@@ -16,6 +16,7 @@
 #import "GGAPIService.h"
 #import "GGPoliceDetailViewController.h"
 #import "GGWebVC.h"
+#import "GGGlobalValue.h"
 
 #define TONGJILING         @"通缉令"
 #define SHEQUJINGCHA       @"社区警察"
@@ -139,12 +140,13 @@
     else
     {
         DLog(@"进入通缉令详情");
+        int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
         if ([column isKindOfClass:[GGWanted class]]) {
             GGWanted * _wanted = column;
             [[GGAPIService sharedInstance] hasWantedWithID:_wanted.ID aCompletion:^(BOOL _wantedkeep)
              {
                  GGWebVC *vc = [[GGWebVC alloc] init];
-                 vc.urlStr = [NSString stringWithFormat:@"%@/mobile-clueInfo.rht?contentId=%lld", GGN_STR_PRODUCTION_SERVER_URL, _wanted.ID];
+                 vc.urlStr = [NSString stringWithFormat:@"%@/mobile-clueInfo.rht?contentId=%lld&unitId=%d", GGN_STR_TEST_SERVER_URL, _wanted.ID,unitid];
                  vc.naviTitleString = _wanted.title;
                  vc.wanted = _wanted;
                  vc.wantedKeep = !_wantedkeep;

@@ -135,7 +135,6 @@
     
     //初始化视图容器
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(160, 330, 100, 120)];
-    
     //初始化单选按钮控件
     GGRadioButton *rb1 = [[GGRadioButton alloc] initWithGroupId:@"first group" index:0];
     GGRadioButton *rb2 = [[GGRadioButton alloc] initWithGroupId:@"first group" index:1];
