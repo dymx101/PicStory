@@ -25,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnPhone;
 @property (weak, nonatomic) IBOutlet UIButton *btnStationPhone;
 @property (weak, nonatomic) IBOutlet UIButton *btnSuperviserPhone;
+@property (weak, nonatomic) IBOutlet UILabel *lblLast;
+@property (weak, nonatomic) IBOutlet UIView *viewPanelBg;
+@property (weak, nonatomic) IBOutlet UIView *viewVirtLine;
 
 @end
 
@@ -110,7 +113,16 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = _naviTitleString;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = GGSharedColor.white;
+    //_svContent.backgroundColor = GGSharedColor.orange;
+    
+    
+    //
+    _viewPanelBg.backgroundColor = GGSharedColor.clear;
+    _viewPanelBg.layer.borderColor = GGSharedColor.darkGray.CGColor;
+    _viewPanelBg.layer.borderWidth = 1.f;
+    _viewVirtLine.backgroundColor = GGSharedColor.darkGray;
+    _svContent.showsVerticalScrollIndicator = NO;
     
     self.ivPhoto.layer.borderColor = GGSharedColor.lightGray.CGColor;
     self.ivPhoto.layer.borderWidth = 2.f;
@@ -135,6 +147,7 @@
     
     //初始化视图容器
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(160, 330, 100, 120)];
+    //container.backgroundColor = GGSharedColor.orange;
     //初始化单选按钮控件
     GGRadioButton *rb1 = [[GGRadioButton alloc] initWithGroupId:@"first group" index:0];
     GGRadioButton *rb2 = [[GGRadioButton alloc] initWithGroupId:@"first group" index:1];
@@ -165,6 +178,10 @@
     [container addSubview:label3];
     
     [self.svContent addSubview:container];
+    
+    float contentHeight = CGRectGetMaxY(_lblLast.frame) + 10;
+    _svContent.contentSize = CGSizeMake(_svContent.contentSize.width, contentHeight);
+    
     //按照GroupId添加观察者
     [GGRadioButton addObserverForGroupId:@"first group" observer:self];
 }
@@ -203,6 +220,9 @@
     [self setBtnPhone:nil];
     [self setBtnStationPhone:nil];
     [self setBtnSuperviserPhone:nil];
+    [self setLblLast:nil];
+    [self setViewPanelBg:nil];
+    [self setViewVirtLine:nil];
     [super viewDidUnload];
 }
 @end
