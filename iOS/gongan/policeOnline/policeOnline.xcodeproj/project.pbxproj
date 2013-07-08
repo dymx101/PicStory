@@ -42,7 +42,6 @@
 		4C5873C9177ED69200AC8514 /* cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5873C7177ED69200AC8514 /* cell_bg@2x.png */; };
 		4C5873CB177ED80500AC8514 /* cell_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5873CA177ED80500AC8514 /* cell_arrow@2x.png */; };
 		4C7E0686177C860400493DC7 /* GGLocateArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E0685177C860400493DC7 /* GGLocateArea.m */; };
-		4C84CD161748D12300B9F661 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C84CD151748D12200B9F661 /* Settings.bundle */; };
 		4C84CD1F1749206600B9F661 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C84CD1D1749206600B9F661 /* GTMBase64.m */; };
 		4C9313D0173B6E67007352CB /* mt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4C9313CF173B6E67007352CB /* mt.mm */; };
 		4C9313D1173B6E8C007352CB /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC7F55C173A97C60060FA2A /* libbaidumapapi.a */; };
@@ -1152,7 +1151,6 @@
 				4CE44E0B173118E400BA6097 /* cellbg@2x.png in Resources */,
 				EA1D944417335D24009FCC7B /* Default.png in Resources */,
 				4C9313D5173BE2A7007352CB /* btn@2x.png in Resources */,
-				4C84CD161748D12300B9F661 /* Settings.bundle in Resources */,
 				4C31EA4A174DD43C008CA3BC /* btnPoliceInfomation@2x.png in Resources */,
 				4C3CB767175C61420000A414 /* Icon-72.png in Resources */,
 				4C3CB768175C61420000A414 /* Icon-Small-50.png in Resources */,
