@@ -325,10 +325,7 @@
 		  <groupId>commons-beanutils</groupId>
 		  <artifactId>commons-beanutils</artifactId>
 		  <version>1.8.3</version>
-		</dependency>
-		
-
-        
+		</dependency>   
          
 		<!--   gson   -->
 		<dependency>  
@@ -355,6 +352,13 @@
 		    <artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 	    </dependency>	
+	    
+	    <!-- druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>0.2.9</version>
+        </dependency>	    
 
        <!-- Free Marker -->
 		<dependency>
