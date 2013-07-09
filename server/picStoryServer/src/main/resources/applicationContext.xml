@@ -21,6 +21,7 @@
 	<import resource="spring-passport.xml"/>
 	<import resource="spring-quartz.xml"/>
     <import resource="spring-threadpool.xml"/>
+    <import resource="spring-hessian-client.xml"/>
 	
 	
 </beans>

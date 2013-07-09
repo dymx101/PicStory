@@ -369,6 +369,14 @@
             <artifactId>xmemcached-provider</artifactId>
             <version>3.1.0</version>
        </dependency> 
+        
+        <!-- hessian -->
+       <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>4.0.7</version>
+       </dependency>
+    
 	</dependencies>
 
 	<build>

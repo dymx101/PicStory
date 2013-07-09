@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.google.code.ssm.Cache;
 import com.google.code.ssm.api.format.SerializationType;
 import com.google.code.ssm.providers.CacheException;
@@ -21,6 +22,7 @@ import com.towne.framework.springmvc.model.MomentVO;
 import com.towne.framework.springmvc.model.Moments;
 import com.towne.framework.springmvc.model.PageVO;
 import com.towne.framework.common.model.Trader;
+import com.towne.framework.core.hessian.BasicAPI;
 import com.towne.framework.core.utils.GsonUtil;
 
 /**
@@ -38,12 +40,17 @@ public class ResponseJSONController {
 	@Autowired
 	private Cache cache;
 	
+	@Autowired
+	private BasicAPI basic;
+	
+	
 	@RequestMapping(value="/moment/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<PageVO> getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
 		Trader trader = new Trader();
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123");
 		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
+		System.out.println("sayHello() : " + basic.sayHello());
 		System.out.println(">>>>>> "+cache.get("USER_LOGVO_127.0.0.1",SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+cache.get("USER_SESSION_127.0.0.1",SerializationType.PROVIDER));
 		return pvs;
