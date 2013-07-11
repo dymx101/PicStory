@@ -27,7 +27,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:applicationContext-app.xml</param-value>
+			<param-value>classpath*:applicationContext.xml</param-value>
 		</init-param>
 		
 		<load-on-startup>1</load-on-startup>
@@ -42,11 +42,11 @@
 		<servlet-class>com.caucho.hessian.server.HessianServlet</servlet-class>
 		<init-param>
 			<param-name>home-api</param-name>
-			<param-value>cn.haohaowo.hessian.BasicAPI</param-value>
+			<param-value>com.towne.hessian.BasicAPI</param-value>
 		</init-param>
 		<init-param>
 			<param-name>home-class</param-name>
-			<param-value>cn.haohaowo.hessian.BasicAPIImpl</param-value>
+			<param-value>com.towne.hessian.BasicAPIImpl</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

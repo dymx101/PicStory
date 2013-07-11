@@ -12,50 +12,50 @@
 	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
 	default-autowire="byName">
 	
-	<bean id="bean1" name="alias1" class="cn.haohaowo.spring.chapter.HelloImpl"></bean>
-	<bean id="bean2" name="bean2" class="cn.haohaowo.spring.chapter.HelloImpl"></bean>
+	<bean id="bean1" name="alias1" class="com.towne.spring.chapter.HelloImpl"></bean>
+	<bean id="bean2" name="bean2" class="com.towne.spring.chapter.HelloImpl"></bean>
 	
-	<bean id="bean3" class="cn.haohaowo.spring.chapter.HelloImpl2"></bean>
-	<bean id="bean4" class="cn.haohaowo.spring.chapter.HelloImpl2">
+	<bean id="bean3" class="com.towne.spring.chapter.HelloImpl2"></bean>
+	<bean id="bean4" class="com.towne.spring.chapter.HelloImpl2">
 		<constructor-arg index="0" value="Hello Spring!"></constructor-arg>
 	</bean>
 	
-	<bean id="bean5" class="cn.haohaowo.spring.chapter.HelloApiStaticFactory" factory-method="newInstance">
+	<bean id="bean5" class="com.towne.spring.chapter.HelloApiStaticFactory" factory-method="newInstance">
 		<constructor-arg index="0" value="Hello Spring Static"></constructor-arg>
 	</bean>
 	
-	<bean id="beanInstanceFactory" class="cn.haohaowo.spring.chapter.HelloApiInstanceFactory"></bean>
+	<bean id="beanInstanceFactory" class="com.towne.spring.chapter.HelloApiInstanceFactory"></bean>
 	<bean id="bean6" factory-bean="beanInstanceFactory" factory-method="newInstance">
 		<constructor-arg index="0" value="Hello Spring Instance"></constructor-arg>
 	</bean>
 	
-	<bean id="byIndex" class="cn.haohaowo.spring.chapter.HelloImpl3">
+	<bean id="byIndex" class="com.towne.spring.chapter.HelloImpl3">
 		<constructor-arg index="0" value="Hello Spring"></constructor-arg>
 		<constructor-arg index="1" value="1"></constructor-arg>
 	</bean>
-	<bean id="byType" class="cn.haohaowo.spring.chapter.HelloImpl3">
+	<bean id="byType" class="com.towne.spring.chapter.HelloImpl3">
 		<constructor-arg type="java.lang.String" value="Hello Spring"></constructor-arg>
 		<constructor-arg type="int" value="1"></constructor-arg>
 	</bean>
-	<bean id="byName" class="cn.haohaowo.spring.chapter.HelloImpl3">
+	<bean id="byName" class="com.towne.spring.chapter.HelloImpl3">
 		<constructor-arg name="message" value="Hello Spring"></constructor-arg>
 		<constructor-arg name="index" value="1"></constructor-arg>
 	</bean>
 	
-	<bean id="byIndexStatic" class="cn.haohaowo.spring.chapter.DependencyInjectByStatciFactory" factory-method="newInstance">
+	<bean id="byIndexStatic" class="com.towne.spring.chapter.DependencyInjectByStatciFactory" factory-method="newInstance">
 		<constructor-arg index="0" value="Hello Spring"></constructor-arg>
 		<constructor-arg index="1" value="1"></constructor-arg>
 	</bean>
-	<bean id="byTypeStatic" class="cn.haohaowo.spring.chapter.DependencyInjectByStatciFactory" factory-method="newInstance">
+	<bean id="byTypeStatic" class="com.towne.spring.chapter.DependencyInjectByStatciFactory" factory-method="newInstance">
 		<constructor-arg type="java.lang.String" value="Hello Spring"></constructor-arg>
 		<constructor-arg type="int" value="1"></constructor-arg>
 	</bean>
-	<bean id="byNameStatic" class="cn.haohaowo.spring.chapter.DependencyInjectByStatciFactory" factory-method="newInstance">
+	<bean id="byNameStatic" class="com.towne.spring.chapter.DependencyInjectByStatciFactory" factory-method="newInstance">
 		<constructor-arg name="message" value="Hello Spring"></constructor-arg>
 		<constructor-arg name="index" value="1"></constructor-arg>
 	</bean>
 	
-	<bean id="instanceFactory" class="cn.haohaowo.spring.chapter.DependencyInjectByInstanceFactory"></bean>
+	<bean id="instanceFactory" class="com.towne.spring.chapter.DependencyInjectByInstanceFactory"></bean>
 	<bean id="byIndexInstance" factory-bean="instanceFactory" factory-method="newInstance">
 		<constructor-arg index="0" value="Hello Spring"></constructor-arg>
 		<constructor-arg index="1" value="1"></constructor-arg>
@@ -69,14 +69,14 @@
 		<constructor-arg name="index" value="1"></constructor-arg>
 	</bean>
 	
-	<bean id="beanSetMethod" class="cn.haohaowo.spring.chapter.HelloImpl4">
+	<bean id="beanSetMethod" class="com.towne.spring.chapter.HelloImpl4">
 		<property name="message" value="Hello Spring"></property>
 		<property name="index">
 			<value>1</value>
 		</property>
 	</bean>
 	
-	<bean id="listBean" class="cn.haohaowo.spring.chapter.ListTestBean">
+	<bean id="listBean" class="com.towne.spring.chapter.ListTestBean">
 		<property name="values">
 			<list>
 				<value>1</value>
@@ -86,16 +86,16 @@
 		</property>
 	</bean>
 	
-	<bean id="decorator1" class="cn.haohaowo.spring.chapter.HelloApiDecorator">
+	<bean id="decorator1" class="com.towne.spring.chapter.HelloApiDecorator">
 		<constructor-arg index="0" ref="bean1"></constructor-arg>
 	</bean>
-	<bean id="decorator2" class="cn.haohaowo.spring.chapter.HelloApiDecorator">
+	<bean id="decorator2" class="com.towne.spring.chapter.HelloApiDecorator">
 		<property name="helloApi">
 			<ref bean="bean1"></ref>
 		</property>
 	</bean>
 	
-	<bean id="localApi" class="cn.haohaowo.spring.chapter.HelloImpl4">
+	<bean id="localApi" class="com.towne.spring.chapter.HelloImpl4">
 		<property name="index" value="1"></property>
 		<property name="message" value="Hello"></property>
 	</bean>

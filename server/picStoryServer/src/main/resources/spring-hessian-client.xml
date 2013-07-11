@@ -12,13 +12,12 @@
 	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
 	default-autowire="byName">
 	
-	<bean name="myServiceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-		<property name="serviceUrl">
-			<value>http://localhost:8080/hessian/report/hessianCommentService</value>
-		</property>
-		<property name="serviceInterface">
-			<value>com.towne.framework.core.hessian.BasicAPI</value>
-		</property>
+	<bean name="myServiceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">		
+		<property name="serviceUrl"
+			value="http://localhost:8080/hessian/report/hessianCommentService" />
+		<property name="serviceInterface"
+			value="com.towne.framework.core.hessian.BasicAPI" />
+		<property name="readTimeout" value="100000" />
 	</bean>
 	
 </beans>
