@@ -19,6 +19,11 @@
 		<property name="serviceInterface" value="com.towne.hessian.BasicAPI"></property>
 	</bean>
 	
+	<bean name="/StorageService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="StorageService"></property>
+		<property name="serviceInterface" value="com.towne.hessian.service.StorageService"></property>
+	</bean>
+	
 	<bean name="myServiceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
 		<property name="serviceUrl">
 			<value>http://localhost:8080/hessian/report/hessianCommentService</value>

@@ -14,5 +14,5 @@
     http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 	
     <import resource="hessian-app.xml"/>
-	<import resource="chapter-app.xml"/>
+    <import resource="mongodb-bootstrap.xml"/>
 </beans>

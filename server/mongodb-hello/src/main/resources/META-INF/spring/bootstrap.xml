@@ -11,4 +11,9 @@
     
     <context:component-scan base-package="org.springframework.data.mongodb.examples.hello"/>
     
+    <bean id="gridfsDb" factory-bean="mongoTemplate" factory-method="getDb" />
+      <bean id="storageService" class="com.rainydayinn.storage.gridfs.StorageServiceGridFSImpl">
+      <constructor-arg index="0" name="gridfsDb" ref="gridfsDb" />
+    </bean>
+    
 </beans>

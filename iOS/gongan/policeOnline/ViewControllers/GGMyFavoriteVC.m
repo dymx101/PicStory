@@ -146,7 +146,7 @@
             [[GGAPIService sharedInstance] hasWantedWithID:_wanted.ID aCompletion:^(BOOL _wantedkeep)
              {
                  GGWebVC *vc = [[GGWebVC alloc] init];
-                 vc.urlStr = [NSString stringWithFormat:@"%@/mobile-clueInfo.rht?contentId=%lld&unitId=%d", GGN_STR_PRODUCTION_SERVER_URL, _wanted.ID,unitid];
+                 vc.urlStr = [NSString stringWithFormat:@"%@/mobile-clueInfo.rht?contentId=%lld&unitId=%d", GGN_STR_TEST_SERVER_URL, _wanted.ID,unitid];
                  vc.naviTitleString = _wanted.title;
                  vc.wanted = _wanted;
                  vc.wantedKeep = !_wantedkeep;

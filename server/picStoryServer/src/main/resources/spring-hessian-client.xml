@@ -20,4 +20,12 @@
 		<property name="readTimeout" value="100000" />
 	</bean>
 	
+	<bean name="storageServiceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">		
+		<property name="serviceUrl"
+			value="http://localhost:8080/hessian/report/StorageService" />
+		<property name="serviceInterface"
+			value="com.towne.framework.common.service.StorageService" />
+		<property name="readTimeout" value="100000" />
+	</bean>	
+
 </beans>

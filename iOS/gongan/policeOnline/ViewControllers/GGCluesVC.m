@@ -80,7 +80,7 @@
     GGClue * clue = [_mutableKeys objectAtIndex:indexPath.row];
     
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/mobile-clueInfo.rht?contentType=403&contentId=%lld", GGN_STR_PRODUCTION_SERVER_URL, clue.ID];
+    vc.urlStr = [NSString stringWithFormat:@"%@/mobile-clueInfo.rht?contentType=403&contentId=%lld", GGN_STR_TEST_SERVER_URL, clue.ID];
     vc.naviTitleString = clue.title;
     vc.clue = clue;
     [self.navigationController pushViewController:vc animated:YES];

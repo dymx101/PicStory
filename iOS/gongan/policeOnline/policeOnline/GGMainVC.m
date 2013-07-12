@@ -422,7 +422,7 @@
 {
     int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@&unitId=%d&r=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-column.rht?contentType=3",unitid,arc4random()%1000];
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@&unitId=%d&r=%d", GGN_STR_TEST_SERVER_URL, @"mobile-column.rht?contentType=3",unitid,arc4random()%1000];
     vc.naviTitleString = @"办事大厅";
     [self.navigationController pushViewController:vc animated:YES];
 
@@ -443,7 +443,7 @@
 {
     int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@&unitId=%d&r=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-column.rht?contentType=4",unitid,arc4random()%1000];
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@&unitId=%d&r=%d", GGN_STR_TEST_SERVER_URL, @"mobile-column.rht?contentType=4",unitid,arc4random()%1000];
     vc.naviTitleString = @"防范提示";
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -452,7 +452,7 @@
 {
     int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@?r=%d&unitId=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-searchIllegalCar.rht",arc4random()%1000,unitid];
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@?r=%d&unitId=%d", GGN_STR_TEST_SERVER_URL, @"mobile-searchIllegalCar.rht",arc4random()%1000,unitid];
     vc.naviTitleString = @"违章查询";
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -469,7 +469,7 @@
 {
     int unitid = [[GGGlobalValue sharedInstance].provinceId intValue];
     GGWebVC *vc = [[GGWebVC alloc] init];
-    vc.urlStr = [NSString stringWithFormat:@"%@/%@&r=%d&unitId=%d", GGN_STR_PRODUCTION_SERVER_URL, @"mobile-column.rht?contentType=139",arc4random()%1000,unitid];
+    vc.urlStr = [NSString stringWithFormat:@"%@/%@&r=%d&unitId=%d", GGN_STR_TEST_SERVER_URL, @"mobile-column.rht?contentType=139",arc4random()%1000,unitid];
     vc.naviTitleString = @"警方资讯";
     [self.navigationController pushViewController:vc animated:YES];
 }
