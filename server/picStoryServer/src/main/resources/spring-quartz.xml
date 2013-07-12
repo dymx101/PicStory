@@ -43,12 +43,12 @@
     <bean id="doTime1" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="jobtask1" />
         <!-- cron表达式 --><!-- 每隔10秒执行一次 -->
-        <property name="cronExpression" value="* 0/3 * * * ?" />
+        <property name="cronExpression" value="0 0/3 16 * * ?" />
     </bean>
 
     <bean id="doTime2" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="jobtask2" />
-        <property name="cronExpression" value="* 0/5 * * * ?" />
+        <property name="cronExpression" value="0 0/5 17 * * ?" />
     </bean>
 
     <!--设置调度 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
