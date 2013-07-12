@@ -11,7 +11,7 @@ public interface IFacadeService {
 
 	public Moment findById(Trader trader, long id);
 
-	public void save(Trader trader, Moment t);
+	public void save(String token, Moment t);
 
 	public void deleteById(Trader trader, long id);
 

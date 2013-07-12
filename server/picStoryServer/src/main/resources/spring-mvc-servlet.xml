@@ -35,7 +35,7 @@
         <property name="maxUploadSize">  
             <value>104857600</value>  
         </property>  
-    </bean>   
+    </bean>
     
     <!-- druid 拦截器 -->
     <bean id="druid-stat-interceptor"
@@ -50,6 +50,6 @@
               <value>druid-stat-interceptor</value>
           </list>
        </property>
-    </bean>    
-    
+    </bean>
+      
 </beans>
