@@ -10,58 +10,83 @@
 	http://www.springframework.org/schema/context 
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd" >
 
-   <!-- 线程执行器配置，用于任务注册 -->
-    <bean id="executor"
-        class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-		<property name="corePoolSize" value="5" />
-		<property name="keepAliveSeconds" value="60" />
-		<property name="maxPoolSize" value="10" />
-		<property name="queueCapacity" value="50000" />
-    </bean>
-    
-   <!-- 要调用的工作类 -->
-    <bean id="quartzJob" class="com.towne.framework.schedule.QuartzJob" />
-    
-    <!--调度业务 : 定义调用对象和调用对象的方法 -->
-    <bean id="jobtask1"
-        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <!-- 调用的类 -->
-        <property name="targetObject" ref="quartzJob" />
-        <!-- 调用类中的方法 -->
-        <property name="targetMethod" value="work1" />
-    </bean>
+    <description> Quartz的本地Cron式执行任务配置 </description>
 
-    <bean id="jobtask2"
-        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <!-- 调用的类 -->
-        <property name="targetObject" ref="quartzJob" />
-        <!-- 调用类中的方法 -->
-        <property name="targetMethod" value="work2" />
-    </bean>
-    
-    <!-- 定义触发时间 -->
-    <bean id="doTime1" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="jobtask1" />
-        <!-- cron表达式 --><!-- 每隔10秒执行一次 -->
-        <property name="cronExpression" value="0 0/3 16 * * ?" />
-    </bean>
+    <!-- Quartz本地Schduler -->
 
-    <bean id="doTime2" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="jobtask2" />
-        <property name="cronExpression" value="0 0/5 17 * * ?" />
-    </bean>
+    <bean
+        id="localQuartzScheduler"
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean"
+        lazy-init="false" >
 
-    <!--设置调度 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
-    <bean id="startQuertz" lazy-init="false" autowire="no"
-        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-        <property name="triggers">
+        <!-- Triggers集成 -->
+
+        <property name="triggers" >
 
             <list>
-                <ref bean="doTime1" />
-                <ref bean="doTime2" />
+                <ref bean="cronTrigger" />
             </list>
         </property>
-        <property name="taskExecutor" ref="executor" />
+        <!-- Quartz配置 -->
+
+        <property name="quartzProperties" >
+
+            <props>
+
+                <prop key="org.quartz.threadPool.threadCount" >5</prop>
+            </props>
+        </property>
+        <!-- 启动时延期3秒开始任务 -->
+
+        <property
+            name="startupDelay"
+            value="3" />
     </bean>
-    
+
+    <!-- Cron式Trigger定义 -->
+
+    <bean
+        id="cronTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerBean" >
+
+        <property
+            name="jobDetail"
+            ref="cronJobDetail" />
+        <!--
+        周一至五,朝九晚五工作时间内每半小时执行一次 
+		<property name="cronExpression" value="0 0/30 9-17 ? * MON-FRI" />
+        -->
+        <!-- 每天晚上24:00执行一次 -->
+
+        <property
+            name="cronExpression"
+            value="0 * 1 * * ?" />
+    </bean>
+
+    <!-- Cron JobDetajil, 基于MethodInvokingJobDetailFactoryBean调用普通Spring Bean -->
+
+    <bean
+        id="cronJobDetail"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean" >
+
+        <property
+            name="targetObject"
+            ref="cronJob" />
+
+        <property
+            name="targetMethod"
+            value="execute" />
+        <!-- 同一任务在前一次执行未完成而Trigger时间又到时是否并发开始新的执行, 默认为true. -->
+
+        <property
+            name="concurrent"
+            value="true" />
+    </bean>
+
+    <!-- 被Cron执行的普通Spring Bean -->
+
+    <bean
+        id="cronJob"
+        class="com.towne.framework.schedule.QuartzJob" />
+
 </beans>
