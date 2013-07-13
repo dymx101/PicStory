@@ -71,7 +71,7 @@ typedef void(^GGApiBlock)(id operation, id aResultObject, NSError* anError);
 -(void)getCluesRoot:(GGApiBlock)aCallback;
 
 //线索图片上传
-//接口地址：http://rhtsoft.gnway.net:8888/mobile/fileUpload
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/fileUploadIos
 //参数：
 //contentId: 线索文章id
 //clContext: 线索内容

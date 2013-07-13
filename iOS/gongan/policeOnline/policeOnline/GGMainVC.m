@@ -340,7 +340,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            NSString *number = @"10010";// 此处读入电话号码
+            NSString *number = @"110";// 此处读入电话号码
             NSString *num = [[NSString alloc] initWithFormat:@"tel://%@",number];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
         });
@@ -362,23 +362,35 @@
         //        if (pcPhone == nil) {
         //            pcPhone = @"";
         //        }
+        float _mapxx = 0.0;
+        float _mapyy = 0.0;
         _profile = (NSArray *)[GGArchive unarchiveDataWithFileName:@"profile.plist"];
-        if ([_profile count] > 0) {
-            pcName = [_profile objectAtIndex:0];
-            pcPhone = [_profile objectAtIndex:1];
+        // 需要判断是否发射本地位置信息，姓名，手机电话
+        if ([GGUserDefault reportMyLocation]) {
+            _mapxx = self.userLocation.location.coordinate.latitude;
+            _mapyy = self.userLocation.location.coordinate.longitude;
         }
-        if (pcName == nil) {
+        if ([_profile count] > 0 && [GGUserDefault reportMyName]) {
+            pcName = [_profile objectAtIndex:0];
+        }
+        else
+        {
             pcName = @"";
         }
-        if (pcPhone == nil) {
-            pcPhone = @"";
+        if ([_profile count] > 0 && [GGUserDefault reportMyPhone]) {
+            pcPhone = [_profile objectAtIndex:1];
         }
-        [GGSharedAPI reportPoliceWithAreaIDV2:[[GGGlobalValue sharedInstance].provinceId longValue] mbNum:[UIDevice macaddress] pcNum:[GGSharedAPI uniqueNumber] mapX:self.userLocation.location.coordinate.latitude mapY:self.userLocation.location.coordinate.longitude pcName:pcName pcPhone:pcPhone callback:^(id operation, id aResultObject, NSError *anError) {
+        else
+        {
+           pcPhone = @"";
+        }
+
+        [GGSharedAPI reportPoliceWithAreaIDV2:[[GGGlobalValue sharedInstance].provinceId longValue] mbNum:[UIDevice macaddress] pcNum:[GGSharedAPI uniqueNumber] mapX:_mapxx mapY:_mapyy pcName:pcName pcPhone:pcPhone callback:^(id operation, id aResultObject, NSError *anError) {
             GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
             long typeid = [[[parser apiData] objectForKey:@"typeId"] longValue];
             DLog(@">>>> %ld",typeid);
             if (typeid == 0) {
-                [GGSharedAPI reportPoliceWithAreaIDV2:[[GGGlobalValue sharedInstance].provinceId longValue] mbNum:[UIDevice macaddress] pcNum:[GGSharedAPI uniqueNumber] mapX:self.userLocation.location.coordinate.latitude mapY:self.userLocation.location.coordinate.longitude pcName:pcName pcPhone:pcPhone callback:^(id operation, id aResultObject, NSError *anError) {
+                [GGSharedAPI reportPoliceWithAreaIDV2:[[GGGlobalValue sharedInstance].provinceId longValue] mbNum:[UIDevice macaddress] pcNum:[GGSharedAPI uniqueNumber] mapX:_mapxx mapY:_mapyy pcName:pcName pcPhone:pcPhone callback:^(id operation, id aResultObject, NSError *anError) {
                     GGApiParser *parser = [GGApiParser parserWithRawData:aResultObject];
                     NSLog(@">> %ld",[[[parser apiData] objectForKey:@"typeId"] longValue]);
                 }];

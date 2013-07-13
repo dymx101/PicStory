@@ -218,7 +218,7 @@
     [self _execGetWithPath:path params:parameters callback:aCallback];
 }
 
-//接口地址：http://rhtsoft.gnway.net:8888/mobile/fileUpload
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/fileUploadIos
 //参数：
 //contentId: 线索文章id
 //clContext: 线索内容
@@ -229,7 +229,7 @@
 //无返回参数。
 -(void)reportClueWithContentID:(long long)aContentID clueText:(NSString *)aClueText phoneID:(NSString *)aPhoneID phone:(NSString *)aPhone images:(NSArray *)aImages callback:(GGApiBlock)aCallback
 {
-    NSString *path = @"fileUpload";
+    NSString *path = @"fileUploadIos";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:@(aContentID) forKey:@"contentId"];
@@ -369,7 +369,7 @@
 }
 
 
-//接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile- chooseAreaIos.rht
+//接口地址：http://rhtsoft.gnway.net:8888/mobile/mobile-chooseAreaIos.rht
 //返回参数：(json格式)
 //地区信息
 -(void)getLocateAreas:(GGApiBlock)aCallback

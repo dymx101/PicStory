@@ -13,26 +13,12 @@ public class QuartzJob {
 	@SuppressWarnings("unused")
 	private static Logger logger = LoggerFactory.getLogger(QuartzJob.class);
 
-	@Autowired
-	private ThreadPoolTaskExecutor taskExecutor;
-
-	/**
-	 * 定时扫描，调用线程池开启任务
-	 */
-	public void execute() {
-
-		taskExecutor.execute(new Runnable() {
-
-			@Override
-			public void run() {
-				try {
-					System.out.print("this is a QuartzJob!");
-				} catch (Exception ex) {
-					ex.getStackTrace();
-				}
-			}
-
-		});
-
+	public void work1() {
+		System.out.println("Quartz的任务调度！！！work1启用……");
 	}
+
+	public void work2() {
+		System.out.println("Quartz的任务调度！！！work2启用……");
+	}
+
 }
