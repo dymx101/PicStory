@@ -29,20 +29,23 @@
 		<property name="url" value="${url}"></property>
 	</bean>
 	 -->
-	<!-- 数据源配置,使用应用内的DBCP数据库连接池 --> 
-	<!-- 
+	<!-- 数据源配置,使用应用内的DBCP数据库连接池 -->
 	<bean id="hibernateDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<!-- Connection Info -->
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		
+
+		<!-- Connection Pooling Info -->
 		<property name="maxIdle" value="${dbcp.maxIdle}" />
 		<property name="maxActive" value="${dbcp.maxActive}" />
 		<property name="defaultAutoCommit" value="false" />
 		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
 		<property name="minEvictableIdleTimeMillis" value="3600000" />
-	
+		
+		<!-- 优化配置 可根据需要开启或 关闭-->
+		<!-- 
 		<property name="removeAbandoned">${dbcp.removeAbandoned}</property> 
 		<property name="maxWait">${dbcp.maxWait}</property> 
 		<property name="removeAbandonedTimeout">${dbcp.removeAbandonedTimeout}</property> 
@@ -50,42 +53,8 @@
 		<property name="testOnBorrow">${dbcp.testOnBorrow}</property>
         <property name="testOnReturn">${dbcp.testOnReturn}</property>
         <property name="testWhileIdle">${dbcp.testWhileIdle}</property>
+		 -->
 	</bean>
-	 --> 
-	
-	<!-- 数据源配置,使用druid数据库连接池 -->
-    <bean id="hibernateDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"> 
-      <!-- 基本属性 url、user、password -->
-      <property name="url" value="${jdbc.url}" />
-      <property name="username" value="${jdbc.username}" />
-      <property name="password" value="${jdbc.password}" />
-
-      <!-- 配置初始化大小、最小、最大 -->
-      <property name="initialSize" value="1" />
-      <property name="minIdle" value="1" /> 
-      <property name="maxActive" value="20" />
-
-      <!-- 配置获取连接等待超时的时间 -->
-      <property name="maxWait" value="60000" />
-
-      <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-      <property name="timeBetweenEvictionRunsMillis" value="60000" />
-
-      <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-      <property name="minEvictableIdleTimeMillis" value="300000" />
-
-      <property name="validationQuery" value="SELECT 'x'" />
-      <property name="testWhileIdle" value="true" />
-      <property name="testOnBorrow" value="false" />
-      <property name="testOnReturn" value="false" />
-
-      <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-      <property name="poolPreparedStatements" value="false" />
-      <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
-
-      <!-- 配置监控统计拦截的filters -->
-      <property name="filters" value="stat" /> 
-    </bean>
 	 
 	<bean id="hibernate4sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">

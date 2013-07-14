@@ -36,7 +36,7 @@ public class IFacadeServiceImpl implements IFacadeService {
 	}
 
 	@Override
-	public void save(String token, Moment t) {
+	public void save(Trader trader, Moment t) {
 		// TODO Auto-generated method stub
 		momentService.save(t);
 	}

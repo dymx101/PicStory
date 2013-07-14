@@ -325,7 +325,10 @@
 		  <groupId>commons-beanutils</groupId>
 		  <artifactId>commons-beanutils</artifactId>
 		  <version>1.8.3</version>
-		</dependency>   
+		</dependency>
+		
+
+        
          
 		<!--   gson   -->
 		<dependency>  
@@ -352,13 +355,6 @@
 		    <artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 	    </dependency>	
-	    
-	    <!-- druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>0.2.9</version>
-        </dependency>	    
 
        <!-- Free Marker -->
 		<dependency>
@@ -373,20 +369,6 @@
             <artifactId>xmemcached-provider</artifactId>
             <version>3.1.0</version>
        </dependency> 
-        
-        <!-- hessian -->
-       <dependency>
-            <groupId>com.caucho</groupId>
-            <artifactId>hessian</artifactId>
-            <version>4.0.7</version>
-       </dependency>
-    
-       	<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-mongodb</artifactId>
-		    <version>1.2.1.RELEASE</version>
-	    </dependency>
-	
 	</dependencies>
 
 	<build>
@@ -541,11 +523,6 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
-                    <connectors>  
-                       <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">  
-                            <port>8000</port>  
-                       </connector>  
-                    </connectors>  					
 					<stopPort>9966</stopPort>
 					<stopKey>foo</stopKey>
 				</configuration>

@@ -5,7 +5,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.google.code.ssm.Cache;
 import com.google.code.ssm.api.format.SerializationType;
 import com.towne.framework.core.constant.CommonKey;
@@ -83,11 +82,11 @@ public class TraderAndTokenAop {
 					Map<String, Cookie> oneUsercookieMap = (Map<String, Cookie>) me
                         .get(CommonKey.USER_TOKEN_KEY + token, SerializationType.PROVIDER);
                     if (oneUsercookieMap == null) {
-                        throw new SystemMobileRuntimeException("用户Token过期，请重新登陆");
+                        throw new SystemMobileRuntimeException("用户Token过期,请重新登录");
                     }
                     Trader trader = (Trader) me.get(CommonKey.TRADER + token, SerializationType.PROVIDER);
                     if (trader == null) {
-                        throw new SystemMobileRuntimeException("用户Token过期，请重新登陆");
+                        throw new SystemMobileRuntimeException("用户Token过期,请重新登录");
                     }
                     MobileLogger logVO = ThreadLocalLog.getSystemLoggerVO();
                     logVO.setTraderName(trader.getTraderName());
@@ -122,4 +121,5 @@ public class TraderAndTokenAop {
             //System.out.println("AOP END");
            return obj;
     }
+
 }
