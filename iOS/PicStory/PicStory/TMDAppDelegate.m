@@ -22,9 +22,9 @@
     NSString *fileName = [[NSBundle mainBundle] pathForResource:@"testUpload" ofType:@"jpg"];
     UIImage *image = [UIImage imageWithContentsOfFile:fileName];
     
-//    [TMDTest uploadImage:image url:[NSURL URLWithString:@"http://localhost:8080/picStoryServer/upload.do"] delegate:self];
+    [TMDTest uploadImage:image url:[NSURL URLWithString:@"http://localhost:8000/picStoryServer_0.0.1/storage/store"] delegate:self];
     
-    [TMDTest testUrl:[NSURL URLWithString:@"http://localhost:8080/picStoryServer_0.0.1/json/list/%7B%22content%22:%22this%20is%20a%20pic!%22,%22mediaType%22:0,%22mediaUrl%22:%22www.sina.com.cn%22%7D"] delegate:self];
+//    [TMDTest testUrl:[NSURL URLWithString:@"http://localhost:8080/picStoryServer_0.0.1/json/list/%7B%22content%22:%22this%20is%20a%20pic!%22,%22mediaType%22:0,%22mediaUrl%22:%22www.sina.com.cn%22%7D"] delegate:self];
 
     
     return YES;

@@ -14,7 +14,7 @@
 	
 	<bean name="myServiceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">		
 		<property name="serviceUrl"
-			value="http://localhost:8080/hessian/report/hessianCommentService" />
+			value="http://localhost:8888/hessian/report/hessianCommentService" />
 		<property name="serviceInterface"
 			value="com.towne.framework.core.hessian.BasicAPI" />
 		<property name="readTimeout" value="100000" />
@@ -22,7 +22,7 @@
 	
 	<bean name="storageServiceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">		
 		<property name="serviceUrl"
-			value="http://localhost:8080/hessian/report/StorageService" />
+			value="http://localhost:8888/hessian/report/StorageService" />
 		<property name="serviceInterface"
 			value="com.towne.framework.common.service.StorageService" />
 		<property name="readTimeout" value="100000" />

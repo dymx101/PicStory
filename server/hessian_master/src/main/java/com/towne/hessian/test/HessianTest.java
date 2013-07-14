@@ -23,6 +23,6 @@ public class HessianTest {
 	
 	@Test
 	public void test() {
-		assertEquals("Hello1", basic.sayHello());
+		assertEquals("Hello", basic.sayHello());
 	}
 }

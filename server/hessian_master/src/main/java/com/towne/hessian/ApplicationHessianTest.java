@@ -15,7 +15,7 @@ public class ApplicationHessianTest {
 	 */
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		BasicAPI basic = (BasicAPI) context.getBean("myServiceClient1");
+		BasicAPI basic = (BasicAPI) context.getBean("myServiceClient");
 		System.out.println("sayHello() : " + basic.sayHello());
 		
 		UserService userService = (UserService) context.getBean("userServiceClient");

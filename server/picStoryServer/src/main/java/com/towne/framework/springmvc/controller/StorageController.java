@@ -2,7 +2,9 @@ package com.towne.framework.springmvc.controller;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
@@ -27,25 +29,35 @@ public class StorageController {
     @Autowired
     private StorageService storageService;
  
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
-    public void getById (@PathVariable (value="id") String id, HttpServletResponse response) throws IOException {
-    	GridFSDBFile file = storageService.get(id);
-        if (file!=null) {
-            byte[] data = IOUtils.toByteArray(file.getInputStream());
-            response.setContentType(file.getContentType());
-            response.setContentLength((int)file.getLength());
-            response.getOutputStream().write(data);
-            response.getOutputStream().flush();
+    @RequestMapping(value = "/filename/{filename:.*}", method = RequestMethod.GET)
+    public void getByfilename (@PathVariable (value="filename") String filename, HttpServletResponse response) throws IOException {
+    	String result = storageService.find(filename);
+        if (result!=null) {
+//        	for (GridFSDBFile file : result) {
+//    			try {
+//    				System.out.println(file.getFilename());
+//    				System.out.println(file.getContentType());
+//    	            byte[] data = IOUtils.toByteArray(file.getInputStream());
+//    	            response.setContentType(file.getContentType());
+//    	            response.setContentLength((int)file.getLength());
+//    	            response.getOutputStream().write(data);
+//    	            response.getOutputStream().flush();
+//    			} catch (IOException e) {
+//    				e.printStackTrace();
+//    			}
+//    		}
+        	
         } else {
             response.setStatus(HttpStatus.NOT_FOUND.value());
         }
     }   
  
     @RequestMapping(value = "/store", method = RequestMethod.POST)
-    public ResponseEntity<String> store (@RequestParam MultipartFile file, WebRequest webRequest) {
+    public ResponseEntity<String> store (@RequestParam MultipartFile file, HttpServletRequest request) {
         try {
-            String storedId = storageService.save(file.getInputStream(), file.getContentType(), file.getOriginalFilename());
-            String storedURL = "/storage/id/" + storedId;
+//            String storedId = storageService.save(file.getInputStream(), file.getContentType(), file.getOriginalFilename());
+        	String filenameString = storageService.store(file.getInputStream(),"image/png", file.getOriginalFilename());
+            String storedURL = "/storage/filename/" + filenameString;
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.setLocation(new URI("http://127.0.0.1"));
             return new ResponseEntity<String>(storedURL, responseHeaders, HttpStatus.OK);

@@ -13,6 +13,7 @@
 	default-autowire="byName">
 	
 	<bean id="basicAPI" class="com.towne.hessian.BasicAPIImpl"></bean>
+	<bean id="storageService" class="com.towne.hessian.service.StorageServiceGridFSImpl"></bean>
 	
 	<bean name="/hessianCommentService" class="org.springframework.remoting.caucho.HessianServiceExporter">
 		<property name="service" ref="basicAPI"></property>
@@ -20,13 +21,13 @@
 	</bean>
 	
 	<bean name="/StorageService" class="org.springframework.remoting.caucho.HessianServiceExporter">
-		<property name="service" ref="StorageService"></property>
+		<property name="service" ref="storageService"></property>
 		<property name="serviceInterface" value="com.towne.hessian.service.StorageService"></property>
 	</bean>
 	
 	<bean name="myServiceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
 		<property name="serviceUrl">
-			<value>http://localhost:8080/hessian/report/hessianCommentService</value>
+			<value>http://localhost:8888/hessian/report/hessianCommentService</value>
 		</property>
 		<property name="serviceInterface">
 			<value>com.towne.hessian.BasicAPI</value>
