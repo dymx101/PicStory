@@ -15,7 +15,7 @@ public class HelloMongo {
 	@Autowired
 	MongoOperations mongoOperations;
 
-	public void run() {
+	public String run() {
 
 		if (mongoOperations.collectionExists(Person.class)) {
 			mongoOperations.dropCollection(Person.class);
@@ -32,6 +32,7 @@ public class HelloMongo {
 //		new Query(Criteria.where("id").is("4ffe3486b41f8ed41269a729")),User.class
 		List<Person> results = mongoOperations.findAll(Person.class);
 		System.out.println("Results: " + results);
+		return results.toString();
 	}
 
 }

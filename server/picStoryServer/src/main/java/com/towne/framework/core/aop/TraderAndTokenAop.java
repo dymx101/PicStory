@@ -83,11 +83,11 @@ public class TraderAndTokenAop {
 					Map<String, Cookie> oneUsercookieMap = (Map<String, Cookie>) me
                         .get(CommonKey.USER_TOKEN_KEY + token, SerializationType.PROVIDER);
                     if (oneUsercookieMap == null) {
-                        throw new SystemMobileRuntimeException("用户Token过期，请重新登陆");
+                        throw new SystemMobileRuntimeException("用户Token过期,请重新登陆");
                     }
                     Trader trader = (Trader) me.get(CommonKey.TRADER + token, SerializationType.PROVIDER);
                     if (trader == null) {
-                        throw new SystemMobileRuntimeException("用户Token过期，请重新登陆");
+                        throw new SystemMobileRuntimeException("用户Token过期,请重新登陆");
                     }
                     MobileLogger logVO = ThreadLocalLog.getSystemLoggerVO();
                     logVO.setTraderName(trader.getTraderName());

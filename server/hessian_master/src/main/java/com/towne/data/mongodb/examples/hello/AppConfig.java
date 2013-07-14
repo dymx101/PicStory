@@ -2,14 +2,14 @@ package com.towne.data.mongodb.examples.hello;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+//import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.mongodb.core.MongoFactoryBean;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.mongodb.Mongo;
 
-//@Configuration
+@Configuration
 public class AppConfig {
 
 	public @Bean MongoOperations mongoTemplate(Mongo mongo) {
@@ -29,8 +29,8 @@ public class AppConfig {
 	/*
 	 * Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes
 	 */
-	public @Bean PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
-		return new PersistenceExceptionTranslationPostProcessor();
-	}
+//	public @Bean PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
+//		return new PersistenceExceptionTranslationPostProcessor();
+//	}
 
 }

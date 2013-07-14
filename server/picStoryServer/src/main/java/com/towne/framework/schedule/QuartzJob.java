@@ -2,8 +2,6 @@ package com.towne.framework.schedule;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 /**
  * 被Spring的Quartz MethodInvokingJobDetailFactoryBean定时执行的普通Spring Bean.

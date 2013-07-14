@@ -1,36 +1,63 @@
 package com.towne.hessian.service;
 
-import java.io.InputStream;
 
-import org.bson.types.ObjectId;
-import com.mongodb.DB;
-import com.mongodb.gridfs.GridFS;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.gridfs.GridFsOperations;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.gridfs.GridFSDBFile;
-import com.mongodb.gridfs.GridFSInputFile;
+
 
 public class StorageServiceGridFSImpl implements StorageService {
-	private final GridFS gridFs;
 
-	public StorageServiceGridFSImpl(DB gridfsDb) {
-		gridFs = new GridFS(gridfsDb);
-	}
+  @Autowired
+  GridFsOperations gridFsTemplate;
 
-	@Override
-	public String save(InputStream inputStream, String contentType,
-			String filename) {
-		GridFSInputFile input = gridFs.createFile(inputStream, filename, true);
-		input.setContentType(contentType);
-		input.save();
-		return input.getId().toString();
-	}
+  public String store(InputStream inputStream, String contentType,
+      String filename) {
+    DBObject metaData = new BasicDBObject();
+    metaData.put("extra1", contentType);
+    try {
+      // inputStream = new
+      // FileInputStream("/Users/towne/Desktop/QQ20130428-15.png");
+      gridFsTemplate.store(inputStream, filename, "image/png", metaData);
+    } finally {
+      if (inputStream != null) {
+        try {
+          inputStream.close();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+    }
 
-	@Override
-	public GridFSDBFile get(String id) {
-		return gridFs.findOne(new ObjectId(id));
-	}
+    System.out.println("Done");
+    return filename;
+  }
 
-	@Override
-	public GridFSDBFile getByFilename(String filename) {
-		return gridFs.findOne(filename);
-	}
+  public String find(String filename) {
+    //QQ20130428-15.png
+    List<GridFSDBFile> result = gridFsTemplate.find(new Query()
+        .addCriteria(Criteria.where("filename").is(filename)));
+    for (GridFSDBFile file : result) {
+      System.out.println(file.getFilename());
+      System.out.println(file.getContentType());
+      try {
+        file.writeTo("/Users/towne/Desktop/new-testing.png");
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
+    System.out.println("Done");
+    return "Done";
+  }
+
 }
