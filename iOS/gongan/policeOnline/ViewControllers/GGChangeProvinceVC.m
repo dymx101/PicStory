@@ -64,7 +64,10 @@
     self.ggProvince.provinceArray = [NSMutableArray array];
     
     [self.titleArray addObject:@"热门地区"];
-    [self.ggProvince.provinceArray addObject:[GGGlobalValue sharedInstance].locations];
+    //crash
+    if ([GGGlobalValue sharedInstance].locations) {
+        [self.ggProvince.provinceArray addObject:[GGGlobalValue sharedInstance].locations];
+    }
     [self initMainView];
 }
 

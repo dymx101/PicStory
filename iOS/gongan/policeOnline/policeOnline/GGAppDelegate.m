@@ -109,7 +109,7 @@ BMKMapManager* _mapManager;
 
 - (void)alertNetError{
     
-    UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:nil message:@"网络异常，请检查网络配置..." delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:nil message:@"网络繁忙，请稍后重试..." delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alertView setTag:110];
     [alertView show];
 }
