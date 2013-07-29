@@ -9,6 +9,7 @@
 #import "GGBaseViewController.h"
 #import "MBProgressHUD.h"
 #import "GGColor.h"
+#import "GGLineThroughLabel.h"
 
 @interface GGBaseViewController ()
 
@@ -27,7 +28,9 @@
 -(void)setMyTitle:(NSString *)aTitle
 {
     self.title = aTitle;
-    self.navigationItem.title = aTitle;
+    GGLineThroughLabel *tl = [[GGLineThroughLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [tl setText:aTitle];
+    self.navigationItem.titleView = tl;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

@@ -52,7 +52,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = nil;
+//    self.navigationItem.leftBarButtonItem = nil;
     _capturedButtons = @[_btnCaptured1, _btnCaptured2, _btnCaptured3, _btnCaptured4, _btnCaptured5];
     [self _updateCapturedButtons];
     //_btnCaptured.enabled = NO;

@@ -17,6 +17,7 @@
 		4C1E9F36172F8FB0007FF828 /* GGPoliceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E9F34172F8FAE007FF828 /* GGPoliceDetailViewController.m */; };
 		4C1E9F37172F8FB0007FF828 /* GGPoliceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1E9F35172F8FAF007FF828 /* GGPoliceDetailViewController.xib */; };
 		4C31EA4A174DD43C008CA3BC /* btnPoliceInfomation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C31EA49174DD43C008CA3BC /* btnPoliceInfomation@2x.png */; };
+		4C32F39617A68ECE00988803 /* GGLineThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32F39517A68ECE00988803 /* GGLineThroughLabel.m */; };
 		4C3CB767175C61420000A414 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3CB763175C61420000A414 /* Icon-72.png */; };
 		4C3CB768175C61420000A414 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3CB764175C61420000A414 /* Icon-Small-50.png */; };
 		4C3CB769175C61420000A414 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3CB765175C61420000A414 /* Icon-Small.png */; };
@@ -205,6 +206,8 @@
 		4C1E9F34172F8FAE007FF828 /* GGPoliceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPoliceDetailViewController.m; sourceTree = "<group>"; };
 		4C1E9F35172F8FAF007FF828 /* GGPoliceDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGPoliceDetailViewController.xib; sourceTree = "<group>"; };
 		4C31EA49174DD43C008CA3BC /* btnPoliceInfomation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPoliceInfomation@2x.png"; sourceTree = "<group>"; };
+		4C32F39417A68ECE00988803 /* GGLineThroughLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGLineThroughLabel.h; sourceTree = "<group>"; };
+		4C32F39517A68ECE00988803 /* GGLineThroughLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGLineThroughLabel.m; sourceTree = "<group>"; };
 		4C3CB763175C61420000A414 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Images/Icon-72.png"; sourceTree = SOURCE_ROOT; };
 		4C3CB764175C61420000A414 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Images/Icon-Small-50.png"; sourceTree = SOURCE_ROOT; };
 		4C3CB765175C61420000A414 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Images/Icon-Small.png"; sourceTree = SOURCE_ROOT; };
@@ -955,6 +958,8 @@
 				EA9A9B941777896D00B6AE7E /* GGUserDefault.m */,
 				4CBCEB51177F4A7F00B7CBA3 /* GGArchive.h */,
 				4CBCEB52177F4A7F00B7CBA3 /* GGArchive.m */,
+				4C32F39417A68ECE00988803 /* GGLineThroughLabel.h */,
+				4C32F39517A68ECE00988803 /* GGLineThroughLabel.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1303,6 +1308,7 @@
 				4CBCEB5617803ADC00B7CBA3 /* GGClue.m in Sources */,
 				4CBCEB5A17803EAD00B7CBA3 /* GGCluesVC.m in Sources */,
 				4CBCEB5E1780471900B7CBA3 /* GGClueCell.m in Sources */,
+				4C32F39617A68ECE00988803 /* GGLineThroughLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

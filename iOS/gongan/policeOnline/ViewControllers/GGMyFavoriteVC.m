@@ -46,7 +46,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = _naviTitleString;
+//    self.navigationItem.title = _naviTitleString;
+    [self setMyTitle:_naviTitleString];
     // 为空时默认我的收藏的两个栏目
     if (!_mutableKeys) {
         _mutableKeys = [NSMutableArray arrayWithObjects:TONGJILING,SHEQUJINGCHA,nil];

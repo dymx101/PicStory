@@ -43,7 +43,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = _naviTitleString;
+//    self.navigationItem.title = _naviTitleString;
+    [self setMyTitle:_naviTitleString];
     CGRect frame = CGRectMake(0,0,320.0,44.0);
     _search = [[GGSearchBar alloc] initWithFrame:frame];
     _search.delegate = self;

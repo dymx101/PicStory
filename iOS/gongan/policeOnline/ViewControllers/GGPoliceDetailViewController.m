@@ -112,7 +112,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = _naviTitleString;
+//    self.navigationItem.title = _naviTitleString;
+    [self setMyTitle:_naviTitleString];
     self.view.backgroundColor = GGSharedColor.white;
     //_svContent.backgroundColor = GGSharedColor.orange;
     

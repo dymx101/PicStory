@@ -38,7 +38,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = _naviTitleString;
+//    self.navigationItem.title = _naviTitleString;
+    [self setMyTitle:_naviTitleString];
     [self.btnSurfBack setAction:@selector(surfBackAction:)];
     [self.btnRefresh setAction:@selector(refreshAction:)];
     [self.btnSurfForward setAction:@selector(surfForwardAction:)];

@@ -22,7 +22,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"个人资料";
+//        self.title = @"个人资料";
+        [self setMyTitle:@"个人资料"];
     }
     return self;
 }

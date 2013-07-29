@@ -23,7 +23,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"设置中心";
+//        self.title = @"设置中心";
+        [self setMyTitle:@"设置中心"];
     }
     return self;
 }
