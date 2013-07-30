@@ -165,16 +165,19 @@
     //初始化第一个单选按钮的UILabel
     UILabel *label1 =[[UILabel alloc] initWithFrame:CGRectMake(40, 30, 100, 20)];
     label1.backgroundColor = [UIColor clearColor];
+    label1.font = [UIFont systemFontOfSize:15];
     label1.text = @"满意";
     [container addSubview:label1];
     
     UILabel *label2 =[[UILabel alloc] initWithFrame:CGRectMake(40, 60, 100, 20)];
     label2.backgroundColor = [UIColor clearColor];
+    label2.font = [UIFont systemFontOfSize:15];
     label2.text = @"基本满意";
     [container addSubview:label2];
     
     UILabel *label3 =[[UILabel alloc] initWithFrame:CGRectMake(40, 90, 100, 20)];
     label3.backgroundColor = [UIColor clearColor];
+    label3.font = [UIFont systemFontOfSize:15];
     label3.text = @"不满意";
     [container addSubview:label3];
     

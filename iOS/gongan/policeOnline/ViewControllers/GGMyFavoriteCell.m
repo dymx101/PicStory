@@ -27,7 +27,7 @@
         
         self.NameLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 38)];
         self.NameLbl.numberOfLines = 2;
-        self.NameLbl.font = [UIFont boldSystemFontOfSize:16];
+        self.NameLbl.font = [UIFont systemFontOfSize:16];
         self.NameLbl.backgroundColor = [UIColor clearColor];
         self.NameLbl.text= @"towne";
         [self.contentView addSubview:self.NameLbl];
