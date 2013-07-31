@@ -38,9 +38,9 @@
 //else:     1,2,3,4,5,6,7,8,9
 
 
-@interface GGMainVC ()
+
+@interface GGMainVC ()<BMKGeneralDelegate>
 {
-    BMKMapView * _mapView;
     UIWebView * phoneCallWebView;
     NSString * pcName;
     NSString * pcPhone;
@@ -72,6 +72,8 @@
 @property (weak, nonatomic) BMKUserLocation * userLocation;
 
 @property(nonatomic,strong) UIButton *theButton;
+@property(nonatomic,strong) BMKMapManager * mapManager;
+@property(nonatomic,strong) BMKMapView * mapView;
 
 @end
 
@@ -94,10 +96,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         //        [GGGps sharedInstance].delegate = self;
+        
+        // 要使用百度地图，请先启动BaiduMapManager
+        _mapManager = [[BMKMapManager alloc]init];
+        [_mapManager start:@"" generalDelegate:self];
+        
         _mapView = [[BMKMapView alloc] init];
         [_mapView setHidden:YES];
         _mapView.delegate = self;
         _mapView.showsUserLocation = YES;
+        
         phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
         //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         //        pcName = [defaults objectForKey:@"ggname"];
@@ -208,7 +216,53 @@
         ivBgRc.origin.y = self.view.bounds.size.height - ivBgRc.size.height;
         _ivBg.frame = ivBgRc;
     }
+    
+    [NSThread detachNewThreadSelector:@selector(handleLocation) toTarget:self withObject:nil];
 }
+
+/**
+ *  功能:解析定位
+ */
+-(void) handleLocation {
+    
+    //首先更新位置
+    self.userLocation = nil;
+    [_mapManager start:@"" generalDelegate:self];
+    do
+    {
+        [[NSRunLoop currentRunLoop]runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+        
+    }while (!self.userLocation);
+    [_mapManager stop];
+    
+    CLGeocoder *Geocoder=[[CLGeocoder alloc]init];
+    CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
+        for (CLPlacemark *placemark in place) {
+            area_dic = [placemark addressDictionary];
+            NSString * city = [area_dic objectForKey:@"City"]; //市
+            NSString * locality = [area_dic objectForKey:@"SubLocality"];//地区
+            DLog(@"area_dic %@ %@",city,locality);
+            for (GGLocateArea * locate in _locations) {
+                if ([locality rangeOfString:locate.prepare2].location != NSNotFound) {
+                    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
+                    [GGGlobalValue sharedInstance].provinceId = locate.areaId;
+                    [GGGlobalValue sharedInstance].provinceName = OTSSTRING(locate.address);
+                    GGProvince * ggprovice = [[GGProvince alloc] init];
+                    int modIndex = [ggprovice getProvinceModelIndex:[GGGlobalValue sharedInstance].provinceId];
+                    [self updateIconsWithCaseIndex:modIndex];
+                    break;
+                }
+            }
+        }
+        [GGGlobalValue sharedInstance].isFirstLaunch = NO;
+    };
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:_userLocation.location.coordinate.latitude longitude:_userLocation.location.coordinate.longitude];
+    //首次启动的时候才解析地址
+    if ([GGGlobalValue sharedInstance].isFirstLaunch) {
+        [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
+    }
+}
+
 
 -(void)updateIconsWithCaseIndex:(NSUInteger)aCaseIndex
 {
@@ -331,16 +385,17 @@
 -(IBAction)reportPoliceAction:(id)sender
 {
     DLog(@"reportPoliceAction");
+    [NSThread detachNewThreadSelector:@selector(reportPosition) toTarget:self withObject:nil];
     dispatch_queue_t  _disPatchQueue  = dispatch_queue_create([[NSString stringWithFormat:@"%@.%@", [self.class description], self] UTF8String], NULL);
     dispatch_async(_disPatchQueue, ^{
         
-        [self reportPosition];
+//        [self reportPosition];
         
         [[NSRunLoop mainRunLoop]runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];//the next time through the run loop.
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            NSString *number = @"110";// 此处读入电话号码
+            NSString *number = @"95555";// 此处读入电话号码
             NSString *num = [[NSString alloc] initWithFormat:@"tel://%@",number];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
         });
@@ -351,17 +406,15 @@
 {
     if(self.userLocation!=nil)
     {
-        //        不用下边的代码 用 GGArchive
-        //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        //        pcName = [defaults objectForKey:@"ggname"];
-        //        pcPhone = [defaults objectForKey:@"ggtel"];
-        //        DLog(@"pcName = %@ pcPhone = %@",pcName,pcPhone);
-        //        if (pcName == nil) {
-        //            pcName = @"";
-        //        }
-        //        if (pcPhone == nil) {
-        //            pcPhone = @"";
-        //        }
+        //首先更新位置
+        self.userLocation = nil;
+        [_mapManager start:@"" generalDelegate:self];
+        do
+        {
+            [[NSRunLoop currentRunLoop]runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+            
+        }while (!self.userLocation);
+        [_mapManager stop];
         float _mapxx = 0.0;
         float _mapyy = 0.0;
         _profile = (NSArray *)[GGArchive unarchiveDataWithFileName:@"profile.plist"];
@@ -488,34 +541,7 @@
     {
         return;
     }
-    self.userLocation = userLocation;
-    CLGeocoder *Geocoder=[[CLGeocoder alloc]init];
-    CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
-        for (CLPlacemark *placemark in place) {
-            area_dic = [placemark addressDictionary];
-            NSString * city = [area_dic objectForKey:@"City"]; //市
-            NSString * locality = [area_dic objectForKey:@"SubLocality"];//地区
-            DLog(@"area_dic %@ %@",city,locality);
-            for (GGLocateArea * locate in _locations) {
-                if ([locality rangeOfString:locate.prepare2].location != NSNotFound) {
-                    [self setNaviLeftButtonText:[GGGlobalValue sharedInstance].provinceName edgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
-                    [GGGlobalValue sharedInstance].provinceId = locate.areaId;
-                    [GGGlobalValue sharedInstance].provinceName = OTSSTRING(locate.address);
-                    GGProvince * ggprovice = [[GGProvince alloc] init];
-                    int modIndex = [ggprovice getProvinceModelIndex:[GGGlobalValue sharedInstance].provinceId];
-                    [self updateIconsWithCaseIndex:modIndex];
-                    break;
-                }
-            }
-        }
-        [GGGlobalValue sharedInstance].isFirstLaunch = NO;
-    };
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
-    //首次启动的时候才解析地址
-    if ([GGGlobalValue sharedInstance].isFirstLaunch) {
-        [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
-    }
-    
+    self.userLocation = userLocation;    
 }
 
 - (void)mapView:(BMKMapView *)mapView didFailToLocateUserWithError:(NSError *)error

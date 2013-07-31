@@ -13,12 +13,12 @@
 
 @class GGTestVC;
 
-@interface GGAppDelegate : UIResponder <UIApplicationDelegate,BMKGeneralDelegate, RDVTabBarControllerDelegate>
+@interface GGAppDelegate : UIResponder <UIApplicationDelegate, RDVTabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) UIViewController *viewController;
 @property (strong, nonatomic) UINavigationController *nc;
-@property (strong, nonatomic)   RDVTabBarController *tabBarController;
+@property (strong, nonatomic) RDVTabBarController *tabBarController;
 @property (strong, nonatomic) MMDrawerController *drawerVC;
 @end

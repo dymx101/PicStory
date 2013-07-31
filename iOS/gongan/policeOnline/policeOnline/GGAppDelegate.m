@@ -19,17 +19,11 @@
 
 #import "GGLeftDrawerVC.h"
 
-BMKMapManager* _mapManager;
+
 @implementation GGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // 要使用百度地图，请先启动BaiduMapManager
-	_mapManager = [[BMKMapManager alloc]init];
-	BOOL ret = [_mapManager start:@"" generalDelegate:self];
-	if (!ret) {
-		NSLog(@"manager start failed!");
-	}
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     
