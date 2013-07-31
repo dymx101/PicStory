@@ -95,8 +95,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        //        [GGGps sharedInstance].delegate = self;
-        
         // 要使用百度地图，请先启动BaiduMapManager
         _mapManager = [[BMKMapManager alloc]init];
         [_mapManager start:@"" generalDelegate:self];
@@ -107,10 +105,6 @@
         _mapView.showsUserLocation = YES;
         
         phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        //        pcName = [defaults objectForKey:@"ggname"];
-        //        pcPhone = [defaults objectForKey:@"ggtel"];
-        //         _profile = (NSArray *)[GGArchive unarchiveDataWithFileName:@"profile.plist"];
         
         [self setMyTitle:@"微公安"];
         //启动的时候设置一个状态
