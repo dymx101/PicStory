@@ -90,7 +90,7 @@ public class ResponseJSONController {
 	
 	//@PathVariable 的json 参数以/结尾否则 json串中的.号处理有问题
     //但是当 key 值有「.」时就会出错，比如说「/release/a.b.c」，到了 @PathVariable 就只剩下「a.b」，「.c」不见了，原因出现 Spring MVC 预设会切掉最后一个点以后的字符串，应该是在处理「*.do」这样的 Url pattern 的关系。
-    //解决方式：在 @PathVariable 里使用 Regular Expression 来配置 key 值的长相。
+    //解决方式：{jparam:.*}
 	@RequestMapping(value="/list/{jparam:.*}",produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody PageVO tetete(@PathVariable(value="jparam") String jp)
 	{
