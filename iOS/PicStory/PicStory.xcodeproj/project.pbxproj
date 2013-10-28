@@ -313,7 +313,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yu zhang (QNM2K66DZU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yu zhang (QNM2K66DZU)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -327,6 +328,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "C068583F-DB3B-468E-B82D-4032FCA9B57A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C068583F-DB3B-468E-B82D-4032FCA9B57A";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -340,7 +343,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yu zhang (QNM2K66DZU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yu zhang (QNM2K66DZU)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -348,6 +352,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "C068583F-DB3B-468E-B82D-4032FCA9B57A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C068583F-DB3B-468E-B82D-4032FCA9B57A";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -356,10 +362,14 @@
 		9B11F26D16C37CDF003B7021 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: yu zhang (QNM2K66DZU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yu zhang (QNM2K66DZU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicStory/PicStory-Prefix.pch";
 				INFOPLIST_FILE = "PicStory/PicStory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C068583F-DB3B-468E-B82D-4032FCA9B57A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C068583F-DB3B-468E-B82D-4032FCA9B57A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -367,10 +377,14 @@
 		9B11F26E16C37CDF003B7021 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: yu zhang (QNM2K66DZU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yu zhang (QNM2K66DZU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PicStory/PicStory-Prefix.pch";
 				INFOPLIST_FILE = "PicStory/PicStory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C068583F-DB3B-468E-B82D-4032FCA9B57A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C068583F-DB3B-468E-B82D-4032FCA9B57A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
