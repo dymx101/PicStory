@@ -35,7 +35,7 @@ public class GridFsAppRead {
 				System.out.println(file.getContentType());
 				
 				//save as another image
-				file.writeTo("/Users/towne/Desktop/new-testing.png");
+				file.writeTo("/Users/towne/Desktop/new-testing-x.png");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
