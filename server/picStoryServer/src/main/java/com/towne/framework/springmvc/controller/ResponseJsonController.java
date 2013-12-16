@@ -59,12 +59,23 @@ public class ResponseJSONController {
 	public @ResponseBody List<PageVO> getContactInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
 		Trader trader = new Trader();
 		trader.setTraderName("towne");
-		trader.setTraderPassword("123");
+		trader.setTraderPassword("123456");
 		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
-//		System.out.println("sayHello() : " + basic.sayHello());
-//		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
-//		System.out.println(">>>>>> "+me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
+		System.out.println("sayHello() : " + basic.sayHello());
+		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
+		System.out.println(">>>>>> "+me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
 		return pvs;
+	}
+	
+	@RequestMapping(value="/webbetch/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Trader getTraderInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
+		Trader trader = new Trader();
+		trader.setTraderName("towne");
+		trader.setTraderPassword("123456");
+		trader.setUserToken((String)me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
+		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
+//		System.out.println(">>>>>> "+me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
+		return trader;
 	}
 	
 	@RequestMapping(value="/momentpage/{id}",produces=MediaType.APPLICATION_JSON_VALUE)

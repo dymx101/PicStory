@@ -1,8 +1,7 @@
 webbench -c 500 -t 30 http://localhost/picStoryServer_0.0.1/json/moment/1
 
-
+查看网络状态
 netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
- 
 结果说明
 CLOSED            //无连接是活动的或正在进行
 LISTEN           //服务器在等待进入呼叫
@@ -15,3 +14,9 @@ ITMED_WAIT          //等待所有分组死掉
 CLOSING         //两边同时尝试关闭
 TIME_WAIT       //另一边已初始化一个释放
 LAST_ACK        //等待所有分组死掉
+
+Os x terminal, ssh , and too many open files
+
+echo 'kern.maxfiles=20480' | sudo tee -a /etc/sysctl.conf
+echo -e 'limit maxfiles 8192 20480\nlimit maxproc 1000 2000' | sudo tee -a /etc/launchd.conf
+echo 'ulimit -n 4096' | sudo tee -a /etc/profile
