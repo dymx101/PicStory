@@ -70,10 +70,10 @@ public class ResponseJSONController {
 	@RequestMapping(value="/webbetch/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Trader getTraderInJSON(@PathVariable(value="id")long id) throws TimeoutException, CacheException{
 		Trader trader = new Trader();
-		trader.setTraderName("towne");
-		trader.setTraderPassword("123456");
-		trader.setUserToken((String)me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
-		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
+//		trader.setTraderName("towne");
+//		trader.setTraderPassword("123");
+//		trader.setUserToken((String)me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
+//		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
 //		System.out.println(">>>>>> "+me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
 		return trader;
 	}

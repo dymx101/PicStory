@@ -22,12 +22,14 @@ import com.towne.framework.common.service.StorageService;
 @Controller
 @RequestMapping(value = "/storage")
 public class StorageController {
-    @Autowired
-    private StorageService storageService;
+//    @Autowired
+//    private StorageService storageService;
  
+ /* 
     @RequestMapping(value = "/filename/{filename:.*}", method = RequestMethod.GET)
     public void getByfilename (@PathVariable (value="filename") String filename, HttpServletResponse response) throws IOException {
-      String result = storageService.find(filename);
+
+    	String result = storageService.find(filename);
         if (result!=null) {
 //          for (GridFSDBFile file : result) {
 //          try {
@@ -45,8 +47,10 @@ public class StorageController {
         } else {
             response.setStatus(HttpStatus.NOT_FOUND.value());
         }
+       
     }  
  
+/*
     @RequestMapping(value = "/store", method = RequestMethod.POST)
     public ResponseEntity<String> store (@RequestParam MultipartFile file, HttpServletRequest request) {
         try {
@@ -60,4 +64,5 @@ public class StorageController {
             return new ResponseEntity<String>(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+ */
 }

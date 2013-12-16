@@ -35,7 +35,8 @@ public class TraderAndTokenAop {
                 if (arg1.getClass().equals(Trader.class)) {
                     Trader trader = (Trader) arg1;
                     MobileLogger logVO = ThreadLocalLog.getSystemLoggerVO();
-                    logVO.setId(123l);
+                    java.util.Date dt = new java.util.Date();
+                    logVO.setId(dt.getTime());
                     logVO.setTraderName(trader.getTraderName());
                     logVO.setTraderPassword(trader.getTraderPassword());
 //                    logVO.setClientSystem(trader.getClientSystem());
