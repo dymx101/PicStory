@@ -21,11 +21,12 @@
 		<property name="serviceInterface" value="com.towne.hessian.BasicAPI"></property>
 	</bean>
 	
+	<!-- 
 	<bean name="/StorageService" class="org.springframework.remoting.caucho.HessianServiceExporter">
 		<property name="service" ref="storageService"></property>
 		<property name="serviceInterface" value="com.towne.hessian.service.StorageService"></property>
 	</bean>
-	
+	 -->
 	
 	<bean name="/userServiceServer" class="org.springframework.remoting.caucho.HessianServiceExporter">
 		<property name="service" ref="userService"></property>
@@ -41,6 +42,7 @@
 		</property>
 	</bean>
 	
+	<!-- 
 	<bean name="myServiceClient1" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
 		<property name="serviceUrl">
 			<value>http://localhost:8888/hessian/test/test</value>
@@ -58,5 +60,6 @@
 			<value>com.towne.hessian.service.UserService</value>
 		</property>
 	</bean>
+	-->
 	
 </beans>

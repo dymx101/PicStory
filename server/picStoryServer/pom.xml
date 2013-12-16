@@ -381,11 +381,19 @@
             <version>4.0.7</version>
        </dependency>
     
+       <!-- spring mongodb -->
        	<dependency>
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-mongodb</artifactId>
 		    <version>1.2.1.RELEASE</version>
 	    </dependency>
+	    
+       	<!-- hibernate shards -->
+       	<dependency>
+            <groupId>hibernate</groupId>
+            <artifactId>shards</artifactId>
+            <version>3.1</version>
+        </dependency>
 	
 	</dependencies>
 

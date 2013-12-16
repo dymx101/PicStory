@@ -61,9 +61,9 @@ public class ResponseJSONController {
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123");
 		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
-		System.out.println("sayHello() : " + basic.sayHello());
-		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
-		System.out.println(">>>>>> "+me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
+//		System.out.println("sayHello() : " + basic.sayHello());
+//		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
+//		System.out.println(">>>>>> "+me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
 		return pvs;
 	}
 	

@@ -49,7 +49,7 @@ public class MomentServiceTest {
 		momentService.save(moment);
 	}
 
-	@Test
+//	@Test
 	public void tesdasd() {
 
 		System.out
