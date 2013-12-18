@@ -36,7 +36,7 @@ public class MainClient {
         connector.setConnectTimeoutCheckInterval(30);
         // 连结到服务器:
         ConnectFuture cf = connector.connect(new InetSocketAddress("localhost",
-                12211));
+                12315));
         // Wait for the connection attempt to be finished.
 
         cf.awaitUninterruptibly();

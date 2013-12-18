@@ -38,7 +38,7 @@ public class MinaServer {
 		// 设定服务器消息处理器
 		acceptor.setHandler(ServerHanlder.getInstances());
 		// 服务器绑定的端口
-		int bindPort = 12211;
+		int bindPort = 12315;
 		// 绑定端口，启动服务器
 		try {
 			acceptor.bind(new InetSocketAddress(bindPort));

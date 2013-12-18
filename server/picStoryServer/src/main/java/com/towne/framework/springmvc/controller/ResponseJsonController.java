@@ -49,8 +49,8 @@ public class ResponseJSONController {
 	@Autowired
 	private Cache me;
 	
-	@Autowired
-	private BasicAPI basic;
+//	@Autowired
+//	private BasicAPI basic;
 	
 	static String userIP = "127.0.0.1";
 	
@@ -61,7 +61,7 @@ public class ResponseJSONController {
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123456");
 		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
-		System.out.println("sayHello() : " + basic.sayHello());
+//		System.out.println("sayHello() : " + basic.sayHello());
 		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
 		return pvs;
