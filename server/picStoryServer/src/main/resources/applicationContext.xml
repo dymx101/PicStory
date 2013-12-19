@@ -19,6 +19,7 @@
 	<import resource="spring-system-aop.xml"/>
 	<import resource="spring-email.xml"/>
 	<import resource="spring-passport.xml"/>
+	
 	<import resource="spring-dubbo.xml"/>
 	<!-- 
     <import resource="spring-hessian-client.xml"/>

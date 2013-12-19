@@ -28,8 +28,8 @@ import com.towne.framework.springmvc.model.Moments;
 import com.towne.framework.springmvc.model.PageVO;
 import com.towne.framework.system.filter.vo.MobileLogger;
 import com.towne.framework.common.model.Trader;
+import com.towne.framework.core.dubbo.DemoService;
 import com.towne.framework.core.ex.SystemMobileRuntimeException;
-import com.towne.framework.core.hessian.BasicAPI;
 import com.towne.framework.core.utils.GsonUtil;
 import com.towne.framework.hibernate.bo.Moment;
 import com.towne.framework.hibernate.bo.Page;
@@ -49,8 +49,8 @@ public class ResponseJSONController {
 	@Autowired
 	private Cache me;
 	
-//	@Autowired
-//	private BasicAPI basic;
+	@Autowired
+	private DemoService basic;
 	
 	static String userIP = "127.0.0.1";
 	
@@ -61,7 +61,8 @@ public class ResponseJSONController {
 		trader.setTraderName("towne");
 		trader.setTraderPassword("123456");
 		List<PageVO> pvs = ifacadeService.findPagesByMomentId(trader, id);
-//		System.out.println("sayHello() : " + basic.sayHello());
+		System.out.println("pvs ->" + GsonUtil.objectToJson(pvs));
+		System.out.println("sayHello() : " + basic.sayHello(new java.util.Date().toString()));
 		System.out.println(">>>>>> "+me.get("USER_LOGVO_"+userIP,SerializationType.PROVIDER));
 		System.out.println(">>>>>> "+me.get("USER_SESSION_"+userIP,SerializationType.PROVIDER));
 		return pvs;

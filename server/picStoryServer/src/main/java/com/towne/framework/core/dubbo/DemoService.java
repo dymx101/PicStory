@@ -1,4 +1,4 @@
-package com.towne.framework.dubbo;
+package com.towne.framework.core.dubbo;
 
 
 public interface DemoService {  

@@ -8,25 +8,22 @@
                     http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
                 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd" >
 
-    <!-- 提供方应用信息，用于计算依赖关系 -->
-
+<!--     提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="hello-world-app" />
-    <!-- 使用multicast广播注册中心暴露服务地址 -->
+<!--    使用multicast广播注册中心暴露服务地址 -->
 
     <dubbo:registry address="multicast://224.5.6.7:1234" />
-    
-    <!-- 用hessian协议在8888(<span style="font-family: Arial, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 17.328125px; white-space: normal; background-color: #ffffff;">servlet容器的端口</span>)端口暴露服务，contextpath是项目名称，server这里是使用的web.xml里面配置的servlet -->
-
-    <dubbo:protocol name="hessian" port="8888" contextpath="dubbo" server="servlet"/> 
-    
-    <dubbo:provider protocol="hessian" />
+<!--     
+    用hessian协议在8888(<span style="font-family: Arial, Helvetica, FreeSans, sans-serif; font-size: 13px; line-height: 17.328125px; white-space: normal; background-color: #ffffff;">servlet容器的端口</span>)端口暴露服务，contextpath是项目名称，server这里是使用的web.xml里面配置的servlet
+  -->
+    <dubbo:protocol name="hessian" port="8002" contextpath="dubbonode" server="servlet" />
         
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service protocol="hessian" 
+    <dubbo:service 
         interface="com.towne.test.dubbo.service.DemoService"
-        ref="demoService" />
+        ref="demoService"/>
+    
     <!-- 和本地bean一样实现服务 -->
-
     <bean
         id="demoService"
         class="com.towne.test.dubbo.service.DemoServiceImpl" />
